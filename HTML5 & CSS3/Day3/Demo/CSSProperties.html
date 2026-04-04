@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        userAgent
+        External Style
+        Internal Style
+        //internal/external styles
+        inlineStyle
+        */
+
+        /*
+        Specificity
+        ABCD
+        */
+
+        /* #h1id{
+            color:aqua;
+        }
+        .c1{
+            color: red;
+        } */
+         /*Dynamic*/
+         h1:hover{
+            color: red;
+        }
+         h1:active{
+            color: white;
+            background-color: black;
+        }
+        input:focus{
+            background-color: red;
+            color: white;
+        }
+        /*link*/
+        p:target{
+            font-size: 40px;
+            color: aqua;
+        }
+
+        a:link{
+            color: orange;
+        }
+        a:visited{
+            color: chartreuse;
+        }
+        input:valid{
+            background-color: aqua;
+        }
+        input:invalid{
+            background-color: black;
+        }
+        ul li:first-child{
+            color: pink;
+        }
+
+        ul li:nth-child(even){
+            color: yellow;
+        }
+
+        p::first-letter{
+            font-size: 40px;
+            color: red;
+        }
+         p::first-line{
+            background-color: aquamarine;
+        }
+        p::after{
+            content: 'Hello ';
+        }
+
+    </style>
+</head>
+<body>
+    <h1 id="h1id" class="c1">my text</h1>
+    <input type="text">
+    <p id="p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores necessitatibus odio mollitia iusto explicabo temporibus inventore culpa doloribus? Obcaecati debitis veniam sint officia atque sequi neque odio exercitationem porro numquam?</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda officia harum placeat distinctio deserunt eos magni ad, odit ratione iusto? Similique numquam, sint qui voluptate repellendus inventore est hic reiciendis!</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda officia harum placeat distinctio deserunt eos magni ad, odit ratione iusto? Similique numquam, sint qui voluptate repellendus inventore est hic reiciendis!</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda officia harum placeat distinctio deserunt eos magni ad, odit ratione iusto? Similique numquam, sint qui voluptate repellendus inventore est hic reiciendis!</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda officia harum placeat distinctio deserunt eos magni ad, odit ratione iusto? Similique numquam, sint qui voluptate repellendus inventore est hic reiciendis!</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda officia harum placeat distinctio deserunt eos magni ad, odit ratione iusto? Similique numquam, sint qui voluptate repellendus inventore est hic reiciendis!</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda officia harum placeat distinctio deserunt eos magni ad, odit ratione iusto? Similique numquam, sint qui voluptate repellendus inventore est hic reiciendis!</p>
+    <br>
+    <a href="#">my Link Test</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form>
+        <input type="text" required pattern="[a-z]{3}"><span>invalid format</span>
+        <input type="submit">
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <ul>
+        <li>item#1</li>
+        <li>item#2</li>
+        <li>item#3</li>
+        <li>item#4</li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="#p1">Test Link</a>
+</body>
+</html>

@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: Day4_Red
+  commentId: N:Day4_Red
+  id: Day4_Red
+  children:
+  - Day4_Red.Employee
+  - Day4_Red.EmployeeSearch
+  - Day4_Red.Gender
+  - Day4_Red.HiringDate
+  - Day4_Red.SecurityPrivilege
+  langs:
+  - csharp
+  - vb
+  name: Day4_Red
+  nameWithType: Day4_Red
+  fullName: Day4_Red
+  type: Namespace
+  assemblies:
+  - Day4_Red
+references:
+- uid: Day4_Red.Employee
+  commentId: T:Day4_Red.Employee
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.Employee.html
+  name: Employee
+  nameWithType: Employee
+  fullName: Day4_Red.Employee
+- uid: Day4_Red.EmployeeSearch
+  commentId: T:Day4_Red.EmployeeSearch
+  isExternal: true
+  href: Day4_Red.EmployeeSearch.html
+  name: EmployeeSearch
+  nameWithType: EmployeeSearch
+  fullName: Day4_Red.EmployeeSearch
+- uid: Day4_Red.Gender
+  commentId: T:Day4_Red.Gender
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.Gender.html
+  name: Gender
+  nameWithType: Gender
+  fullName: Day4_Red.Gender
+- uid: Day4_Red.HiringDate
+  commentId: T:Day4_Red.HiringDate
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.HiringDate.html
+  name: HiringDate
+  nameWithType: HiringDate
+  fullName: Day4_Red.HiringDate
+- uid: Day4_Red.SecurityPrivilege
+  commentId: T:Day4_Red.SecurityPrivilege
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.SecurityPrivilege.html
+  name: SecurityPrivilege
+  nameWithType: SecurityPrivilege
+  fullName: Day4_Red.SecurityPrivilege
+- uid: Day4_Red
+  commentId: N:Day4_Red
+  isExternal: true
+  href: Day4_Red.html
+  name: Day4_Red
+  nameWithType: Day4_Red
+  fullName: Day4_Red

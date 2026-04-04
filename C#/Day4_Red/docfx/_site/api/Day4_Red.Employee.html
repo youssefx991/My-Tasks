@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Struct Employee | mysite </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct Employee | mysite ">
+      
+      <meta name="description" content="Represents an employee in a company  Employee is identified by ID, Name, Security_level, Salary, HireDate, Gender, and Privilege.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="mysite">
+            mysite
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Day4_Red.Employee">
+
+
+
+  <h1 id="Day4_Red_Employee" data-uid="Day4_Red.Employee" class="text-break">
+Struct Employee  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Day4_Red.html">Day4_Red</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Day4_Red.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents an employee in a company
+<remarks>
+Employee is identified by ID, Name, Security_level, Salary, HireDate, Gender, and Privilege.
+</remarks></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct Employee : IComparable&lt;Employee&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="Day4_Red.Employee.html">Employee</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Day4_Red_Employee__ctor_" data-uid="Day4_Red.Employee.#ctor*"></a>
+
+  <h3 id="Day4_Red_Employee__ctor_System_Int32_System_String_System_Int32_System_Double_Day4_Red_HiringDate_Day4_Red_Gender_Day4_Red_SecurityPrivilege_" data-uid="Day4_Red.Employee.#ctor(System.Int32,System.String,System.Int32,System.Double,Day4_Red.HiringDate,Day4_Red.Gender,Day4_Red.SecurityPrivilege)">
+  Employee(int, string, int, double, HiringDate, Gender, SecurityPrivilege)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>initializes a new instance of the employee</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Employee(int _id, string _name, int _securityLevel, double _salary, HiringDate date, Gender _gender, SecurityPrivilege _privilege)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>_id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>employee id</p>
+</dd>
+    <dt><code>_name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>employee name</p>
+</dd>
+    <dt><code>_securityLevel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>employee security level</p>
+</dd>
+    <dt><code>_salary</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>employee  salary</p>
+</dd>
+    <dt><code>date</code> <a class="xref" href="Day4_Red.HiringDate.html">HiringDate</a></dt>
+    <dd><p>employee hiring date</p>
+</dd>
+    <dt><code>_gender</code> <a class="xref" href="Day4_Red.Gender.html">Gender</a></dt>
+    <dd><p>employee gender</p>
+</dd>
+    <dt><code>_privilege</code> <a class="xref" href="Day4_Red.SecurityPrivilege.html">SecurityPrivilege</a></dt>
+    <dd><p>employee security privilege</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Day4_Red_Employee_gender_" data-uid="Day4_Red.Employee.gender*"></a>
+
+  <h3 id="Day4_Red_Employee_gender" data-uid="Day4_Red.Employee.gender">
+  gender
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets or sets the gender of the employee</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Gender gender { readonly get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.Gender.html">Gender</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_Employee_hire_date_" data-uid="Day4_Red.Employee.hire_date*"></a>
+
+  <h3 id="Day4_Red_Employee_hire_date" data-uid="Day4_Red.Employee.hire_date">
+  hire_date
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets or sets the hiring date of the employee</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HiringDate hire_date { readonly get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.HiringDate.html">HiringDate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_Employee_id_" data-uid="Day4_Red.Employee.id*"></a>
+
+  <h3 id="Day4_Red_Employee_id" data-uid="Day4_Red.Employee.id">
+  id
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets or sets the unique identifier for the employee.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int id { readonly get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_Employee_name_" data-uid="Day4_Red.Employee.name*"></a>
+
+  <h3 id="Day4_Red_Employee_name" data-uid="Day4_Red.Employee.name">
+  name
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets or sets the name of the employee.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string name { readonly get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_Employee_privilege_" data-uid="Day4_Red.Employee.privilege*"></a>
+
+  <h3 id="Day4_Red_Employee_privilege" data-uid="Day4_Red.Employee.privilege">
+  privilege
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets or sets the security privilege of the employee</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SecurityPrivilege privilege { readonly get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.SecurityPrivilege.html">SecurityPrivilege</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_Employee_salary_" data-uid="Day4_Red.Employee.salary*"></a>
+
+  <h3 id="Day4_Red_Employee_salary" data-uid="Day4_Red.Employee.salary">
+  salary
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets or sets the salary of the employee</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double salary { readonly get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_Employee_security_level_" data-uid="Day4_Red.Employee.security_level*"></a>
+
+  <h3 id="Day4_Red_Employee_security_level" data-uid="Day4_Red.Employee.security_level">
+  security_level
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>gets or sets the security level of the employee</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int security_level { readonly get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Day4_Red_Employee_CompareTo_" data-uid="Day4_Red.Employee.CompareTo*"></a>
+
+  <h3 id="Day4_Red_Employee_CompareTo_Day4_Red_Employee_" data-uid="Day4_Red.Employee.CompareTo(Day4_Red.Employee)">
+  CompareTo(Employee)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>compares employees based on their hiring date</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CompareTo(Employee other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Day4_Red.Employee.html">Employee</a></dt>
+    <dd><p>other employee to compare with</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>negative if this employee was hired before the other,
+positive if this employee was hired after the other,
+and zero if they were hired on the same date</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_Employee_ToString_" data-uid="Day4_Red.Employee.ToString*"></a>
+
+  <h3 id="Day4_Red_Employee_ToString" data-uid="Day4_Red.Employee.ToString">
+  ToString()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>overrides the ToString method to provide a string representation of the employee's information</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>string representation of the employee's information</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

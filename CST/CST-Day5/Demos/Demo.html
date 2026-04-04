@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="script.js"></script> -->
+    <script>
+      "";
+
+      var x = function () {};
+      x;
+
+      var win;
+      function openChild() {
+        win = open("Child.html", "", "width=250,height=250");
+        // closed
+      }
+      function chkChild() {
+        if (win.closed) console.log("child win is closed");
+        else console.log("child still open");
+      }
+      function moveChild() {
+        win.moveTo(150, 150);
+        win.focus();
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="openWin" onclick="openChild()" />
+    <input type="button" value="CheckWin" onclick="chkChild()" />
+    <input type="button" value="moveWin" onclick="moveChild()" />
+    <input type="button" value="start" onclick="StartCount()" />
+    <input type="button" value="stop" onclick="stopCount()" />
+    <script src="script.js"></script>
+    <script>
+      //   //  var x=
+      //   //function expression
+      //   var x = function () {
+      //     // x()
+      //     console.log();
+      //   };
+
+      //   //   x()
+
+      //   // var x="fun()"
+      //   //   var x =
+      //   //   x()
+
+      //   var timer = setInterval(function () {
+      //     //callback function
+      //     //anonymous function
+      //     alert("timeout");
+      //     console.log("inside console");
+      //   }, 5000);
+
+      //   var timerId;
+      //   function StartCount() {
+      //     timerId = setInterval(function () {
+      //       alert("setInterval");
+      //       clearInterval(timerId);
+      //     }, 2000);
+      //   }
+      //   function stopCount() {
+      //     clearInterval(timerId);
+      //   }
+    </script>
+  </body>
+</html>

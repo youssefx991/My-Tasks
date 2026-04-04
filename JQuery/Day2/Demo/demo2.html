@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="scripts/jQ.js"></script>
+    <script src="scripts/jq-easing.js"></script>
+    <style>
+        img{
+            position: relative;
+            width: 100px;
+            height: auto;
+        }
+        #img1{
+            /* left: 200px; */
+        }
+
+        div{
+            border: 1px solid blue;
+            padding: 5px;
+            margin-left: 5px;
+            font-size: 30px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <img src="images/dd.png" id="img1">
+    <br>
+    <img src="images/dd.png" id="img2">
+    <br>
+
+    <img src="images/dd.png" id="img3"> -->
+
+    <div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, accusantium earum! Veritatis, hic id provident optio sequi quasi, corrupti perferendis repellat expedita impedit soluta necessitatibus itaque officia voluptas. Delectus, aut.
+    </div>
+    <script>
+        $(document).ready(function(){
+            // $('#img1').animate({left:"+=500px"},5000,'linear')
+            // $('#img2').animate({left:"+=500px"},5000,'swing')
+            // $('#img3').animate({left:"+=500px"},5000,'easeInElastic')
+
+            $('div').animate(
+                {
+                    width:"70%",
+                    opacity:0.4,
+                    marginLeft:"20px",
+                    padding:"20px"
+                },5000)
+        })
+    </script>
+</body>
+</html>

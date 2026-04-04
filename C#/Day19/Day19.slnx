@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Day19/Day19.csproj" />
+  <Project Path="MigrationRunner/MigrationRunner.csproj" Id="2d0edaca-a942-40fe-99f2-5762215e88de" />
+</Solution>

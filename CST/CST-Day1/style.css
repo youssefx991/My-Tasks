@@ -1,0 +1,99 @@
+body {
+    background-color: rgb(213, 225, 247);
+}
+
+h1,
+h2,
+h3,
+#copy-text {
+    text-align: center;
+}
+
+hr {
+    border-color: black;
+}
+
+#h-content {
+    text-align: left;
+}
+
+#diff-fonts {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#diff-sizes {
+    font-size: 10pt;
+}
+
+#diff-colors {
+    color: red;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+#enter-img {
+    margin-top: 20%;
+}
+
+#p-top {
+    text-align: left;
+}
+
+#p-next {
+    text-align: right;
+}
+
+#reg-title {
+    text-align: center;
+}
+
+table, td {
+    border: 2px grey solid;
+    border-collapse: collapse;
+}
+table {
+    margin: auto;
+}
+td {
+    padding: 10px;
+}
+#interests-row, #bio-row, .form-buttons{
+    text-align: center;
+}
+.interests{
+    border: none;
+}
+textarea {
+    resize: none;
+}
+
+label, table, legend, input[type="submit"], input[type="reset"] {
+    font-weight: bold;
+}
+fieldset {
+    border: 5px rgb(0, 115, 255) solid;
+}
+
+legend {
+    color: crimson;
+    font-size: 20pt;
+}
+#login-button-area {
+    text-align: center;
+    color: red;
+}
+
+#login-button {
+    color: crimson;
+    padding: 10px;
+}
+
+#login-form {
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 10%;
+    
+}

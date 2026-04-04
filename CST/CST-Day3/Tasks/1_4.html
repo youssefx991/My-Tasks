@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+</head>
+<body>
+    <script>
+        let x = Number(prompt("enter first number: "));
+        let y = Number(prompt("enter second number: "));
+        let z = Number(prompt("enter third number: "));
+
+        if (!isNaN(x) && !isNaN(y) && !isNaN(z)){
+            if (x%y==0 && x%z==0)
+                console.log(x+" is divisible by " + y + " and " + z)
+            else if (x%y==0 && x%z!=0)
+                console.log(x+" is divisible by " + y + " only")
+            else if (x%y!=0 && x%z==0)
+                console.log(x+" is divisible by " + z + " only")
+            else 
+                console.log(x+" is not divisible by any");
+            
+        }
+        else
+        {
+            console.log("ERROR - only enter numbers")
+        }
+    </script>
+</body>
+</html>

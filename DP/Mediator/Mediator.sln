@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorPattern", "MediatorPattern\MediatorPattern.csproj", "{21586250-6E83-5DD4-A60A-D475D06D92D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spaghetti", "Spaghetti\Spaghetti.csproj", "{F3FDF57F-1452-7CDA-3D51-3468FA1C60FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21586250-6E83-5DD4-A60A-D475D06D92D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21586250-6E83-5DD4-A60A-D475D06D92D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21586250-6E83-5DD4-A60A-D475D06D92D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21586250-6E83-5DD4-A60A-D475D06D92D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3FDF57F-1452-7CDA-3D51-3468FA1C60FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3FDF57F-1452-7CDA-3D51-3468FA1C60FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3FDF57F-1452-7CDA-3D51-3468FA1C60FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3FDF57F-1452-7CDA-3D51-3468FA1C60FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DE4881A-1637-4E54-8E11-FF10173CDAE3}
+	EndGlobalSection
+EndGlobal

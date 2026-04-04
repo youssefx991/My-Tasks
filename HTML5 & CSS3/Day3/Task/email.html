@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+
+    <style>
+        #tb_username:invalid {
+            border-color: red;
+        }
+
+        #tb_email:invalid {
+            border-color: red;
+        }
+
+        #tb_username:valid {
+            border-color: green;
+        }
+
+        #tb_email:valid {
+            border-color: green;
+        }
+
+        #tb_username:invalid+#p_username {
+            /* color: black; */
+            visibility: visible;
+        }
+
+        #tb_email:invalid+#p_email {
+            /* color: black; */
+            visibility: visible;
+        }
+
+        #tb_username:valid+#p_username {
+            /* color: white; */
+            visibility: hidden;
+        }
+
+        #tb_email:valid+#p_email {
+            /* color: white; */
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Change Email Address</h1>
+    <form action="">
+        <input required ="text" id="tb_username" placeholder="Enter your username" pattern="^[a-zA-Z]+$">
+        <p id="p_username">The Required username must be only a series of alphabetic characters.</p>
+        <input required ="email" id="tb_email" placeholder="Enter your email"
+            pattern="([a-z]|[A-Z])([a-z]|[A-Z]|[0-9])*@([a-z]|[A-Z])+\.([a-z]|[A-Z])+$">
+        <p id="p_email">The Required email address may not include any special characters other than the '@' sign.</p>
+
+        <input type="submit" value="submit">
+    </form>
+</body>
+
+</html>

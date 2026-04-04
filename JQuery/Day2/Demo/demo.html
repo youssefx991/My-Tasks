@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="scripts/jQ.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+    <script src="script.js"></script>
+    <style>
+        p{
+            border: 1px solid red;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/dd.png">
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ratione dolor reprehenderit tenetur quasi quo repellat veniam pariatur veritatis dolorem, inventore est ipsum porro eius placeat doloribus facilis optio esse!
+    </div>
+    <input type="button" value="show" id="btn">
+    <input type="button" value="hide" id="btn2">
+    <input type="button" value="FadeIn" id="fadeinBtn">
+    <input type="button" value="FadeOut" id="fadeoutBtn">
+    <input type="button" value="FadeTo" id="fadetoBtn">
+    <h1 id="h1id">hiiiiiiii</h1>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, ratione dolor! Sed voluptas error aperiam, libero ea autem voluptatibus quis! Doloremque cupiditate optio dignissimos placeat nesciunt nisi repellendus quisquam enim?
+    </div>
+    <ul>
+        <li>item#1</li>
+        <li>item#2</li>
+        <li>item#3</li>
+        <li>item#4</li>
+    </ul>
+    
+    <input type="button" value="change order" id="changeBtn">
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias harum ducimus sapiente iusto nihil dolorum id cum obcaecati? Itaque illum similique illo provident expedita fugit eos earum. Libero, esse ratione?</div>
+    <script>
+        // document.images[0].onclick = function(){
+        //     alert('hello')
+        // }
+        $(document).ready(function(){
+            $('#btn').click(function(){
+                $('img').show('bounce',1000)
+                //slow,fast,normal
+            })
+            $('#btn2').click(function(){
+                $('img').hide('drop',1000)
+            })
+            $('#fadeinBtn').click(function(){
+                $('img').fadeIn(1000)
+            })
+             $('#fadeoutBtn').click(function(){
+                $('img').fadeOut(1000)
+            })
+             $('#fadetoBtn').click(function(){
+                $('img').fadeTo(1000,0.5)
+            })
+
+            /*slideup-slidedown*/
+
+            // $('body').prepend($('<h1>').text('hiiii'))
+            // $('body').append($('<h1>').text('hiiii'))
+                // var myVal = $('<h1>')
+                //     console.log(myVal)
+            // $('h1').text('hello')
+            // // $('<h1>').text('test').appendTo($('body'))
+            // $('<h1>').text('test').prependTo($('div'))
+                $('#changeBtn').click(function(){
+                    $('ul li:last').prependTo($('ul'))
+                })
+            //     var obj = $('<span>new Text</span>')
+            // obj.insertAfter($('ul li:first'))
+            // $('<h2>').text('test adding element').insertBefore(obj)
+            // $('<span>new Text</span>').insertBefore($('ul li:eq(1)'))
+            // $('<span>new Text</span>').insertBefore($('ul li:first'))
+            // $('div').wrap($('<p>'))
+                // $('div').wrapAll($('<p>'))
+            // $('<p>').insertBefore($('div').eq(0))
+            // $('div').appendTo($('p'))
+
+            // $('div').wrapInner($('<b>'))
+                // $('ul').empty()
+                // $('ul').remove()
+
+            // var elem = document.images[0].cloneNode()
+            // var elem = document.getElementsByTagName('div')[0].cloneNode(true)
+            // console.log(elem)
+            // document.body.appendChild(elem)
+
+
+            //Events
+            // $('img').click(function(){
+            //     alert('hello')
+            // })
+
+            $('img').click(function(){
+                console.log('hello')
+            })
+            
+            function fun(){
+                alert('test click')
+                // $('img').off('click',fun)
+            }
+
+            // $('img').on('click',fun)
+            // $('img').one('click',fun)
+
+            $('ul li').eq(0).click(function(){
+                $(this).text('changed')
+            })
+
+
+            //delegation
+            // $('ul').on('click','li:first',{username:'ali'},myfun)
+
+            // $('h1').on('myevent',function(){
+            //     $(this).css('color','red').hide(1000)
+            // })
+
+            // $('img').click(function(){
+            //     $('h1').trigger('myevent')
+            // })
+        })
+    </script>
+</body>
+</html>

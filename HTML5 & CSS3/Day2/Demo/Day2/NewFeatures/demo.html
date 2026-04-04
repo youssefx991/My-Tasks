@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="modernizr-custom.js"></script> -->
+     <script src="Modernizr/modernizr.js"></script>
+     <script src="Modernizr/ConditionizrLib/Conditionizr.js"></script>
+     <script src="../WebStorage/localStorageLib.js"></script>
+</head>
+<body>
+    <script>
+        conditionizr.add('xyz',function(){
+            return /google/i.test(navigator.vendor)
+        })
+
+        conditionizr.add('abc',function(){
+            return navigator.userAgent.indexOf('Firefox')!=-1  && Modernizr.localstorage
+        })
+
+        conditionizr.add('test',function(){
+            return !Modernizr.canvas
+        })
+
+
+
+        conditionizr.polyfill('ChromeScript.js',['xyz','test'])
+        conditionizr.polyfill('FirefoxScript.js',['abc'])
+        // if(/google/i.test(navigator.vendor)){
+        //     var script = document.createElement('script')
+        //     script.src = 'ChromeScript.js'
+        //     document.head.appendChild(script)
+        // }
+        // if(navigator.userAgent.indexOf('Firefox')!=-1  && Modernizr.localstorage){
+        //     var script = document.createElement('script')
+        //     script.src = 'FirefoxScript.js'
+        //     document.head.appendChild(script)
+        // }
+        // if(){
+
+        // }
+
+
+
+    </script>
+</body>
+</html>

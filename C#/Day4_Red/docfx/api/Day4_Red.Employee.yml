@@ -1,0 +1,794 @@
+### YamlMime:ManagedReference
+items:
+- uid: Day4_Red.Employee
+  commentId: T:Day4_Red.Employee
+  id: Employee
+  parent: Day4_Red
+  children:
+  - Day4_Red.Employee.#ctor(System.Int32,System.String,System.Int32,System.Double,Day4_Red.HiringDate,Day4_Red.Gender,Day4_Red.SecurityPrivilege)
+  - Day4_Red.Employee.CompareTo(Day4_Red.Employee)
+  - Day4_Red.Employee.ToString
+  - Day4_Red.Employee.gender
+  - Day4_Red.Employee.hire_date
+  - Day4_Red.Employee.id
+  - Day4_Red.Employee.name
+  - Day4_Red.Employee.privilege
+  - Day4_Red.Employee.salary
+  - Day4_Red.Employee.security_level
+  langs:
+  - csharp
+  - vb
+  name: Employee
+  nameWithType: Employee
+  fullName: Day4_Red.Employee
+  type: Struct
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: >-
+    Represents an employee in a company
+
+    <remarks>
+
+    Employee is identified by ID, Name, Security_level, Salary, HireDate, Gender, and Privilege. 
+
+    </remarks>
+  example: []
+  syntax:
+    content: 'public struct Employee : IComparable<Employee>'
+    content.vb: Public Structure Employee Implements IComparable(Of Employee)
+  implements:
+  - System.IComparable{Day4_Red.Employee}
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.Object.GetType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Day4_Red.Employee.#ctor(System.Int32,System.String,System.Int32,System.Double,Day4_Red.HiringDate,Day4_Red.Gender,Day4_Red.SecurityPrivilege)
+  commentId: M:Day4_Red.Employee.#ctor(System.Int32,System.String,System.Int32,System.Double,Day4_Red.HiringDate,Day4_Red.Gender,Day4_Red.SecurityPrivilege)
+  id: '#ctor(System.Int32,System.String,System.Int32,System.Double,Day4_Red.HiringDate,Day4_Red.Gender,Day4_Red.SecurityPrivilege)'
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: Employee(int, string, int, double, HiringDate, Gender, SecurityPrivilege)
+  nameWithType: Employee.Employee(int, string, int, double, HiringDate, Gender, SecurityPrivilege)
+  fullName: Day4_Red.Employee.Employee(int, string, int, double, Day4_Red.HiringDate, Day4_Red.Gender, Day4_Red.SecurityPrivilege)
+  type: Constructor
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: initializes a new instance of the employee
+  example: []
+  syntax:
+    content: public Employee(int _id, string _name, int _securityLevel, double _salary, HiringDate date, Gender _gender, SecurityPrivilege _privilege)
+    parameters:
+    - id: _id
+      type: System.Int32
+      description: employee id
+    - id: _name
+      type: System.String
+      description: employee name
+    - id: _securityLevel
+      type: System.Int32
+      description: employee security level
+    - id: _salary
+      type: System.Double
+      description: employee  salary
+    - id: date
+      type: Day4_Red.HiringDate
+      description: employee hiring date
+    - id: _gender
+      type: Day4_Red.Gender
+      description: employee gender
+    - id: _privilege
+      type: Day4_Red.SecurityPrivilege
+      description: employee security privilege
+    content.vb: Public Sub New(_id As Integer, _name As String, _securityLevel As Integer, _salary As Double, [date] As HiringDate, _gender As Gender, _privilege As SecurityPrivilege)
+  overload: Day4_Red.Employee.#ctor*
+  nameWithType.vb: Employee.New(Integer, String, Integer, Double, HiringDate, Gender, SecurityPrivilege)
+  fullName.vb: Day4_Red.Employee.New(Integer, String, Integer, Double, Day4_Red.HiringDate, Day4_Red.Gender, Day4_Red.SecurityPrivilege)
+  name.vb: New(Integer, String, Integer, Double, HiringDate, Gender, SecurityPrivilege)
+- uid: Day4_Red.Employee.ToString
+  commentId: M:Day4_Red.Employee.ToString
+  id: ToString
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Employee.ToString()
+  fullName: Day4_Red.Employee.ToString()
+  type: Method
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: overrides the ToString method to provide a string representation of the employee's information
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: string representation of the employee's information
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Day4_Red.Employee.ToString*
+- uid: Day4_Red.Employee.CompareTo(Day4_Red.Employee)
+  commentId: M:Day4_Red.Employee.CompareTo(Day4_Red.Employee)
+  id: CompareTo(Day4_Red.Employee)
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: CompareTo(Employee)
+  nameWithType: Employee.CompareTo(Employee)
+  fullName: Day4_Red.Employee.CompareTo(Day4_Red.Employee)
+  type: Method
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: compares employees based on their hiring date
+  example: []
+  syntax:
+    content: public int CompareTo(Employee other)
+    parameters:
+    - id: other
+      type: Day4_Red.Employee
+      description: other employee to compare with
+    return:
+      type: System.Int32
+      description: >-
+        negative if this employee was hired before the other, 
+
+        positive if this employee was hired after the other, 
+
+        and zero if they were hired on the same date
+    content.vb: Public Function CompareTo(other As Employee) As Integer
+  overload: Day4_Red.Employee.CompareTo*
+  implements:
+  - System.IComparable{Day4_Red.Employee}.CompareTo(Day4_Red.Employee)
+- uid: Day4_Red.Employee.id
+  commentId: P:Day4_Red.Employee.id
+  id: id
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: Employee.id
+  fullName: Day4_Red.Employee.id
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: gets or sets the unique identifier for the employee.
+  example: []
+  syntax:
+    content: public int id { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property id As Integer
+  overload: Day4_Red.Employee.id*
+- uid: Day4_Red.Employee.name
+  commentId: P:Day4_Red.Employee.name
+  id: name
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: name
+  nameWithType: Employee.name
+  fullName: Day4_Red.Employee.name
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: gets or sets the name of the employee.
+  example: []
+  syntax:
+    content: public string name { readonly get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property name As String
+  overload: Day4_Red.Employee.name*
+- uid: Day4_Red.Employee.security_level
+  commentId: P:Day4_Red.Employee.security_level
+  id: security_level
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: security_level
+  nameWithType: Employee.security_level
+  fullName: Day4_Red.Employee.security_level
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: gets or sets the security level of the employee
+  example: []
+  syntax:
+    content: public int security_level { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property security_level As Integer
+  overload: Day4_Red.Employee.security_level*
+- uid: Day4_Red.Employee.salary
+  commentId: P:Day4_Red.Employee.salary
+  id: salary
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: salary
+  nameWithType: Employee.salary
+  fullName: Day4_Red.Employee.salary
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: gets or sets the salary of the employee
+  example: []
+  syntax:
+    content: public double salary { readonly get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property salary As Double
+  overload: Day4_Red.Employee.salary*
+- uid: Day4_Red.Employee.hire_date
+  commentId: P:Day4_Red.Employee.hire_date
+  id: hire_date
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: hire_date
+  nameWithType: Employee.hire_date
+  fullName: Day4_Red.Employee.hire_date
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: gets or sets the hiring date of the employee
+  example: []
+  syntax:
+    content: public HiringDate hire_date { readonly get; set; }
+    parameters: []
+    return:
+      type: Day4_Red.HiringDate
+    content.vb: Public Property hire_date As HiringDate
+  overload: Day4_Red.Employee.hire_date*
+- uid: Day4_Red.Employee.gender
+  commentId: P:Day4_Red.Employee.gender
+  id: gender
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: gender
+  nameWithType: Employee.gender
+  fullName: Day4_Red.Employee.gender
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: gets or sets the gender of the employee
+  example: []
+  syntax:
+    content: public Gender gender { readonly get; set; }
+    parameters: []
+    return:
+      type: Day4_Red.Gender
+    content.vb: Public Property gender As Gender
+  overload: Day4_Red.Employee.gender*
+- uid: Day4_Red.Employee.privilege
+  commentId: P:Day4_Red.Employee.privilege
+  id: privilege
+  parent: Day4_Red.Employee
+  langs:
+  - csharp
+  - vb
+  name: privilege
+  nameWithType: Employee.privilege
+  fullName: Day4_Red.Employee.privilege
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: gets or sets the security privilege of the employee
+  example: []
+  syntax:
+    content: public SecurityPrivilege privilege { readonly get; set; }
+    parameters: []
+    return:
+      type: Day4_Red.SecurityPrivilege
+    content.vb: Public Property privilege As SecurityPrivilege
+  overload: Day4_Red.Employee.privilege*
+references:
+- uid: Day4_Red
+  commentId: N:Day4_Red
+  isExternal: true
+  href: Day4_Red.html
+  name: Day4_Red
+  nameWithType: Day4_Red
+  fullName: Day4_Red
+- uid: System.IComparable{Day4_Red.Employee}
+  commentId: T:System.IComparable{Day4_Red.Employee}
+  parent: System
+  definition: System.IComparable`1
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  name: IComparable<Employee>
+  nameWithType: IComparable<Employee>
+  fullName: System.IComparable<Day4_Red.Employee>
+  nameWithType.vb: IComparable(Of Employee)
+  fullName.vb: System.IComparable(Of Day4_Red.Employee)
+  name.vb: IComparable(Of Employee)
+  spec.csharp:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: <
+  - uid: Day4_Red.Employee
+    name: Employee
+    isExternal: true
+    href: Day4_Red.Employee.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Day4_Red.Employee
+    name: Employee
+    isExternal: true
+    href: Day4_Red.Employee.html
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IComparable`1
+  commentId: T:System.IComparable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  name: IComparable<T>
+  nameWithType: IComparable<T>
+  fullName: System.IComparable<T>
+  nameWithType.vb: IComparable(Of T)
+  fullName.vb: System.IComparable(Of T)
+  name.vb: IComparable(Of T)
+  spec.csharp:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Day4_Red.Employee.#ctor*
+  commentId: Overload:Day4_Red.Employee.#ctor
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee__ctor_System_Int32_System_String_System_Int32_System_Double_Day4_Red_HiringDate_Day4_Red_Gender_Day4_Red_SecurityPrivilege_
+  name: Employee
+  nameWithType: Employee.Employee
+  fullName: Day4_Red.Employee.Employee
+  nameWithType.vb: Employee.New
+  fullName.vb: Day4_Red.Employee.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Day4_Red.HiringDate
+  commentId: T:Day4_Red.HiringDate
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.HiringDate.html
+  name: HiringDate
+  nameWithType: HiringDate
+  fullName: Day4_Red.HiringDate
+- uid: Day4_Red.Gender
+  commentId: T:Day4_Red.Gender
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.Gender.html
+  name: Gender
+  nameWithType: Gender
+  fullName: Day4_Red.Gender
+- uid: Day4_Red.SecurityPrivilege
+  commentId: T:Day4_Red.SecurityPrivilege
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.SecurityPrivilege.html
+  name: SecurityPrivilege
+  nameWithType: SecurityPrivilege
+  fullName: Day4_Red.SecurityPrivilege
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Day4_Red.Employee.ToString*
+  commentId: Overload:Day4_Red.Employee.ToString
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_ToString
+  name: ToString
+  nameWithType: Employee.ToString
+  fullName: Day4_Red.Employee.ToString
+- uid: Day4_Red.Employee.CompareTo*
+  commentId: Overload:Day4_Red.Employee.CompareTo
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_CompareTo_Day4_Red_Employee_
+  name: CompareTo
+  nameWithType: Employee.CompareTo
+  fullName: Day4_Red.Employee.CompareTo
+- uid: System.IComparable{Day4_Red.Employee}.CompareTo(Day4_Red.Employee)
+  commentId: M:System.IComparable{Day4_Red.Employee}.CompareTo(Day4_Red.Employee)
+  parent: System.IComparable{Day4_Red.Employee}
+  definition: System.IComparable`1.CompareTo(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  name: CompareTo(Employee)
+  nameWithType: IComparable<Employee>.CompareTo(Employee)
+  fullName: System.IComparable<Day4_Red.Employee>.CompareTo(Day4_Red.Employee)
+  nameWithType.vb: IComparable(Of Employee).CompareTo(Employee)
+  fullName.vb: System.IComparable(Of Day4_Red.Employee).CompareTo(Day4_Red.Employee)
+  spec.csharp:
+  - uid: System.IComparable{Day4_Red.Employee}.CompareTo(Day4_Red.Employee)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - uid: Day4_Red.Employee
+    name: Employee
+    isExternal: true
+    href: Day4_Red.Employee.html
+  - name: )
+  spec.vb:
+  - uid: System.IComparable{Day4_Red.Employee}.CompareTo(Day4_Red.Employee)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - uid: Day4_Red.Employee
+    name: Employee
+    isExternal: true
+    href: Day4_Red.Employee.html
+  - name: )
+- uid: Day4_Red.Employee
+  commentId: T:Day4_Red.Employee
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.Employee.html
+  name: Employee
+  nameWithType: Employee
+  fullName: Day4_Red.Employee
+- uid: System.IComparable`1.CompareTo(`0)
+  commentId: M:System.IComparable`1.CompareTo(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  name: CompareTo(T)
+  nameWithType: IComparable<T>.CompareTo(T)
+  fullName: System.IComparable<T>.CompareTo(T)
+  nameWithType.vb: IComparable(Of T).CompareTo(T)
+  fullName.vb: System.IComparable(Of T).CompareTo(T)
+  spec.csharp:
+  - uid: System.IComparable`1.CompareTo(`0)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IComparable`1.CompareTo(`0)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - name: T
+  - name: )
+- uid: Day4_Red.Employee.id*
+  commentId: Overload:Day4_Red.Employee.id
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_id
+  name: id
+  nameWithType: Employee.id
+  fullName: Day4_Red.Employee.id
+- uid: Day4_Red.Employee.name*
+  commentId: Overload:Day4_Red.Employee.name
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_name
+  name: name
+  nameWithType: Employee.name
+  fullName: Day4_Red.Employee.name
+- uid: Day4_Red.Employee.security_level*
+  commentId: Overload:Day4_Red.Employee.security_level
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_security_level
+  name: security_level
+  nameWithType: Employee.security_level
+  fullName: Day4_Red.Employee.security_level
+- uid: Day4_Red.Employee.salary*
+  commentId: Overload:Day4_Red.Employee.salary
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_salary
+  name: salary
+  nameWithType: Employee.salary
+  fullName: Day4_Red.Employee.salary
+- uid: Day4_Red.Employee.hire_date*
+  commentId: Overload:Day4_Red.Employee.hire_date
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_hire_date
+  name: hire_date
+  nameWithType: Employee.hire_date
+  fullName: Day4_Red.Employee.hire_date
+- uid: Day4_Red.Employee.gender*
+  commentId: Overload:Day4_Red.Employee.gender
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_gender
+  name: gender
+  nameWithType: Employee.gender
+  fullName: Day4_Red.Employee.gender
+- uid: Day4_Red.Employee.privilege*
+  commentId: Overload:Day4_Red.Employee.privilege
+  isExternal: true
+  href: Day4_Red.Employee.html#Day4_Red_Employee_privilege
+  name: privilege
+  nameWithType: Employee.privilege
+  fullName: Day4_Red.Employee.privilege

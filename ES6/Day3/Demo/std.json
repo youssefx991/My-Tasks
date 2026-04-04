@@ -1,0 +1,39 @@
+[
+    {
+        "name":"ali",
+        "age":20,
+        "address":"123st",
+        "skills":{
+            "languages":["c#","JS"]
+        }
+
+    },
+    {
+        "name":"ahmed",
+        "age":20,
+        "address":"123st",
+        "skills":{
+            "languages":["c#","JS"]
+        }
+
+    },
+    {
+        "name":"mohamed",
+        "age":20,
+        "address":"123st",
+        "skills":{
+            "languages":["c#","JS"]
+        }
+
+    },
+    {
+        "name":"nour",
+        "age":20,
+        "address":"123st",
+        "skills":{
+            "languages":["c#","JS"]
+        }
+
+    }
+
+]

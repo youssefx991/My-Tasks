@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Day4_Red</name>
+    </assembly>
+    <members>
+        <member name="T:Day3.Employee">
+            <summary>
+            Represents an employee in a company
+            <remarks>
+            Employee is identified by ID, Name, Security_level, Salary, HireDate, Gender, and Privilege. 
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:Day3.Employee.id">
+            <summary>
+            gets or sets the unique identifier for the employee.
+            </summary>
+        </member>
+        <member name="P:Day3.Employee.name">
+            <summary>
+            gets or sets the name of the employee.
+            </summary>
+        </member>
+        <member name="P:Day3.Employee.security_level">
+            <summary>
+            gets or sets the security level of the employee
+            </summary>
+        </member>
+        <member name="P:Day3.Employee.salary">
+            <summary>
+            gets or sets the salary of the employee
+            </summary>
+        </member>
+        <member name="P:Day3.Employee.hire_date">
+            <summary>
+            gets or sets the hiring date of the employee
+            </summary>
+        </member>
+        <member name="P:Day3.Employee.gender">
+            <summary>
+            gets or sets the gender of the employee
+            </summary>
+        </member>
+        <member name="P:Day3.Employee.privilege">
+            <summary>
+            gets or sets the security privilege of the employee
+            </summary>
+        </member>
+        <member name="M:Day3.Employee.#ctor(System.Int32,System.String,System.Int32,System.Double,Day3.HiringDate,Day3.Gender,Day3.SecurityPrivilege)">
+            <summary>
+            initializes a new instance of the employee
+            </summary>
+            <param name="_id">employee id</param>
+            <param name="_name">employee name</param>
+            <param name="_securityLevel">employee security level</param>
+            <param name="_salary">employee  salary</param>
+            <param name="date">employee hiring date</param>
+            <param name="_gender">employee gender</param>
+            <param name="_privilege">employee security privilege</param>
+        </member>
+        <member name="M:Day3.Employee.ToString">
+            <summary>
+            overrides the ToString method to provide a string representation of the employee's information
+            </summary>
+            <returns>
+            string representation of the employee's information
+            </returns>
+        </member>
+        <member name="M:Day3.Employee.CompareTo(Day3.Employee)">
+            <summary>
+            compares employees based on their hiring date
+            </summary>
+            <param name="other">other employee to compare with</param>
+            <returns>
+            negative if this employee was hired before the other, 
+            positive if this employee was hired after the other, 
+            and zero if they were hired on the same date
+            </returns>
+        </member>
+        <member name="T:Day3.Gender">
+            <summary>
+            Specifies the gender of an individual as male or female.
+            </summary>
+            <remarks>
+            accepts two values: M for male and F for female
+            </remarks>
+        </member>
+        <member name="T:Day3.HiringDate">
+            <summary>
+            Represents a specific date used for hiring purposes.
+            </summary>
+            <remarks>
+            hiring date is represented by three integer fields: day, month, and year.
+            </remarks>
+        </member>
+        <member name="P:Day3.HiringDate.day">
+            <summary>
+            gets or sets the day of the date
+            </summary>
+        </member>
+        <member name="P:Day3.HiringDate.month">
+            <summary>
+            gets or sets the month of the date
+            </summary>
+        </member>
+        <member name="P:Day3.HiringDate.year">
+            <summary>
+            gets or sets the year of the date
+            </summary>
+        </member>
+        <member name="M:Day3.HiringDate.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            initializes a new instance of the hiring date
+            </summary>
+            <param name="_day">day of the date</param>
+            <param name="_month">month of the date</param>
+            <param name="_year">year of the date</param>
+        </member>
+        <member name="M:Day3.HiringDate.ToString">
+            <summary>
+            creates a string representation of the hiring date in the format "day/month/year"
+            </summary>
+            <returns>string representation of the hiring date</returns>
+        </member>
+        <member name="M:Day3.HiringDate.CompareTo(Day3.HiringDate)">
+            <summary>
+            compares hiring date based on datetime comparer function
+            where the hiring date that was hired earlier is considered less than the one that was hired later
+            </summary>
+            <param name="other">other date to compare with</param>
+            <returns>
+            negative if this date was  before the other, 
+            positive if this date was  after the other, 
+            and zero if they were on the same date
+            </returns>
+        </member>
+        <member name="T:Day3.SecurityPrivilege">
+            <summary>
+            Defines the security privileges available within the system
+            </summary>
+            <remarks>
+            a security privilege is represented by a byte value, where each bit represents a specific privilege.
+            </remarks>
+        </member>
+        <member name="T:Day4.EmployeeSearch">
+            <summary>
+            provide methods to search faster for employees
+            </summary>
+        </member>
+        <member name="F:Day4.EmployeeSearch.nationalIDs">
+            <summary>
+            list of natioal ids of employees
+            </summary>
+        </member>
+        <member name="F:Day4.EmployeeSearch.employees">
+            <summary>
+            list of all employees
+            </summary>
+        </member>
+        <member name="M:Day4.EmployeeSearch.#ctor(System.Int32[],Day3.Employee[])">
+            <summary>
+            creates instance of employee search with the given national ids and employees
+            </summary>
+            <param name="_ids">all employees national ids</param>
+            <param name="_employees">all employees</param>
+        </member>
+        <member name="M:Day4.EmployeeSearch.SearchByNationalID(System.Int32)">
+            <summary>
+            method to search for employee by national id
+            </summary>
+            <param name="id">id t osearch for its employee</param>
+            <returns>employee if found, dummy one if not</returns>
+        </member>
+        <member name="M:Day4.EmployeeSearch.SearchByHiringDate(Day3.HiringDate)">
+            <summary>
+            method to search for employee by national hiring date
+            </summary>
+            <param name="date">hiring date to search for its employee</param>
+            <returns>employee if found, dummy one if not</returns>
+        </member>
+        <member name="M:Day4.EmployeeSearch.SearchByName(System.String)">
+            <summary>
+            method to search for employees by national name
+            </summary>
+            <param name="name">name to search for its employee</param>
+            <returns>all employees with given name as array if found, dummy one if not</returns>
+        </member>
+        <member name="P:Day4.EmployeeSearch.Item(System.Int32)">
+            <summary>
+            meghod to access employee by national id using indexer
+            </summary>
+            <param name="id">id to get its employee</param>
+            <returns>requested employee</returns>
+        </member>
+        <member name="P:Day4.EmployeeSearch.Item(Day3.HiringDate)">
+            <summary>
+            method to get employee by hiring date using indexer
+            </summary>
+            <param name="date">hiring date to get its employee</param>
+            <returns>requested employee</returns>
+        </member>
+        <member name="P:Day4.EmployeeSearch.Item(System.String)">
+            <summary>
+            method to get employee by name using indexer
+            </summary>
+            <param name="name">name to search for its employees</param>
+            <returns>array of all employees with given name</returns>
+        </member>
+    </members>
+</doc>

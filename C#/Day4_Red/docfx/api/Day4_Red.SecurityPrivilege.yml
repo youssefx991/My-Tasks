@@ -1,0 +1,134 @@
+### YamlMime:ManagedReference
+items:
+- uid: Day4_Red.SecurityPrivilege
+  commentId: T:Day4_Red.SecurityPrivilege
+  id: SecurityPrivilege
+  parent: Day4_Red
+  children:
+  - Day4_Red.SecurityPrivilege.DBA
+  - Day4_Red.SecurityPrivilege.FULL
+  - Day4_Red.SecurityPrivilege.developer
+  - Day4_Red.SecurityPrivilege.guest
+  - Day4_Red.SecurityPrivilege.secretary
+  langs:
+  - csharp
+  - vb
+  name: SecurityPrivilege
+  nameWithType: SecurityPrivilege
+  fullName: Day4_Red.SecurityPrivilege
+  type: Enum
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: Defines the security privileges available within the system
+  remarks: a security privilege is represented by a byte value, where each bit represents a specific privilege.
+  example: []
+  syntax:
+    content: 'public enum SecurityPrivilege : byte'
+    content.vb: Public Enum SecurityPrivilege As Byte
+- uid: Day4_Red.SecurityPrivilege.guest
+  commentId: F:Day4_Red.SecurityPrivilege.guest
+  id: guest
+  parent: Day4_Red.SecurityPrivilege
+  langs:
+  - csharp
+  - vb
+  name: guest
+  nameWithType: SecurityPrivilege.guest
+  fullName: Day4_Red.SecurityPrivilege.guest
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  syntax:
+    content: guest = 1
+    return:
+      type: Day4_Red.SecurityPrivilege
+- uid: Day4_Red.SecurityPrivilege.developer
+  commentId: F:Day4_Red.SecurityPrivilege.developer
+  id: developer
+  parent: Day4_Red.SecurityPrivilege
+  langs:
+  - csharp
+  - vb
+  name: developer
+  nameWithType: SecurityPrivilege.developer
+  fullName: Day4_Red.SecurityPrivilege.developer
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  syntax:
+    content: developer = 2
+    return:
+      type: Day4_Red.SecurityPrivilege
+- uid: Day4_Red.SecurityPrivilege.secretary
+  commentId: F:Day4_Red.SecurityPrivilege.secretary
+  id: secretary
+  parent: Day4_Red.SecurityPrivilege
+  langs:
+  - csharp
+  - vb
+  name: secretary
+  nameWithType: SecurityPrivilege.secretary
+  fullName: Day4_Red.SecurityPrivilege.secretary
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  syntax:
+    content: secretary = 4
+    return:
+      type: Day4_Red.SecurityPrivilege
+- uid: Day4_Red.SecurityPrivilege.DBA
+  commentId: F:Day4_Red.SecurityPrivilege.DBA
+  id: DBA
+  parent: Day4_Red.SecurityPrivilege
+  langs:
+  - csharp
+  - vb
+  name: DBA
+  nameWithType: SecurityPrivilege.DBA
+  fullName: Day4_Red.SecurityPrivilege.DBA
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  syntax:
+    content: DBA = 8
+    return:
+      type: Day4_Red.SecurityPrivilege
+- uid: Day4_Red.SecurityPrivilege.FULL
+  commentId: F:Day4_Red.SecurityPrivilege.FULL
+  id: FULL
+  parent: Day4_Red.SecurityPrivilege
+  langs:
+  - csharp
+  - vb
+  name: FULL
+  nameWithType: SecurityPrivilege.FULL
+  fullName: Day4_Red.SecurityPrivilege.FULL
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  syntax:
+    content: FULL = 15
+    return:
+      type: Day4_Red.SecurityPrivilege
+references:
+- uid: Day4_Red
+  commentId: N:Day4_Red
+  isExternal: true
+  href: Day4_Red.html
+  name: Day4_Red
+  nameWithType: Day4_Red
+  fullName: Day4_Red
+- uid: Day4_Red.SecurityPrivilege
+  commentId: T:Day4_Red.SecurityPrivilege
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.SecurityPrivilege.html
+  name: SecurityPrivilege
+  nameWithType: SecurityPrivilege
+  fullName: Day4_Red.SecurityPrivilege

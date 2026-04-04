@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Car</title>
+
+    <style>
+        #car_img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Moving Car</h1>
+    <img src="car.gif" alt="" id="car_img"> <br><br><br>
+    <h2 id="car_tag"></h2>
+    <script src="jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#car_img").animate({ left: "+=1550px" }, 1000, "linear");
+            setInterval(function () {
+                $("#car_tag").text("Car Image: car.gif | Current Left Position: " + $("#car_img").css("left"));
+            }, 10);
+        });
+    </script>
+</body>
+
+</html>

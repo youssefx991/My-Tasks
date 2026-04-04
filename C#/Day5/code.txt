@@ -1,0 +1,447 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Day5
+{
+    internal class Duration
+    {
+        public int hours {  get; set; }
+        public int minutes {  get; set; }
+        public int seconds {  get; set; }
+
+
+        // constructors
+        public Duration(int hours, int minutes, int seconds)
+        {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+        }
+        public Duration(int _seconds)
+        {
+            hours = _seconds / (60*60);
+            _seconds = _seconds - (60 * 60) * hours;
+            minutes = _seconds / 60;
+            _seconds = _seconds - minutes * 60;
+            seconds = _seconds;
+        }
+
+        // private methods
+        private static int ConvertToSeconds(Duration d)
+        {
+            return d.hours * 60 * 60 + d.minutes * 60 + d.seconds;
+        }
+
+        // override
+        public override string ToString()
+        {
+            if (hours > 0)
+                return $"Hours: {hours}, Minutes: {minutes}, Seconds: {seconds} ";
+            else if (minutes > 0)
+                return $"Minutes: {minutes}, Seconds: {seconds} ";
+            else
+                return $"Seconds: {seconds} ";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (obj is Duration)
+            {
+                return this == (Duration)obj;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(hours, minutes, seconds);
+        }
+
+        // operator overloading
+        
+        public static bool operator ==(Duration a, Duration b)
+        {
+            return ConvertToSeconds(a) == ConvertToSeconds(b);
+        }
+       
+        public static bool operator !=(Duration a, Duration b)
+        {
+            return ConvertToSeconds(a) != ConvertToSeconds(b);
+        }
+       
+        public static bool operator >(Duration a, Duration b)
+        {
+            return ConvertToSeconds(a) > ConvertToSeconds(b);
+        }
+       
+        public static bool operator <(Duration a, Duration b)
+        {
+            return ConvertToSeconds(a) < ConvertToSeconds(b);
+        }
+       
+        public static bool operator >=(Duration a, Duration b)
+        {
+            return ConvertToSeconds(a) >= ConvertToSeconds(b);
+        }
+       
+        public static bool operator <=(Duration a, Duration b)
+        {
+            return ConvertToSeconds(a) <= ConvertToSeconds(b);
+        }
+
+        public static Duration operator +(Duration a, Duration b)
+        {
+            return new Duration(ConvertToSeconds(a) + ConvertToSeconds(b));
+        }
+        public static Duration operator +(Duration a, int b)
+        {
+            return new Duration(ConvertToSeconds(a) + b);
+        }
+        public static Duration operator +(int a, Duration b)
+        {
+            return new Duration(a + ConvertToSeconds(b));
+        }
+
+        public static Duration operator -(Duration a, Duration b)
+        {
+            return new Duration(ConvertToSeconds(a) - ConvertToSeconds(b));
+        }
+        public static Duration operator -(Duration a, int b)
+        {
+            return new Duration(ConvertToSeconds(a) - b);
+        }
+        public static Duration operator -(int a, Duration b)
+        {
+            return new Duration(a - ConvertToSeconds(b));
+        }
+
+        public static Duration operator -(Duration d)
+        {
+            return new Duration(-d.hours, -d.minutes, -d.seconds);
+        }
+
+
+        public static Duration operator ++(Duration d)
+        {
+            if (d.minutes + 1 == 60)
+            {
+                d.hours++;
+                d.minutes = 0;
+            }
+            else
+                d.minutes++;
+            return d;
+        }
+
+        public static Duration operator --(Duration d)
+        {
+            if (d.minutes - 1 == -1)
+            {
+                d.hours--;
+                d.minutes = 59;
+            }
+            else
+                d.minutes--;
+            return d;
+        }
+
+        public static implicit operator bool(Duration d)
+        {
+            return ConvertToSeconds(d) > 0;
+        }
+
+        public static explicit operator DateTime(Duration d)
+        {
+            return new DateTime().AddHours(d.hours).AddMinutes(d.minutes).AddSeconds(d.seconds);
+        }
+        
+
+
+    }
+}
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Day5
+{
+    internal class MyMath
+    {
+        public static double Add(double a, double b) => a + b;
+        public static double Subtract(double a, double b) => a - b;
+        public static double Multiply(double a, double b) => a * b;
+        public static double Divide(double a, double b)
+        {
+            if (b != 0)
+                return a / b;
+            else
+            {
+                Console.WriteLine("Cannot divide by zero - will return first number");
+                return a;
+            }
+        }
+    }
+}
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Day5
+{
+    internal class NIC
+    {
+        public string manufacture { get; set; }
+        public string mac_address { get; set;}
+        public NICType type { get; set;}
+
+        static NIC obj;
+        private NIC()
+        {
+            
+        }
+        private NIC(string manufacture, string mac_address, NICType type)
+        {
+            this.manufacture = manufacture;
+            this.mac_address = mac_address;
+            this.type = type;
+        }
+
+        public static NIC GetInstance(string manufacture, string mac_address, NICType type)
+        {
+            if (obj == null)
+            {
+                obj = new NIC(manufacture, mac_address, type);
+            }
+            return obj;
+        }
+        public static NIC GetInstance()
+        {
+            if (obj == null)
+            {
+                obj = new NIC();
+            }
+            return obj;
+        }
+    }
+}
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Day5
+{
+    internal enum NICType
+    {
+        ETHERNET,
+        TOKEN_RING
+    }
+}
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text;
+
+namespace Day5
+{
+    internal class Point3D
+    {
+        // attributes
+        public double x {  get; set; }
+        public double y {  get; set; }
+        public double z {  get; set; }
+
+        // constructors
+        public Point3D(double x, double y, double z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+        public Point3D():this(0,0,0) { }
+        public Point3D(double x):this(x,0,0) { }
+        public Point3D(double x, double y):this(x,y,0) { }
+
+
+        public Point3D(Point3D point)
+        {
+            this.x= point.x;
+            this.y= point.y;
+            this.z= point.z;
+        }
+
+
+        // operator overloading
+        public static bool operator ==(Point3D a, Point3D b)
+        {
+            return a.x == b.x && a.y == b.y && a.z == b.z;
+        }
+        public static bool operator !=(Point3D a, Point3D b)
+        {
+            return a.x != b.x || a.y != b.y || a.z != b.z;
+        }
+
+
+        // casting
+        public static explicit operator string(Point3D point)
+        {
+            return point.ToString(); 
+        }
+
+        // tostring
+        public override string ToString()
+        {
+            return $"Point Coordinates: ({x}, {y}, {z})";
+        }
+
+        // equals
+        public override bool Equals(object? point)
+        {
+            if (point == null) 
+                return false;
+
+            if (point is Point3D)
+            {
+                return this == (Point3D)point;
+            }
+
+            return false;
+        }
+    }
+}
+﻿using Day5;
+
+void task1()
+{
+    Point3D P = new Point3D(10, 10, 10);
+    Console.WriteLine($"tostring: {P.ToString()}");
+    Console.WriteLine($"cast to string: {(string)P}");
+
+    Point3D[] points = new Point3D[2];
+    for(int i=0; i<points.Length; i++)
+    {
+        Console.Write($"Enter point {i+1} x: ");
+        double x = int.Parse( Console.ReadLine() );
+
+        Console.Write($"Enter point {i+1} y: ");
+        double y = int.Parse( Console.ReadLine() );
+
+        Console.Write($"Enter point {i+1} z: ");
+        double z = int.Parse( Console.ReadLine() );
+
+        points[i] = new Point3D(x,y,z);
+        Console.WriteLine("-------------------------------------------");
+    }
+
+    Console.WriteLine($"p1 == p2: {points[0] == points[1]}");
+    Console.WriteLine($"p1 != p2: {points[0] != points[1]}");
+    Console.WriteLine($"p1.equals(p2): {points[0].Equals(points[1])}");
+
+}
+
+void task2()
+{
+    Console.WriteLine($"Add 1,2: {MyMath.Add(1, 2)}");
+    Console.WriteLine("-------------------------------------------");
+
+    Console.WriteLine($"Subtract 1,2: {MyMath.Subtract(1, 2)}");
+    Console.WriteLine("-------------------------------------------");
+
+    Console.WriteLine($"Multiply 1,2: {MyMath.Multiply(1, 2)}");
+    Console.WriteLine("-------------------------------------------");
+
+    Console.WriteLine($"Divide 1,2: {MyMath.Divide(1, 2)}");
+    Console.WriteLine("-------------------------------------------");
+
+    Console.WriteLine($"Divide 1,0: {MyMath.Divide(1, 0)}");
+    Console.WriteLine("-------------------------------------------");
+
+}
+
+void task3()
+{
+    NIC nic1 = NIC.GetInstance();
+    NIC nic2 = NIC.GetInstance();
+
+    Console.WriteLine(nic1.GetHashCode() == nic2.GetHashCode());
+}
+
+
+void task4()
+{
+    Duration D = new Duration(1, 10, 15);
+    Console.WriteLine("D (1, 10, 15)");
+    Console.WriteLine($"Result: {D}");
+    Console.WriteLine($"Expected: Hours: 1, Minutes :10 , Seconds :15\n");
+
+
+    Duration D1 = new Duration(3600);
+    Console.WriteLine("D1 (3600)");
+    Console.WriteLine($"Result: {D1}");
+    Console.WriteLine($"Expected: Hours: 1, Minutes: 0 , Seconds: 0\n");
+
+    Duration D2 = new Duration(7800);
+    Console.WriteLine("D2 (7800)");
+    Console.WriteLine($"Result: {D2}");
+    Console.WriteLine($"Expected: Hours: 2, Minutes: 10 , Seconds: 0\n");
+
+    Duration D3 = new Duration(666);
+    Console.WriteLine("D3 (666)");
+    Console.WriteLine($"Result: {D3}");
+    Console.WriteLine($"Expected: Minutes :11 , Seconds :6\n");
+
+
+    Console.WriteLine("D3 = D1 + D2");
+    Console.WriteLine($"D3 = {D1} + {D2}");
+    D3 = D1 + D2;
+    Console.WriteLine($"D3 = {D3}\n");
+    //////////////////////////////////////////
+    Console.WriteLine("D3 = D1 + 7800");
+    Console.WriteLine($"D3 =  {D1} +  {D2}");
+    D3 = D1 + 7800;
+    Console.WriteLine($"D3 = {D3}\n");
+    //////////////////////////////////////////
+    Console.WriteLine("D3 = 666 + D3");
+    Console.WriteLine($"D3 = {new Duration(666)} + {D3}");
+    D3 = 666 + D3;
+    Console.WriteLine($"D3 = {D3}\n");
+    //////////////////////////////////////////
+    Console.WriteLine("D3 = D1++");
+    Console.WriteLine($"D3 = {D1}++");
+    D3 = D1++;
+    Console.WriteLine($"D3 = {D3}");
+    Console.WriteLine($"D1 = {D1}\n");
+    //////////////////////////////////////////
+    Console.WriteLine("D3 = --D2");
+    Console.WriteLine($"D3 = --{D2}");
+    D3 = --D2;
+    Console.WriteLine($"D3 = {D3}\n");
+    //////////////////////////////////////////
+    Console.WriteLine("D1 -= D2");
+    Console.WriteLine($"{D1} -= {D2}");
+    D1 -= D2;
+    Console.WriteLine($"D1 = {D1}\n");
+    //////////////////////////////////////////
+    Console.WriteLine("if (D1 > D2)");
+    if (D1 > D2) Console.WriteLine("True\n");
+    else Console.WriteLine("False\n");
+    //////////////////////////////////////////
+    Console.WriteLine("if (D1 <= D2)");
+    if (D1 <= D2) Console.WriteLine("True\n");
+    else Console.WriteLine("False\n");
+    //////////////////////////////////////////
+    Console.WriteLine("if (D1)");
+    if (D1) Console.WriteLine("True\n");
+    else Console.WriteLine("False\n");
+    //////////////////////////////////////////
+    Console.WriteLine("DateTime Obj = (DateTime)D2");
+    DateTime Obj = (DateTime)D2;
+    Console.WriteLine($"D1 = {D2}");
+    Console.WriteLine($"obj = {Obj}\n");
+    //////////////////////////////////////////
+}
+//task1();
+//task2();
+//task3();
+task4();

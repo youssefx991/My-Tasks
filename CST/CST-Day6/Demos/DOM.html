@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="h1id" class="c1">
+      <u>Heading#1</u>
+    </h1>
+    <img
+      src="images/marshall_bw.jpg"
+      width="150"
+      onmouseover="changeImg(this)"
+      onmouseout="returnSrc(this)"
+    />
+    <img
+      src="images/marshall_bw.jpg"
+      width="150"
+      onmouseover="changeImg(this)"
+      onmouseout="returnSrc(this)"
+    />
+    <img
+      src="images/marshall_bw.jpg"
+      width="150"
+      onmouseover="changeImg(this)"
+      onmouseout="returnSrc(this)"
+    />
+    <img
+      src="images/marshall_bw.jpg"
+      width="150"
+      onmouseover="changeImg(this)"
+      onmouseout="returnSrc(this)"
+    />
+    <h2>Heading#2</h2>
+    <h2>Heading#2</h2>
+    <h2>Heading#2</h2>
+
+    <p class="c1">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam natus
+      quos recusandae, a quas impedit aut dicta omnis error incidunt obcaecati
+      repellat ab perspiciatis earum odit quia veritatis voluptatibus
+      cupiditate. Sit suscipit officiis cupiditate qui dolore accusamus fugiat
+      enim ullam laboriosam obcaecati pariatur blanditiis dolor deleniti at sunt
+      quia nihil rerum, placeat, odio praesentium quod animi quis consequuntur.
+      Unde, harum? Id facilis, blanditiis quae ad, explicabo modi dolores
+      exercitationem possimus doloremque aliquam labore recusandae tempore eos
+      minima quasi magni inventore fugiat dicta ipsa tempora accusantium, quia
+      voluptas corporis! Dolore, enim!
+    </p>
+    <script>
+      document.getElementById("h1id").id = "h1id";
+
+      function changeImg(myImg) {
+        myImg.src = "images/marshall_c.jpg";
+      }
+
+      function returnSrc(myImg) {
+        myImg.src = "images/marshall_bw.jpg";
+      }
+
+      document.getElementById("h1id").onclick = function () {
+        alert("click event on H1 element");
+      };
+    </script>
+  </body>
+</html>

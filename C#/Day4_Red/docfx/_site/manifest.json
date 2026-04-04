@@ -1,0 +1,172 @@
+{
+  "source_base_path": "C:/ITI/C#/Day4_Red/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Day4_Red.Employee.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Day4_Red.Employee.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Day4_Red.Employee",
+      "Summary": "<p sourcefile=\"api/Day4_Red.Employee.yml\" sourcestartlinenumber=\"1\">Represents an employee in a company\n<remarks>\nEmployee is identified by ID, Name, Security_level, Salary, HireDate, Gender, and Privilege.\n</remarks></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Day4_Red.EmployeeSearch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Day4_Red.EmployeeSearch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Day4_Red.EmployeeSearch",
+      "Summary": "<p sourcefile=\"api/Day4_Red.EmployeeSearch.yml\" sourcestartlinenumber=\"1\">provide methods to search faster for employees</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Day4_Red.Gender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Day4_Red.Gender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Day4_Red.Gender",
+      "Summary": "<p sourcefile=\"api/Day4_Red.Gender.yml\" sourcestartlinenumber=\"1\">Specifies the gender of an individual as male or female.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Day4_Red.HiringDate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Day4_Red.HiringDate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Day4_Red.HiringDate",
+      "Summary": "<p sourcefile=\"api/Day4_Red.HiringDate.yml\" sourcestartlinenumber=\"1\">Represents a specific date used for hiring purposes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Day4_Red.SecurityPrivilege.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Day4_Red.SecurityPrivilege.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Day4_Red.SecurityPrivilege",
+      "Summary": "<p sourcefile=\"api/Day4_Red.SecurityPrivilege.yml\" sourcestartlinenumber=\"1\">Defines the security privileges available within the system</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Day4_Red.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Day4_Red.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Day4_Red",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

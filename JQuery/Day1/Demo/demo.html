@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-4.0.0.js"></script>
+     <!-- <script src="lib1.js"></script>
+     <script>
+        console.log(myObj.fun())
+     </script>
+     <script src="lib2.js"></script>
+      -->
+     <style>
+        /* div a{}
+         */
+         /*selectors
+         1-basic selectors
+         2-attribute selector [type='text']
+         3-combinator selectors
+
+         4-Pesudo classes
+         5-Pesudo elements
+         ***/
+        input[type ='text']{
+            background-color: black;
+            color: red;
+        }
+
+        div{
+            border: 1px solid blue;
+        }
+        #dv1{
+            width: 200px;
+        }
+        #dv2{
+            width: 250px;
+        }
+
+        /* +
+        ~ */
+        /* h1+h2{
+            color: aqua;
+        }
+        h1 ~ div{
+            font-size: 40px;
+        } */
+
+        .myClass{
+            color: aqua;
+            background-color: black;
+        }
+     </style>
+</head>
+<body>
+    <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae natus beatae, expedita numquam qui impedit sequi minima excepturi ex. Quia sed necessitatibus, recusandae et possimus reiciendis voluptas error sit deserunt!</div>
+    <h1 id="h1id">Heading#1</h1>
+    <h2>Test</h2>
+    <input type="button" value="change" id="btn">
+    <div id="dv2">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur odit tempora unde culpa molestias, dicta, eligendi accusamus obcaecati aspernatur maiores rem voluptatibus officia nobis voluptatum optio. Corrupti, vitae ducimus! Sint?
+    </div>
+    <h1 id="h1id">Heading#2</h1>
+    <h3>heading #333</h3>
+    <a href="#">Link</a>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam doloribus dolorem, accusamus ipsa adipisci tempore totam quos earum odit fugiat doloremque labore vitae dolores, corporis nostrum dolore. Eaque, vel officiis.
+        <a href="#">Test Link</a>
+    </div>
+    <input type="text">
+    <input type="button" value="click">
+    <div id="dv1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere sunt sequi fugit eligendi sapiente quibusdam necessitatibus nobis assumenda reiciendis a fuga omnis sit, quae consequuntur voluptate. Dolores voluptatum vitae similique.</div>
+    <ul class="c1">
+        <li>item#1</li>
+        <li>item#2</li>
+        <li>item#3</li>
+        <li>item#4</li>
+        <li>item#5</li>
+    </ul>
+    <ul>
+        <li>item#1</li>
+        <li>item#2</li>
+        <li>item#3</li>
+        <li>item#4</li>
+        <li>item#5</li>
+    </ul>
+    <ul>
+        <li>item#1</li>
+        <li>item#2</li>
+        <li>item#3</li>
+        <li>item#4</li>
+        <li>item#5</li>
+    </ul>
+    <img src="images/dd.png">
+    <script>
+        $(document).ready(function(){
+            // console.log($('#h1id'))
+            // console.log($('h1'))
+            // $('#h1id').text('new Text')
+            // $('h1').css('color','red')
+            // console.log($('h1')[0])//native element
+            // console.log($('h1').get(0))//native element
+
+            // $($('h1')[0]).css('color','yellow')
+            // $('h1').eq(0).css('backgroundColor','black')
+            // // $('div a').css('color','pink')
+            // // $('a','div').css('color','pink')
+            // console.log($('ul li'))
+            // $('ul.c1 li:last').css('color','yellow')
+            // $('ul li:eq(2)').css('color','red')
+            // $('[type = "button"]').css('color','aqua')
+
+            // $('ul li:eq(1),ul li:eq(2)')
+            // $('ul li').filter(':eq(1),:eq(2)').css('color','yellow')
+            // $('div').filter(function(){
+            //     // console.log(this)
+            //     // console.log($(this))
+            //     var width = $(this).width()
+            //     return width>100&&width<300
+            // }).css({
+            //     "background-color":'yellow',
+            //     'color':'red',
+            //     'font-size':'40px'
+            // })
+            // $('h1').next('h2,h3').css('color','red')//+
+            // $('h1').nextAll('div').css('font-size','40px')//~
+
+            // $('h1').siblings('div,a').css('font-size','40px')
+            $('#btn').click(function(){
+                // $('h2').addClass('myClass')
+                $('h2').toggleClass('myClass')
+                // $('ul li').each(function(idx){
+                //     $(this).text(idx)
+                // })
+                $('ul li').html(function(idx){
+                    // console.log(this)
+                    // return idx
+                    $(this).html(idx)
+                })
+
+                $('img').attr('src','images/opacity.jpg')
+            })
+        })
+    </script>
+</body>
+</html>

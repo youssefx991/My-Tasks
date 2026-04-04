@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class EmployeeSearch | mysite </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EmployeeSearch | mysite ">
+      
+      <meta name="description" content="provide methods to search faster for employees">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="mysite">
+            mysite
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Day4_Red.EmployeeSearch">
+
+
+
+  <h1 id="Day4_Red_EmployeeSearch" data-uid="Day4_Red.EmployeeSearch" class="text-break">
+Class EmployeeSearch  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Day4_Red.html">Day4_Red</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Day4_Red.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>provide methods to search faster for employees</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EmployeeSearch</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">EmployeeSearch</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Day4_Red_EmployeeSearch__ctor_" data-uid="Day4_Red.EmployeeSearch.#ctor*"></a>
+
+  <h3 id="Day4_Red_EmployeeSearch__ctor_System_Int32___Day4_Red_Employee___" data-uid="Day4_Red.EmployeeSearch.#ctor(System.Int32[],Day4_Red.Employee[])">
+  EmployeeSearch(int[], Employee[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>creates instance of employee search with the given national ids and employees</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EmployeeSearch(int[] _ids, Employee[] _employees)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>_ids</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>all employees national ids</p>
+</dd>
+    <dt><code>_employees</code> <a class="xref" href="Day4_Red.Employee.html">Employee</a>[]</dt>
+    <dd><p>all employees</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Day4_Red_EmployeeSearch_employees" data-uid="Day4_Red.EmployeeSearch.employees">
+  employees
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>list of all employees</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Employee[] employees</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.Employee.html">Employee</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Day4_Red_EmployeeSearch_nationalIDs" data-uid="Day4_Red.EmployeeSearch.nationalIDs">
+  nationalIDs
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>list of natioal ids of employees</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] nationalIDs</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Day4_Red_EmployeeSearch_Item_" data-uid="Day4_Red.EmployeeSearch.Item*"></a>
+
+  <h3 id="Day4_Red_EmployeeSearch_Item_Day4_Red_HiringDate_" data-uid="Day4_Red.EmployeeSearch.Item(Day4_Red.HiringDate)">
+  this[HiringDate]
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>method to get employee by hiring date using indexer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Employee this[HiringDate date] { get; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>date</code> <a class="xref" href="Day4_Red.HiringDate.html">HiringDate</a></dt>
+    <dd><p>hiring date to get its employee</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.Employee.html">Employee</a></dt>
+    <dd><p>requested employee</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_EmployeeSearch_Item_" data-uid="Day4_Red.EmployeeSearch.Item*"></a>
+
+  <h3 id="Day4_Red_EmployeeSearch_Item_System_Int32_" data-uid="Day4_Red.EmployeeSearch.Item(System.Int32)">
+  this[int]
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>meghod to access employee by national id using indexer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Employee this[int id] { get; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>id to get its employee</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.Employee.html">Employee</a></dt>
+    <dd><p>requested employee</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_EmployeeSearch_Item_" data-uid="Day4_Red.EmployeeSearch.Item*"></a>
+
+  <h3 id="Day4_Red_EmployeeSearch_Item_System_String_" data-uid="Day4_Red.EmployeeSearch.Item(System.String)">
+  this[string]
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>method to get employee by name using indexer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Employee[] this[string name] { get; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>name to search for its employees</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.Employee.html">Employee</a>[]</dt>
+    <dd><p>array of all employees with given name</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Day4_Red_EmployeeSearch_SearchByHiringDate_" data-uid="Day4_Red.EmployeeSearch.SearchByHiringDate*"></a>
+
+  <h3 id="Day4_Red_EmployeeSearch_SearchByHiringDate_Day4_Red_HiringDate_" data-uid="Day4_Red.EmployeeSearch.SearchByHiringDate(Day4_Red.HiringDate)">
+  SearchByHiringDate(HiringDate)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>method to search for employee by national hiring date</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Employee SearchByHiringDate(HiringDate date)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>date</code> <a class="xref" href="Day4_Red.HiringDate.html">HiringDate</a></dt>
+    <dd><p>hiring date to search for its employee</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.Employee.html">Employee</a></dt>
+    <dd><p>employee if found, dummy one if not</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_EmployeeSearch_SearchByName_" data-uid="Day4_Red.EmployeeSearch.SearchByName*"></a>
+
+  <h3 id="Day4_Red_EmployeeSearch_SearchByName_System_String_" data-uid="Day4_Red.EmployeeSearch.SearchByName(System.String)">
+  SearchByName(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>method to search for employees by national name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Employee[] SearchByName(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>name to search for its employee</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.Employee.html">Employee</a>[]</dt>
+    <dd><p>all employees with given name as array if found, dummy one if not</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Day4_Red_EmployeeSearch_SearchByNationalID_" data-uid="Day4_Red.EmployeeSearch.SearchByNationalID*"></a>
+
+  <h3 id="Day4_Red_EmployeeSearch_SearchByNationalID_System_Int32_" data-uid="Day4_Red.EmployeeSearch.SearchByNationalID(System.Int32)">
+  SearchByNationalID(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>method to search for employee by national id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Employee SearchByNationalID(int id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>id t osearch for its employee</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Day4_Red.Employee.html">Employee</a></dt>
+    <dd><p>employee if found, dummy one if not</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

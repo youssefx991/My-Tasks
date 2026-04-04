@@ -1,0 +1,47 @@
+{
+  "api/Day4_Red.Employee.html": {
+    "href": "api/Day4_Red.Employee.html",
+    "title": "Struct Employee | mysite",
+    "summary": "Struct Employee Namespace Day4_Red Assembly Day4_Red.dll Represents an employee in a company Employee is identified by ID, Name, Security_level, Salary, HireDate, Gender, and Privilege. public struct Employee : IComparable<Employee> Implements IComparable<Employee> Inherited Members ValueType.Equals(object) ValueType.GetHashCode() object.GetType() object.Equals(object, object) object.ReferenceEquals(object, object) Constructors Employee(int, string, int, double, HiringDate, Gender, SecurityPrivilege) initializes a new instance of the employee public Employee(int _id, string _name, int _securityLevel, double _salary, HiringDate date, Gender _gender, SecurityPrivilege _privilege) Parameters _id int employee id _name string employee name _securityLevel int employee security level _salary double employee salary date HiringDate employee hiring date _gender Gender employee gender _privilege SecurityPrivilege employee security privilege Properties gender gets or sets the gender of the employee public Gender gender { readonly get; set; } Property Value Gender hire_date gets or sets the hiring date of the employee public HiringDate hire_date { readonly get; set; } Property Value HiringDate id gets or sets the unique identifier for the employee. public int id { readonly get; set; } Property Value int name gets or sets the name of the employee. public string name { readonly get; set; } Property Value string privilege gets or sets the security privilege of the employee public SecurityPrivilege privilege { readonly get; set; } Property Value SecurityPrivilege salary gets or sets the salary of the employee public double salary { readonly get; set; } Property Value double security_level gets or sets the security level of the employee public int security_level { readonly get; set; } Property Value int Methods CompareTo(Employee) compares employees based on their hiring date public int CompareTo(Employee other) Parameters other Employee other employee to compare with Returns int negative if this employee was hired before the other, positive if this employee was hired after the other, and zero if they were hired on the same date ToString() overrides the ToString method to provide a string representation of the employee's information public override string ToString() Returns string string representation of the employee's information"
+  },
+  "api/Day4_Red.EmployeeSearch.html": {
+    "href": "api/Day4_Red.EmployeeSearch.html",
+    "title": "Class EmployeeSearch | mysite",
+    "summary": "Class EmployeeSearch Namespace Day4_Red Assembly Day4_Red.dll provide methods to search faster for employees public class EmployeeSearch Inheritance object EmployeeSearch Inherited Members object.GetType() object.MemberwiseClone() object.ToString() object.Equals(object) object.Equals(object, object) object.ReferenceEquals(object, object) object.GetHashCode() Constructors EmployeeSearch(int[], Employee[]) creates instance of employee search with the given national ids and employees public EmployeeSearch(int[] _ids, Employee[] _employees) Parameters _ids int[] all employees national ids _employees Employee[] all employees Fields employees list of all employees public Employee[] employees Field Value Employee[] nationalIDs list of natioal ids of employees public int[] nationalIDs Field Value int[] Properties this[HiringDate] method to get employee by hiring date using indexer public Employee this[HiringDate date] { get; } Parameters date HiringDate hiring date to get its employee Property Value Employee requested employee this[int] meghod to access employee by national id using indexer public Employee this[int id] { get; } Parameters id int id to get its employee Property Value Employee requested employee this[string] method to get employee by name using indexer public Employee[] this[string name] { get; } Parameters name string name to search for its employees Property Value Employee[] array of all employees with given name Methods SearchByHiringDate(HiringDate) method to search for employee by national hiring date public Employee SearchByHiringDate(HiringDate date) Parameters date HiringDate hiring date to search for its employee Returns Employee employee if found, dummy one if not SearchByName(string) method to search for employees by national name public Employee[] SearchByName(string name) Parameters name string name to search for its employee Returns Employee[] all employees with given name as array if found, dummy one if not SearchByNationalID(int) method to search for employee by national id public Employee SearchByNationalID(int id) Parameters id int id t osearch for its employee Returns Employee employee if found, dummy one if not"
+  },
+  "api/Day4_Red.Gender.html": {
+    "href": "api/Day4_Red.Gender.html",
+    "title": "Enum Gender | mysite",
+    "summary": "Enum Gender Namespace Day4_Red Assembly Day4_Red.dll Specifies the gender of an individual as male or female. public enum Gender Fields F = 1 M = 0 Remarks accepts two values: M for male and F for female"
+  },
+  "api/Day4_Red.HiringDate.html": {
+    "href": "api/Day4_Red.HiringDate.html",
+    "title": "Struct HiringDate | mysite",
+    "summary": "Struct HiringDate Namespace Day4_Red Assembly Day4_Red.dll Represents a specific date used for hiring purposes. public struct HiringDate : IComparable<HiringDate> Implements IComparable<HiringDate> Inherited Members ValueType.Equals(object) ValueType.GetHashCode() object.GetType() object.Equals(object, object) object.ReferenceEquals(object, object) Remarks hiring date is represented by three integer fields: day, month, and year. Constructors HiringDate(int, int, int) initializes a new instance of the hiring date public HiringDate(int _day, int _month, int _year) Parameters _day int day of the date _month int month of the date _year int year of the date Properties day gets or sets the day of the date public int day { readonly get; set; } Property Value int month gets or sets the month of the date public int month { readonly get; set; } Property Value int year gets or sets the year of the date public int year { readonly get; set; } Property Value int Methods CompareTo(HiringDate) compares hiring date based on datetime comparer function where the hiring date that was hired earlier is considered less than the one that was hired later public int CompareTo(HiringDate other) Parameters other HiringDate other date to compare with Returns int negative if this date was before the other, positive if this date was after the other, and zero if they were on the same date ToString() creates a string representation of the hiring date in the format \"day/month/year\" public override string ToString() Returns string string representation of the hiring date"
+  },
+  "api/Day4_Red.SecurityPrivilege.html": {
+    "href": "api/Day4_Red.SecurityPrivilege.html",
+    "title": "Enum SecurityPrivilege | mysite",
+    "summary": "Enum SecurityPrivilege Namespace Day4_Red Assembly Day4_Red.dll Defines the security privileges available within the system public enum SecurityPrivilege : byte Fields DBA = 8 FULL = 15 developer = 2 guest = 1 secretary = 4 Remarks a security privilege is represented by a byte value, where each bit represents a specific privilege."
+  },
+  "api/Day4_Red.html": {
+    "href": "api/Day4_Red.html",
+    "title": "Namespace Day4_Red | mysite",
+    "summary": "Namespace Day4_Red Classes EmployeeSearch provide methods to search faster for employees Structs Employee Represents an employee in a company Employee is identified by ID, Name, Security_level, Salary, HireDate, Gender, and Privilege. HiringDate Represents a specific date used for hiring purposes. Enums Gender Specifies the gender of an individual as male or female. SecurityPrivilege Defines the security privileges available within the system"
+  },
+  "docs/getting-started.html": {
+    "href": "docs/getting-started.html",
+    "title": "Getting Started | mysite",
+    "summary": "Getting Started"
+  },
+  "docs/introduction.html": {
+    "href": "docs/introduction.html",
+    "title": "Introduction | mysite",
+    "summary": "Introduction"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "This is the HOMEPAGE. | mysite",
+    "summary": "This is the HOMEPAGE. Refer to Markdown for how to write markdown files. Quick Start Notes: Add images to the images folder if the file is referencing an image."
+  }
+}

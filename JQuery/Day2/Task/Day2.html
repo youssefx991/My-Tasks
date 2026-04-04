@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2</title>
+</head>
+<body>
+    <input type="button" value="moving_car" id="moving_car_btn">
+    <input type="button" value="zoom" id="zoom_btn">
+    <input type="button" value="slideshow" id="slideshow_btn">
+    <input type="button" value="black_hole" id="black_hole_btn">
+    <script src="jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#moving_car_btn').click(function() {
+                window.location.href = 'moving_car.html';
+            });
+            $('#black_hole_btn').click(function() {
+                window.location.href = 'black_hole.html';
+            });
+            $('#zoom_btn').click(function() {
+                window.location.href = 'zoom.html';
+            });
+            $('#slideshow_btn').click(function() {
+                window.location.href = 'slideshow.html';
+            });
+        });
+    </script>
+</body>
+</html>

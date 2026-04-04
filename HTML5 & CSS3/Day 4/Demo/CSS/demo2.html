@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            /* width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative; */
+            /* animation-name: myAnim2;
+            animation-duration: 5s;
+            animation-iteration-count: infinite; */
+            /* animation-name: myAnim;
+            animation-duration: 5s;
+            animation-direction: alternate-reverse;
+            animation-iteration-count: 4;
+            animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22); */
+        }
+        @keyframes myAnim {
+            from{
+                left: 0px;
+            }
+            to{
+                left:400px
+            }
+        }
+
+        @keyframes myAnim2 {
+            0%{background-color: red;left:0px;top: 0px;}
+            25%{background-color: yellow;left: 200px;top: 0px;}
+            50%{background-color: orange;left: 200px;top: 200px;}
+            75%{background-color: green;left: 0px;top: 200px;}
+            100%{background-color: red;left: 0px;top: 0px;}
+            
+        }
+
+        img{
+            width: 200px;
+            height: auto;
+        }
+
+        img:hover{
+            animation-name: imgAnim;
+            animation-duration: 3s;
+            animation-direction: reverse;
+        }
+        @keyframes imgAnim {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+
+        div{
+            width: 200px;
+            border: 1px solid black;
+            background-color: aqua;
+            padding: 5px;
+        }
+
+        div:hover{
+            width: 800px;
+            background-color: orange;
+            padding: 20px;
+            margin: 5px;
+            transition: all 5s;
+        }
+
+        div:active{
+            background-color: blue;
+            transition: all 5s;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div></div> -->
+     <!-- <img src="../marshall_c.jpg" > -->
+      <div>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae corporis ullam, nemo voluptatem recusandae numquam voluptate iste voluptatibus tempore voluptatum quo fugit ipsum reiciendis nam maxime doloribus repellat voluptates minus!
+      </div>
+</body>
+</html>

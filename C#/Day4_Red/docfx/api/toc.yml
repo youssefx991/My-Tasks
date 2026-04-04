@@ -1,0 +1,22 @@
+### YamlMime:TableOfContent
+items:
+- uid: Day4_Red
+  name: Day4_Red
+  type: Namespace
+  items:
+  - uid: Day4_Red.Employee
+    name: Employee
+    type: Struct
+  - uid: Day4_Red.EmployeeSearch
+    name: EmployeeSearch
+    type: Class
+  - uid: Day4_Red.Gender
+    name: Gender
+    type: Enum
+  - uid: Day4_Red.HiringDate
+    name: HiringDate
+    type: Struct
+  - uid: Day4_Red.SecurityPrivilege
+    name: SecurityPrivilege
+    type: Enum
+memberLayout: SamePage

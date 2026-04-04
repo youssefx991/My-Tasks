@@ -1,0 +1,9 @@
+@import url('style.css');
+#img1{
+        z-index: 2;
+    }
+    #img2{
+        top: 50px;
+        left: 50px;
+        z-index: 2;
+    }

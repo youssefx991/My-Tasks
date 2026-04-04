@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: Day4_Red.Gender
+  commentId: T:Day4_Red.Gender
+  id: Gender
+  parent: Day4_Red
+  children:
+  - Day4_Red.Gender.F
+  - Day4_Red.Gender.M
+  langs:
+  - csharp
+  - vb
+  name: Gender
+  nameWithType: Gender
+  fullName: Day4_Red.Gender
+  type: Enum
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: Specifies the gender of an individual as male or female.
+  remarks: 'accepts two values: M for male and F for female'
+  example: []
+  syntax:
+    content: public enum Gender
+    content.vb: Public Enum Gender
+- uid: Day4_Red.Gender.M
+  commentId: F:Day4_Red.Gender.M
+  id: M
+  parent: Day4_Red.Gender
+  langs:
+  - csharp
+  - vb
+  name: M
+  nameWithType: Gender.M
+  fullName: Day4_Red.Gender.M
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  syntax:
+    content: M = 0
+    return:
+      type: Day4_Red.Gender
+- uid: Day4_Red.Gender.F
+  commentId: F:Day4_Red.Gender.F
+  id: F
+  parent: Day4_Red.Gender
+  langs:
+  - csharp
+  - vb
+  name: F
+  nameWithType: Gender.F
+  fullName: Day4_Red.Gender.F
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  syntax:
+    content: F = 1
+    return:
+      type: Day4_Red.Gender
+references:
+- uid: Day4_Red
+  commentId: N:Day4_Red
+  isExternal: true
+  href: Day4_Red.html
+  name: Day4_Red
+  nameWithType: Day4_Red
+  fullName: Day4_Red
+- uid: Day4_Red.Gender
+  commentId: T:Day4_Red.Gender
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.Gender.html
+  name: Gender
+  nameWithType: Gender
+  fullName: Day4_Red.Gender

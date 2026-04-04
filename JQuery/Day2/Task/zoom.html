@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plugins</title>
+    <style>
+        .zoom {
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Zoom</h1>
+    <span class='zoom' id='ex1'> <img src='zoom_plugin/daisy.jpg' id='jack' width='555' height='320'
+            alt='Daisy on the Ohoopee' />
+    </span>
+    <span class='zoom' id='ex2'> <img src='zoom_plugin/daisy.jpg' id='jack' width='555' height='320'
+            alt='Daisy on the Ohoopee' />
+    </span>
+    <span class='zoom' id='ex3'> <img src='zoom_plugin/daisy.jpg' id='jack' width='555' height='320'
+            alt='Daisy on the Ohoopee' />
+    </span>
+    <span class='zoom' id='ex4'> <img src='zoom_plugin/daisy.jpg' id='jack' width='555' height='320'
+            alt='Daisy on the Ohoopee' />
+    </span>
+    <script src="jquery-4.0.0.min.js"></script>
+    <script src="zoom_plugin/jquery.zoom.js"></script>
+    <script src="zoom_plugin/jquery.zoom.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ex1').zoom();
+			$('#ex2').zoom({ on:'grab' });
+			$('#ex3').zoom({ on:'click' });			 
+			$('#ex4').zoom({ on:'toggle' });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border: red 5px solid;
+      }
+      #parent {
+        width: 350px;
+        height: 350px;
+      }
+      #child {
+        width: 200px;
+        height: 200px;
+        margin: 100px;
+      }
+      #grandChild {
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div id="child">
+        <input type="button" value="clickme" id="grandChild" />
+      </div>
+    </div>
+    <script>
+      //event----> click, mousemove
+      //obj listen to event=== registered to specific event
+      //handler == fun will exec when event is fired
+
+      //bubble mode
+      //   document.getElementById("parent").onclick = function () {
+      //     console.log(this);
+      //     console.log("parent");
+      //     console.log(event.type);
+      //     console.log(event.target);
+      //   };
+
+      //   document.getElementById("child").onclick = function () {
+      //     console.log(this);
+      //     console.log("child");
+
+      //     console.log(event.type);
+      //     console.log(event.target);
+      //   };
+
+      //   document.getElementById("grandChild").onclick = function () {
+      //     console.log(this);
+      //     console.log("grandChild");
+
+      //     console.log(event.type);
+      //     console.log(event.target);
+      //     event.stopPropagation();
+      //   };
+
+      document.getElementById("parent").addEventListener(
+        "click",
+        function () {
+          console.log(this);
+          console.log("parent");
+
+          console.log(event.type);
+          console.log(event.target);
+          //   event.stopPropagation();
+        },
+        false
+      );
+      document.getElementById("child").addEventListener(
+        "click",
+        function () {
+          console.log(this);
+          console.log("child");
+
+          console.log(event.type);
+          console.log(event.target);
+          // event.stopPropagation();
+        },
+        false
+      );
+
+      document.getElementById("grandChild").addEventListener(
+        "click",
+        function () {
+          console.log(this);
+          console.log("grandChild");
+
+          //   event.stopPropagation();
+          //   event.stopImmediatePropagation();
+        },
+        false
+      );
+
+      //   document.getElementsByTagName("form")[0].addEventListener("submit",function(){
+      //     //
+
+      //     //
+      //     event.preventDefault();
+      //     // location.assign(this.href)
+      //   })
+
+      //   var hdlr = function () {
+      //     //
+      //     //
+
+      //     obj.removeEventListener("click", hdlr);
+      //   };
+
+      //   obj.addEventListener("click", hdlr);
+
+      document.getElementById("grandChild").addEventListener(
+        "click",
+        function () {
+          console.log(event.type);
+          console.log(event.target);
+          //   event.preventDefault()
+          console.log(event.composedPath());
+          event.stopPropagation();
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

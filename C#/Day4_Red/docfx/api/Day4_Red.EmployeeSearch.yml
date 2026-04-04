@@ -1,0 +1,660 @@
+### YamlMime:ManagedReference
+items:
+- uid: Day4_Red.EmployeeSearch
+  commentId: T:Day4_Red.EmployeeSearch
+  id: EmployeeSearch
+  parent: Day4_Red
+  children:
+  - Day4_Red.EmployeeSearch.#ctor(System.Int32[],Day4_Red.Employee[])
+  - Day4_Red.EmployeeSearch.Item(Day4_Red.HiringDate)
+  - Day4_Red.EmployeeSearch.Item(System.Int32)
+  - Day4_Red.EmployeeSearch.Item(System.String)
+  - Day4_Red.EmployeeSearch.SearchByHiringDate(Day4_Red.HiringDate)
+  - Day4_Red.EmployeeSearch.SearchByName(System.String)
+  - Day4_Red.EmployeeSearch.SearchByNationalID(System.Int32)
+  - Day4_Red.EmployeeSearch.employees
+  - Day4_Red.EmployeeSearch.nationalIDs
+  langs:
+  - csharp
+  - vb
+  name: EmployeeSearch
+  nameWithType: EmployeeSearch
+  fullName: Day4_Red.EmployeeSearch
+  type: Class
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: provide methods to search faster for employees
+  example: []
+  syntax:
+    content: public class EmployeeSearch
+    content.vb: Public Class EmployeeSearch
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+- uid: Day4_Red.EmployeeSearch.nationalIDs
+  commentId: F:Day4_Red.EmployeeSearch.nationalIDs
+  id: nationalIDs
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: nationalIDs
+  nameWithType: EmployeeSearch.nationalIDs
+  fullName: Day4_Red.EmployeeSearch.nationalIDs
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: list of natioal ids of employees
+  example: []
+  syntax:
+    content: public int[] nationalIDs
+    return:
+      type: System.Int32[]
+    content.vb: Public nationalIDs As Integer()
+- uid: Day4_Red.EmployeeSearch.employees
+  commentId: F:Day4_Red.EmployeeSearch.employees
+  id: employees
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: employees
+  nameWithType: EmployeeSearch.employees
+  fullName: Day4_Red.EmployeeSearch.employees
+  type: Field
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: list of all employees
+  example: []
+  syntax:
+    content: public Employee[] employees
+    return:
+      type: Day4_Red.Employee[]
+    content.vb: Public employees As Employee()
+- uid: Day4_Red.EmployeeSearch.#ctor(System.Int32[],Day4_Red.Employee[])
+  commentId: M:Day4_Red.EmployeeSearch.#ctor(System.Int32[],Day4_Red.Employee[])
+  id: '#ctor(System.Int32[],Day4_Red.Employee[])'
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: EmployeeSearch(int[], Employee[])
+  nameWithType: EmployeeSearch.EmployeeSearch(int[], Employee[])
+  fullName: Day4_Red.EmployeeSearch.EmployeeSearch(int[], Day4_Red.Employee[])
+  type: Constructor
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: creates instance of employee search with the given national ids and employees
+  example: []
+  syntax:
+    content: public EmployeeSearch(int[] _ids, Employee[] _employees)
+    parameters:
+    - id: _ids
+      type: System.Int32[]
+      description: all employees national ids
+    - id: _employees
+      type: Day4_Red.Employee[]
+      description: all employees
+    content.vb: Public Sub New(_ids As Integer(), _employees As Employee())
+  overload: Day4_Red.EmployeeSearch.#ctor*
+  nameWithType.vb: EmployeeSearch.New(Integer(), Employee())
+  fullName.vb: Day4_Red.EmployeeSearch.New(Integer(), Day4_Red.Employee())
+  name.vb: New(Integer(), Employee())
+- uid: Day4_Red.EmployeeSearch.SearchByNationalID(System.Int32)
+  commentId: M:Day4_Red.EmployeeSearch.SearchByNationalID(System.Int32)
+  id: SearchByNationalID(System.Int32)
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: SearchByNationalID(int)
+  nameWithType: EmployeeSearch.SearchByNationalID(int)
+  fullName: Day4_Red.EmployeeSearch.SearchByNationalID(int)
+  type: Method
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: method to search for employee by national id
+  example: []
+  syntax:
+    content: public Employee SearchByNationalID(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: id t osearch for its employee
+    return:
+      type: Day4_Red.Employee
+      description: employee if found, dummy one if not
+    content.vb: Public Function SearchByNationalID(id As Integer) As Employee
+  overload: Day4_Red.EmployeeSearch.SearchByNationalID*
+  nameWithType.vb: EmployeeSearch.SearchByNationalID(Integer)
+  fullName.vb: Day4_Red.EmployeeSearch.SearchByNationalID(Integer)
+  name.vb: SearchByNationalID(Integer)
+- uid: Day4_Red.EmployeeSearch.SearchByHiringDate(Day4_Red.HiringDate)
+  commentId: M:Day4_Red.EmployeeSearch.SearchByHiringDate(Day4_Red.HiringDate)
+  id: SearchByHiringDate(Day4_Red.HiringDate)
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: SearchByHiringDate(HiringDate)
+  nameWithType: EmployeeSearch.SearchByHiringDate(HiringDate)
+  fullName: Day4_Red.EmployeeSearch.SearchByHiringDate(Day4_Red.HiringDate)
+  type: Method
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: method to search for employee by national hiring date
+  example: []
+  syntax:
+    content: public Employee SearchByHiringDate(HiringDate date)
+    parameters:
+    - id: date
+      type: Day4_Red.HiringDate
+      description: hiring date to search for its employee
+    return:
+      type: Day4_Red.Employee
+      description: employee if found, dummy one if not
+    content.vb: Public Function SearchByHiringDate([date] As HiringDate) As Employee
+  overload: Day4_Red.EmployeeSearch.SearchByHiringDate*
+- uid: Day4_Red.EmployeeSearch.SearchByName(System.String)
+  commentId: M:Day4_Red.EmployeeSearch.SearchByName(System.String)
+  id: SearchByName(System.String)
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: SearchByName(string)
+  nameWithType: EmployeeSearch.SearchByName(string)
+  fullName: Day4_Red.EmployeeSearch.SearchByName(string)
+  type: Method
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: method to search for employees by national name
+  example: []
+  syntax:
+    content: public Employee[] SearchByName(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: name to search for its employee
+    return:
+      type: Day4_Red.Employee[]
+      description: all employees with given name as array if found, dummy one if not
+    content.vb: Public Function SearchByName(name As String) As Employee()
+  overload: Day4_Red.EmployeeSearch.SearchByName*
+  nameWithType.vb: EmployeeSearch.SearchByName(String)
+  fullName.vb: Day4_Red.EmployeeSearch.SearchByName(String)
+  name.vb: SearchByName(String)
+- uid: Day4_Red.EmployeeSearch.Item(System.Int32)
+  commentId: P:Day4_Red.EmployeeSearch.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: EmployeeSearch.this[int]
+  fullName: Day4_Red.EmployeeSearch.this[int]
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: meghod to access employee by national id using indexer
+  example: []
+  syntax:
+    content: public Employee this[int id] { get; }
+    parameters:
+    - id: id
+      type: System.Int32
+      description: id to get its employee
+    return:
+      type: Day4_Red.Employee
+      description: requested employee
+    content.vb: Public ReadOnly Default Property this[](id As Integer) As Employee
+  overload: Day4_Red.EmployeeSearch.Item*
+  nameWithType.vb: EmployeeSearch.this[](Integer)
+  fullName.vb: Day4_Red.EmployeeSearch.this[](Integer)
+  name.vb: this[](Integer)
+- uid: Day4_Red.EmployeeSearch.Item(Day4_Red.HiringDate)
+  commentId: P:Day4_Red.EmployeeSearch.Item(Day4_Red.HiringDate)
+  id: Item(Day4_Red.HiringDate)
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: this[HiringDate]
+  nameWithType: EmployeeSearch.this[HiringDate]
+  fullName: Day4_Red.EmployeeSearch.this[Day4_Red.HiringDate]
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: method to get employee by hiring date using indexer
+  example: []
+  syntax:
+    content: public Employee this[HiringDate date] { get; }
+    parameters:
+    - id: date
+      type: Day4_Red.HiringDate
+      description: hiring date to get its employee
+    return:
+      type: Day4_Red.Employee
+      description: requested employee
+    content.vb: Public ReadOnly Default Property this[]([date] As HiringDate) As Employee
+  overload: Day4_Red.EmployeeSearch.Item*
+  nameWithType.vb: EmployeeSearch.this[](HiringDate)
+  fullName.vb: Day4_Red.EmployeeSearch.this[](Day4_Red.HiringDate)
+  name.vb: this[](HiringDate)
+- uid: Day4_Red.EmployeeSearch.Item(System.String)
+  commentId: P:Day4_Red.EmployeeSearch.Item(System.String)
+  id: Item(System.String)
+  parent: Day4_Red.EmployeeSearch
+  langs:
+  - csharp
+  - vb
+  name: this[string]
+  nameWithType: EmployeeSearch.this[string]
+  fullName: Day4_Red.EmployeeSearch.this[string]
+  type: Property
+  assemblies:
+  - Day4_Red
+  namespace: Day4_Red
+  summary: method to get employee by name using indexer
+  example: []
+  syntax:
+    content: public Employee[] this[string name] { get; }
+    parameters:
+    - id: name
+      type: System.String
+      description: name to search for its employees
+    return:
+      type: Day4_Red.Employee[]
+      description: array of all employees with given name
+    content.vb: Public ReadOnly Default Property this[](name As String) As Employee()
+  overload: Day4_Red.EmployeeSearch.Item*
+  nameWithType.vb: EmployeeSearch.this[](String)
+  fullName.vb: Day4_Red.EmployeeSearch.this[](String)
+  name.vb: this[](String)
+references:
+- uid: Day4_Red
+  commentId: N:Day4_Red
+  isExternal: true
+  href: Day4_Red.html
+  name: Day4_Red
+  nameWithType: Day4_Red
+  fullName: Day4_Red
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: Day4_Red.Employee[]
+  isExternal: true
+  href: Day4_Red.Employee.html
+  name: Employee[]
+  nameWithType: Employee[]
+  fullName: Day4_Red.Employee[]
+  nameWithType.vb: Employee()
+  fullName.vb: Day4_Red.Employee()
+  name.vb: Employee()
+  spec.csharp:
+  - uid: Day4_Red.Employee
+    name: Employee
+    isExternal: true
+    href: Day4_Red.Employee.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Day4_Red.Employee
+    name: Employee
+    isExternal: true
+    href: Day4_Red.Employee.html
+  - name: (
+  - name: )
+- uid: Day4_Red.EmployeeSearch.#ctor*
+  commentId: Overload:Day4_Red.EmployeeSearch.#ctor
+  isExternal: true
+  href: Day4_Red.EmployeeSearch.html#Day4_Red_EmployeeSearch__ctor_System_Int32___Day4_Red_Employee___
+  name: EmployeeSearch
+  nameWithType: EmployeeSearch.EmployeeSearch
+  fullName: Day4_Red.EmployeeSearch.EmployeeSearch
+  nameWithType.vb: EmployeeSearch.New
+  fullName.vb: Day4_Red.EmployeeSearch.New
+  name.vb: New
+- uid: Day4_Red.EmployeeSearch.SearchByNationalID*
+  commentId: Overload:Day4_Red.EmployeeSearch.SearchByNationalID
+  isExternal: true
+  href: Day4_Red.EmployeeSearch.html#Day4_Red_EmployeeSearch_SearchByNationalID_System_Int32_
+  name: SearchByNationalID
+  nameWithType: EmployeeSearch.SearchByNationalID
+  fullName: Day4_Red.EmployeeSearch.SearchByNationalID
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Day4_Red.Employee
+  commentId: T:Day4_Red.Employee
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.Employee.html
+  name: Employee
+  nameWithType: Employee
+  fullName: Day4_Red.Employee
+- uid: Day4_Red.EmployeeSearch.SearchByHiringDate*
+  commentId: Overload:Day4_Red.EmployeeSearch.SearchByHiringDate
+  isExternal: true
+  href: Day4_Red.EmployeeSearch.html#Day4_Red_EmployeeSearch_SearchByHiringDate_Day4_Red_HiringDate_
+  name: SearchByHiringDate
+  nameWithType: EmployeeSearch.SearchByHiringDate
+  fullName: Day4_Red.EmployeeSearch.SearchByHiringDate
+- uid: Day4_Red.HiringDate
+  commentId: T:Day4_Red.HiringDate
+  parent: Day4_Red
+  isExternal: true
+  href: Day4_Red.HiringDate.html
+  name: HiringDate
+  nameWithType: HiringDate
+  fullName: Day4_Red.HiringDate
+- uid: Day4_Red.EmployeeSearch.SearchByName*
+  commentId: Overload:Day4_Red.EmployeeSearch.SearchByName
+  isExternal: true
+  href: Day4_Red.EmployeeSearch.html#Day4_Red_EmployeeSearch_SearchByName_System_String_
+  name: SearchByName
+  nameWithType: EmployeeSearch.SearchByName
+  fullName: Day4_Red.EmployeeSearch.SearchByName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Day4_Red.EmployeeSearch.Item*
+  commentId: Overload:Day4_Red.EmployeeSearch.Item
+  isExternal: true
+  href: Day4_Red.EmployeeSearch.html#Day4_Red_EmployeeSearch_Item_System_Int32_
+  name: this
+  nameWithType: EmployeeSearch.this
+  fullName: Day4_Red.EmployeeSearch.this
+  nameWithType.vb: EmployeeSearch.this[]
+  fullName.vb: Day4_Red.EmployeeSearch.this[]
+  name.vb: this[]

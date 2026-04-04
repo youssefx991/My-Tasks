@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+</head>
+
+<body>
+    <script>
+        let rows = Number(prompt("enter number of rows: "));
+
+        if (!isNaN(rows)) {
+            
+            for (let i = 0; i < rows; i++) {
+                let stars = ""
+                for (let j=0; j<=i; j++)
+                    stars += '*'
+                console.log(stars);
+            }
+
+        } else {
+            console.log("ERROR - only enter numbers")
+        }
+    </script>
+</body>
+
+</html>

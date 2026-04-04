@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Black Hole</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <style>
+        #draggable {
+            padding: 0.5em;
+            float: left;
+            margin: 10px 10px 10px 0;
+        }
+
+        #droppable {
+            width: 400px;
+            height: 450px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px;
+        }
+
+        .ui-state-highlight {
+            background-color: deeppink;
+            border: 2px dashed red;
+            color: black;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+
+            $("#draggable").draggable();
+
+            $("#droppable").droppable({
+                drop: function () {
+                    $(this)
+                        .addClass("ui-state-highlight")
+                        .find("img")
+                        .fadeOut(500);
+                    $(this).html("<h1>The rabbit is in the hole!</h1>");
+                }
+            });
+
+            function runEffect() {
+                $("#rabbit_img").effect("shake", {}, 500);
+            }
+
+            $("#rabbit_img").mouseenter(function () {
+                runEffect();
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+
+
+    <div id="droppable" class="ui-widget-header">
+        <img src="hole.JPG" alt="Hole" id="hole_img">
+    </div>
+
+    <div class="toggler">
+        <div id="effect" class="ui-widget-content ui-corner-all">
+            <div id="draggable" class="ui-widget-content">
+                <img src="rabbit.jpg" alt="Rabbit" id="rabbit_img">
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

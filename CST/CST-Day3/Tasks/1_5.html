@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+</head>
+<body>
+    <script>
+        let start = Number(prompt("enter start range: "));
+        let end = Number(prompt("enter end range: "));
+        let out1 = "Numbers multiple of 3: "
+        let out2 = "Numbers multiple of 5: "
+        let found3 = false;
+        let found5 = false;
+        if (!isNaN(start) && !isNaN(end)){
+            let sum=0;
+            for (let i=start; i<=end; i++){
+                if (i%3 == 0){
+                    out1 += (found3? ', ' + i : i);
+                    found3 = true;
+                    
+                }
+                if (i%5 == 0){
+                    out2 += (found5? ', ' + i : i);
+                    found5 = true;
+                }
+
+                if (i%3==0 && i%5==0)
+                    sum+=i;
+                else if (i%3==0)
+                    sum+=i;
+                else if (i%5==0)
+                    sum+=i;
+            }
+
+            console.log(out1);
+            console.log(out2);
+            console.log("Total Sum: " + sum);
+        }
+        else{
+            console.log("ERROR - only enter numbers")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+.cards{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+
+.card_about, .card_gallery, .card_services, .card_complain {
+    background-color: deeppink;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.item {
+    background-color: deeppink;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.items{
+    position: relative;
+    left: 880px;
+}
+.card_about:hover, .card_gallery:hover, .card_services:hover, .card_complain:hover {
+    background-color: lightcoral;
+    cursor: pointer;
+}
+
+#left:hover, #right:hover {
+    cursor: pointer;
+}
+
+.content {
+    margin-top: 100px;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: 18px;
+    color: darkred;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content1 {
+    display: none;
+}
+
+.content2 {
+    display: none;
+}
+
+.content3 {
+    display: none;
+}
+
+.content4 {
+    display: none;
+}
+
+.content5 {
+    display: none;
+}
+
+#comp_name, #comp_email, #comp_phone, #comp_complain {
+    font-weight: bold;
+ 
+}
+
+#mid {
+    width: 300px;
+    height: 200px;
+}
