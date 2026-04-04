@@ -27,7 +27,9 @@ namespace HotelManagementSystem.UI
 {
     public partial class Frontend : MetroForm
     {
-        string RecvPhoneNumber = "";
+
+
+        
         FrontendReservationContext FrontendReservationContext = new FrontendReservationContext();
         public Frontend()
         {
