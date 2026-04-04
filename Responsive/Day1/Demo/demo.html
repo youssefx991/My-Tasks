@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*Fixed Units-absolute
+        px=1/96 inche
+        pt=1/72 inch
+        in
+        picas=12pt
+        mm
+        cm
+
+        relative units
+        font-size
+        1em=16px
+        rem 
+        %
+
+        vh
+        vw
+        
+        vmin
+        vmax
+        
+        */
+        html{
+            font-size: 25px;
+        }
+        body{
+            font-size: 20px;
+        }
+        div{
+            border: 1px solid black;
+            /* width: 500px; */
+            /* width: 30%; */
+            /* font-size: 30px; */
+            /* font-size: 1.5em; */
+            /* font-size: 1.5rem; */
+        }
+
+        .parent{
+            font-size: 1em;
+        }
+        .child{
+            font-size: 1.5rem;
+            padding: 1rem;
+        }
+
+
+        /*
+        flex-box
+        grid system
+        media quries
+        responsive framework bootstrap
+
+        main-axis-horizontal
+        cross-axis-vertical
+        
+        */
+    </style>
+</head>
+<body>
+    <div class="parent">
+        first element
+        <div class="child">
+            child
+            <div class="child">
+            child
+            <div class="child">
+                        child
+                <div class="child">
+                        child
+
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

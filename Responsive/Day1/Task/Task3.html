@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+
+    <style>
+        .header, .footer {
+            background-color: cornflowerblue;
+            text-align: center;
+            color: black;
+            padding: 1.5em;
+        }
+
+        .content {
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            min-height: 10em;
+            gap: 1%;
+        }
+        .content>div{
+            /* border: 1px solid green; */
+            padding: 1em;
+        }
+
+        .side_nav, .side_bar{
+            background-color: orange;
+            text-align: center;
+            color: black;
+            flex: 1;
+        }
+
+        .main_content {
+            background-color: lightgreen;
+            flex-grow: 2;
+            text-align: center;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task 3</h1>
+
+    <div class="header">HEADER</div>
+    <div class="content">
+        <div class="side_nav">SIDENAV</div>
+        <div class="main_content">MAINCONTENT</div>
+        <div class="side_bar">SIDEBAR</div>
+    </div>
+    <div class="footer">FOOTER</div>
+</body>
+</html>
