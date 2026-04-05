@@ -1,7 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    let table
+    let table;
+    
     async function getData() {
         let url = 'https://dummyjson.com/products'
         try {
