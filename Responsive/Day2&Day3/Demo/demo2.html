@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            background-color: aqua;
+            display: grid;
+            min-height: 500px;
+            grid-auto-rows: minmax(200px,auto);
+            grid-template-areas: "nav nav nav"
+                                  "aside article article"
+                                  "aside article article"
+                                  "footer footer footer"  ;
+        }
+        nav{
+            background-color: bisque;
+            grid-area: nav;
+        }
+        aside{
+            background-color: blue;
+            grid-area: aside;
+        }
+        article{
+            background-color: blueviolet;
+            grid-area: article;
+        }
+        footer{
+            background-color: gray;
+            grid-area: footer;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <nav>nav</nav>
+        <aside>aside</aside>
+        <article>article</article>
+        <footer>footer</footer>
+    </section>
+</body>
+</html>

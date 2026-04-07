@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+     <link href="bootstrap-5.3.8-dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<style>
+    /* li + li::before{
+        content: ">>"  !important;
+    } */
+</style>
+</head>
+<body>
+    <div class="container-fluid">
+      <div class="row">
+            <div class="dropdown">
+                <input type="button" id="btn" value="display" data-bs-toggle="dropdown" class=" btn btn-primary dropdown-toggle">
+                <ul id="menuId" class="dropdown-menu">
+                    <li>item#1</li>
+                    <li>item#1</li>
+                    <li>item#1</li>
+                </ul>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit officia velit, pariatur odio optio quod officiis asperiores, vel explicabo distinctio blanditiis similique labore praesentium hic, ea impedit illum laboriosam assumenda.</p>
+        </div>
+
+        <div class="row">
+            <input type="button" value="collapse" class="w-25 btn btn-dark" data-bs-toggle="collapse" data-bs-target="#dv1">
+            <div class="collapse" id="dv1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati inventore asperiores nam, nostrum culpa dolore doloribus ex officia nihil amet mollitia cum quae sequi, tempora itaque alias? Qui, modi fugiat?</div>
+        </div>
+
+        <!-- <div class="row"> -->
+            <div class="alert alert-warning alert-dismissible fade show text-center">
+                <button class="btn-close" data-bs-dismiss="alert"></button>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum veritatis obcaecati voluptatum enim, cumque dolor quae! Voluptatum veniam, enim, modi autem cumque quisquam officiis doloribus iure perferendis quo reiciendis unde!</div>
+            
+        <!-- </div> -->
+
+        <div class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">item#1</a></li>
+            <li class="breadcrumb-item"><a href="#">item#1</a></li>
+            <li class="breadcrumb-item"><a href="#">item#1</a></li>
+            <li class="breadcrumb-item active"><a href="#">item#1</a></li>
+        </div>
+
+<ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+        </div>
+
+        <div data-bs-toggle="tooltip" data-bs-title="test msg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aspernatur quisquam porro, dolor pariatur cupiditate quam facere? Eum quas dolore, repellendus a illum recusandae voluptatem officia? Rerum provident pariatur alias!</div>
+        <script>
+            var elem = document.querySelector('[data-bs-toggle="tooltip"]')
+            new bootstrap.Tooltip(elem)
+        </script>
+</body>
+</html>
