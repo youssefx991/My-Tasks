@@ -13,10 +13,12 @@
 
 <body>
 
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12 text-center">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Open modal form</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Open modal form
+                </button>
             </div>
         </div>
 
@@ -27,26 +29,26 @@
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Form</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form id="form">
+                    <form id="form">
+                        <div class="modal-body">
                             <div class="mb-3">
                                 <label for="tb_fname" class="col-form-label">First Name:</label>
-                                <input type="text" class="form-control" id="tb_fname" required>
+                                <input type="text" class="form-control" id="tb_fname" name="fname" required>
                             </div>
                             <div class="mb-3">
                                 <label for="tb_lname" class="col-form-label">Last Name:</label>
-                                <input type="text" class="form-control" id="tb_lname" required>
+                                <input type="text" class="form-control" id="tb_lname" name="lname" required>
                             </div>
                             <div class="mb-3">
                                 <label for="tb_email" class="col-form-label">Email:</label>
-                                <input type="email" class="form-control" id="tb_email" required>
+                                <input type="email" class="form-control" id="tb_email" name="email"  required>
                             </div>
-                    </div>
-                    <h1 id="h1_form_submit" class="text-center"></h1>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Send message</button>
-                    </div>
+                            <h1 id="h1_form_submit" class="text-center"></h1>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Send message</button>
+                        </div>
                     </form>
 
                 </div>
@@ -54,7 +56,7 @@
         </div>
 
 
-      
+
 
 
 
