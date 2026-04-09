@@ -1,0 +1,20 @@
+﻿
+<h1>newTestView</h1>
+
+<h2>
+    This is newTestView.....................
+    </h2>
+
+    <div>
+        Data From View Data Disctinary :  @ViewData["msg"]
+
+        <br/>
+
+        Book Names:
+        <ol>
+            @foreach(var item in (List<string>)ViewData["BookNames"])
+            {
+                <li> @item </li>
+            }
+        </ol>
+    </div>
