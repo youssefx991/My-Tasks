@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 2</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+
+            <div class="col-md-6 border p-4" style="background-color: lightgoldenrodyellow">
+                <form method="post">
+
+                    <label for="background_img">Choose a background image</label> <br />
+                    <select id="background_img" name="background_img">
+                        <option value="0.jpg" selected>0</option>
+                        <option value="1.jpg">1</option>
+                        <option value="2.jpg">2</option>
+                        <option value="3.jpg">3</option>
+                        <option value="4.jpg">4</option>
+                        <option value="5.jpg">5</option>
+                        <option value="6.jpg">6</option>
+                        <option value="7.jpg">7</option>
+                        <option value="8.jpg">8</option>
+                        <option value="9.jpg">9</option>
+                        <option value="10.jpg">10</option>
+                        <option value="11.jpg">11</option>
+
+                    </select> <br />
+
+                    <label for="font_color">Choose a font color</label> <br />
+                    <select id="font_color" name="font_color">
+                        <option value="black" selected>Black</option>
+                        <option value="white">White</option>
+                        <option value="red">Red</option>
+                        <option value="blue">Blue</option>
+                    </select> <br />
+                    <br />
+
+                    <hr />
+
+                    <label for="greeting_type">Choose Greeting Type</label> <br />
+                    <input type="radio" name="greeting_type" value="Happy Birthday!" checked> Birthday <br />
+                    <input type="radio" name="greeting_type" value="Get Well Soon!"> Get Well Soon <br />
+                    <input type="radio" name="greeting_type" value="Happy Valentine!"> Valentine<br />
+                    <input type="radio" name="greeting_type" value="Congratulations!"> Congrats<br />
+                    <br />
+
+                    <input type="checkbox" name="add_picture" checked />
+                    <label for="add_picture">Add a picture</label> <br />
+                    <br />
+
+                    <label for="greeting_message">Enter Greeting Message Below: </label> <br />
+                    <textarea name="greeting_message" id="greeting_message" rows="4" cols="50"></textarea> <br />
+                    <br />
+
+                    <button type="submit" class="btn btn-primary">Preview</button>
+
+                </form>
+            </div>
+
+            @if (IsPost)
+            {
+                var background_img = "/backgrounds/" + Request["background_img"];
+                var fontColor = Request["font_color"];
+                var greetingType = Request["greeting_type"];
+                var addPicture = Request["add_picture"] != null;
+                var greetingMessage = Request["greeting_message"];
+                var img = "/images/" + greetingType;
+
+                <div class="col-md-6 border p-4 d-flex flex-column justify-content-center align-items-center" style="background-image: url('@background_img')">
+
+                    <h1 style="color: @fontColor">@greetingType</h1>
+
+                    @if (addPicture)
+                    {
+                        switch (greetingType)
+                        {
+                            case "Happy Birthday!":
+                                img = "/images/bd.jpg";
+                                break;
+                            case "Get Well Soon!":
+                                img = "/images/well.gif";
+                                break;
+                            case "Happy Valentine!":
+                                img = "/images/val.bmp";
+                                break;
+                            case "Congratulations!":
+                                img = "/images/congrats.gif";
+                                break;
+
+                        }
+                        <img src="@img" class="img-fluid" alt="Background Image" />
+                    }
+
+                    <h2 style="color: @fontColor">@greetingMessage</h2>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

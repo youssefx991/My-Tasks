@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+</head>
+<body>
+    <form method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="" required />
+        <br />
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday" value="" required />
+        <br />
+        <label for="isGraduated">Graduated:</label>
+        <input type="checkbox" id="isGraduated" name="isGraduated" checked />
+        <br />
+        <button type="submit">Submit</button>
+    </form>
+
+
+    @if (IsPost)
+    {
+        var name = Request["name"];
+        var birthday = Request["birthday"];
+        var isGraduated = Request["isGraduated"] != null;
+
+        <p style="color: red">Hello @name</p>
+        <p style="color: blue">Your Birthday is @birthday</p>
+        if (isGraduated)
+        {
+            <p style="color: green">YESSSSS, Am Graduated </p>
+        }
+        else
+        {
+            <p style="color: orange">NOOOO, Not Graduated </p>
+        }
+    }
+
+
+</body>
+</html>

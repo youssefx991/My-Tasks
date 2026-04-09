@@ -1,0 +1,112 @@
+﻿@*@{
+    Layout = "myLayout.cshtml";
+}*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    @{
+        var name = "Basma";
+        int age = 30;
+        string msg = "test msg";
+    }
+
+</head>
+<body>
+    @if (DateTime.Now.Hour < 12)
+    {
+        msg = "Good Morning";
+    }
+    else
+    {
+        msg = "Good Afternoon";
+    }
+
+    <h1>
+        Hello in my webApp ya @name , your age is @age and this is a @msg
+    </h1>
+
+
+    @*@for (int i = 0; i < 4; i++)
+        {
+            <li> @(i+1) </li>
+        }*@
+
+    @*<script>
+            alert("@msg");
+        </script>*@
+
+
+    @section mySection
+    {
+        <h2> This is my section </h2>
+        <ol>
+            <li> Item-1 </li>
+            <li> Item-2 </li>
+            <li> Item-3 </li>
+            <li> Item-4 </li>
+            <li> Item-5 </li>
+        </ol>
+    }
+
+
+    @*<form method="get">
+            Name: <input type="text" name="name" value="" /> <br />
+            City: <input type="text" name="city" value="" /> <br />
+            Age: <input type="text" id="Age" value="" /> <br />
+            <input type="submit" value="Submit" />
+        </form>
+
+
+        @if (!Request.QueryString["name"].IsEmpty() && !Request.QueryString["city"].IsEmpty())
+        {
+            <div>
+                Hello @Request.QueryString["name"] , from @Request.QueryString["city"]
+
+            </div>
+        }*@
+
+
+
+    @*<form method="post">
+            Name: <input type="text" name="name" value="" /> <br />
+            City: <input type="text" name="city" value="" /> <br />
+            Age: <input type="text" id="Age" value="" /> <br />
+            <input type="submit" value="Submit" />
+        </form>
+
+
+        @if (!Request.Form["name"].IsEmpty() && !Request.Form["city"].IsEmpty())
+        {
+            <div>
+                Hello @Request.Form["name"] , from @Request.Form["city"]
+            </div>
+        }*@
+
+
+    <form method="post">
+        Name: <input type="text" name="name" value="" /> <br />
+        City: <input type="text" name="city" value="" /> <br />
+        Age: <input type="text" id="Age" value="" /> <br />
+        <input type="submit" value="Submit" />
+    </form>
+
+
+    @*@if (!Request["name"].IsEmpty() && !Request["city"].IsEmpty())*@
+    @if (IsPost) //true if it is NOT the first time to visit this page "it is a submitted page"
+    {
+        if (!Request["name"].IsEmpty() && !Request["city"].IsEmpty())
+        {
+            <div>
+                Hello @Request["name"] , from @Request["city"]
+            </div>
+        }
+    }
+
+
+    @RenderPage("FooterPage.cshtml")
+
+</body>
+</html>

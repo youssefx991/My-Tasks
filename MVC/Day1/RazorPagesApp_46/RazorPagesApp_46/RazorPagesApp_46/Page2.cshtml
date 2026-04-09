@@ -1,0 +1,35 @@
+﻿@*@{
+    Layout = "myLayout.cshtml";
+ }*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    @{
+        string imagePath = "";
+    }
+
+    <form>
+        <select name="ChooseLst">
+            <option value="10.gif"> Picture_10 </option>
+            <option value="11.gif"> Picture_11 </option>
+            <option value="12.gif"> Picture_12 </option>
+            <option value="13.gif"> Picture_13 </option>
+            <option value="14.gif"> Picture_14 </option>
+            <option value="15.gif"> Picture_15 </option>
+        </select>
+
+        <input type="submit" value="View Image" />
+    </form>
+
+    @{
+        imagePath = "/images/" + Request["ChooseLst"];
+    }
+
+    <img src="@imagePath" />
+</body>
+</html>
