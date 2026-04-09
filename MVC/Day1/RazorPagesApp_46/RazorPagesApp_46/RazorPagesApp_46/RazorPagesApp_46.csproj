@@ -97,6 +97,20 @@
     <Content Include="images\4.gif" />
     <Content Include="images\5.gif" />
     <Content Include="images\6.gif" />
+    <Content Include="images\a1.gif" />
+    <Content Include="images\a10.jpg" />
+    <Content Include="images\a16.gif" />
+    <Content Include="images\a18.gif" />
+    <Content Include="images\a22.gif" />
+    <Content Include="images\a26.gif" />
+    <Content Include="images\a33.gif" />
+    <Content Include="images\a36.gif" />
+    <Content Include="images\a38.gif" />
+    <Content Include="images\a41.gif" />
+    <Content Include="images\a47.gif" />
+    <Content Include="images\a50.gif" />
+    <Content Include="images\a8.gif" />
+    <Content Include="images\abg.gif" />
     <Content Include="images\bg-adbox.png" />
     <Content Include="images\bg-footer.png" />
     <Content Include="images\bg-footnote.jpg" />
@@ -117,14 +131,18 @@
     <Content Include="images\laughing.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\meeting.jpg" />
+    <Content Include="images\pic1.jpg" />
+    <Content Include="images\pic2.jpg" />
     <Content Include="images\prenuptial.jpg" />
     <Content Include="images\smile.jpg" />
+    <Content Include="images\spacer.gif" />
     <Content Include="images\thumb-up.jpg" />
     <Content Include="images\thumbnail-focus.jpg" />
     <Content Include="images\thumbnail-frontview.jpg" />
     <Content Include="images\thumbnail-happy.jpg" />
     <Content Include="images\thumbnail-sideview.jpg" />
     <Content Include="images\thumbnail-smile.jpg" />
+    <Content Include="images\upbg.gif" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
