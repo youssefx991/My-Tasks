@@ -1,0 +1,15 @@
+﻿@{
+    var EditedEmp = (Employee)ViewBag.selectedEmp;
+}
+
+<h1>Edit</h1>
+
+<form method="post" action="/Employee/EditSave">
+    <input type="hidden" name="Id" value="@EditedEmp.Id" />
+
+    Name: <input type="text" name="Name" value="@EditedEmp.Name" /> <br />
+    Age: <input type="text" name="Age" value="@EditedEmp.Age" /> <br />
+    Email: <input type="text" name="Email" value="@EditedEmp.Email" /> <br />
+
+    <input type="submit" value="Save" />
+</form>

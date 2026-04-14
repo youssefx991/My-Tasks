@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "CreateNewCar";
+}
+
+<h1>CreateNewCar</h1>
+
+<form method="post" action="/Car/CreateNewCarSave">
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    Number: <input type="tel" name="Num" /> <br />
+    Color: <input type="text" name="Color"  /> <br />
+    Model: <input type="text" name="Model"  /> <br />
+    Manufacturer: <input type="text" name="Manufacturer"  /> <br />
+
+    <input type="submit" value="Save" />
+</form>
+
+
+<br />
+<a href="/Car/GetAllCars" class="btn btn-primary"> Back To List </a>

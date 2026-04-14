@@ -1,0 +1,19 @@
+﻿
+@{
+    Car car = ViewBag.Car;
+}
+
+<h1>EditCar</h1>
+
+<form method="post" action="/Car/EditSave">
+    <input type="hidden" name="Num" value="@car.Num" />
+
+    Color: <input type="text" name="Color" value="@car.Color" /> <br />
+    Model: <input type="text" name="Model" value="@car.Model" /> <br />
+    Manufacturer: <input type="text" name="Manufacturer" value="@car.Manufacturer" /> <br />
+
+    <input type="submit" value="Save" />
+</form>
+
+<br />
+<a href="/Car/GetAllCars" class="btn btn-primary"> Back To List </a>

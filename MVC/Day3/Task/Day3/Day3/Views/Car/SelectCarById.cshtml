@@ -1,0 +1,21 @@
+﻿
+@{
+    Car car = ViewBag.Car;
+}
+
+<h1>SelectCarById</h1>
+
+<p>
+    <h3> Selected Car Data: </h3>
+
+    Number: @car.Num <br />
+    Color: @car.Color <br />
+    Model: @car.Model <br />
+    Manufacturer: @car.Manufacturer
+</p>
+
+
+<br />
+
+<a href="/Car/GetAllCars" class="btn btn-primary"> Back To List </a>
+
