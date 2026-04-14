@@ -26,6 +26,7 @@ namespace Day3.Controllers
             if (check)
             {
                 ViewBag.Error = "Car with this number already exists.";
+                
                 return View("CreateNewCar");
             }
             CarList.Cars.Add(new Car { Num = Num, Color = Color, Model = Model, Manufacturer = Manufacturer });
