@@ -1,0 +1,72 @@
+﻿@model Employee
+@{
+    //var EditedEmp = (Employee)ViewBag.selectedEmp;
+}
+
+<h1>Edit</h1>
+
+@* <form method="post" action="/Employee/Edit">
+
+    <input type="hidden" name="Id" value="@Model.Id" />
+    Name: <input type="text" name="Name" value="@Model.Name" /> <br />
+    Age: <input type="text" name="Age" value="@Model.Age" /> <br />
+    Email: <input type="text" name="Email" value="@Model.Email" /> <br />
+
+    <input type="submit" value="Save" />
+</form> *@
+
+@* @using(Html.BeginForm("Edit", "Employee", FormMethod.Post))
+{
+   @Html.Hidden("Id", Model.Id)
+    <br />
+    @Html.Label("Name")
+   @Html.TextBox("Name", Model.Name)
+
+    <br />
+    @Html.Label("Age")
+    @Html.TextBox("Age", Model.Age)
+    <br />
+    @Html.Label("Email")
+    @Html.TextBox("Email", Model.Email)
+    <br />
+
+    <input type="submit" value="Save" />
+} *@
+
+@* 
+@using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    <br />
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+
+    <br />
+    @Html.LabelFor(m => m.Age)
+    @Html.TextBoxFor(m => m.Age)
+    <br />
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+    <br />
+
+    <input type="submit" value="Save" />
+} *@
+
+
+@using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    <br />
+    @Html.DisplayNameFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+
+    <br />
+    @Html.DisplayNameFor(m => m.Age)
+    @Html.EditorFor(m => m.Age)
+    <br />
+    @Html.DisplayNameFor(m => m.Email)
+    @Html.EditorFor(m => m.Email)
+    <br />
+
+    <input type="submit" value="Save" />
+}

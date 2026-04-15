@@ -1,0 +1,45 @@
+﻿@model Employee
+@{
+    //var curEmp = (Employee) ViewBag.selectedEmp;
+}
+
+<h1>getById</h1>
+
+@* <p>
+    <h3> Selected EMployee Data: </h3>
+
+    ID: @Model.Id <br />
+    Name: @Model.Name <br />
+    Age: @Model.Age <br />
+    Email: @Model.Email
+</p> *@
+
+<p>
+    <h3> Selected EMployee Data: </h3>
+
+   @Html.DisplayNameFor(m => m.Id)
+    @Html.DisplayFor(m => m.Id)
+   
+   <br />
+    @Html.DisplayNameFor(m => m.Name)
+    @Html.DisplayFor(m => m.Name)
+    <br />
+
+    @Html.DisplayNameFor(m => m.Age)
+    @Html.DisplayFor(m => m.Age)
+    <br />
+
+    @Html.DisplayNameFor(m => m.Email)
+    @Html.DisplayFor(m => m.Email)
+</p>
+
+<br />
+
+@ViewBag.ProjName -- 
+@ViewBag.Hours --
+
+@ViewData["msg"]
+
+<br />
+
+<a href="/Employee/getAll" class="btn btn-primary"> Back To List </a>

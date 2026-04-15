@@ -1,0 +1,36 @@
+﻿
+<h1>sendData</h1>
+
+<div>
+    Data From View Data Disctinary :  @ViewData["msg"]
+
+    <br />
+
+    Book Names:
+    <ol>
+        @foreach (var item in (List<string>)ViewData["BookNames"])
+        {
+            <li> @item </li>
+        }
+    </ol>
+    <hr />
+    <br />
+    Data From View Bag :  @ViewBag.newMsg
+
+    <br />
+
+    New Book Names:
+    <ol>
+        @foreach (var item in ViewBag.newBookNames)
+        {
+            <li> @item </li>
+        }
+    </ol>
+    <hr />
+    <br />
+
+    Reading Data From ViewData using ViewBag :  @ViewBag.test
+
+    <br />
+    Reading Data From ViewBag using ViewData:  @ViewData["testtt"]
+</div>

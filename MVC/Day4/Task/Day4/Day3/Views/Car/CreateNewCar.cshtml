@@ -1,0 +1,29 @@
+﻿@model Car
+@{
+    var error = ViewBag.Error;
+}
+
+<h1>CreateNewCar</h1>
+
+@using (Html.BeginForm("CreateNewCar", "Car", FormMethod.Post))
+{
+    @if (error != null)
+    {
+        <div class="alert alert-danger">@error</div>
+    }
+    @Html.DisplayNameFor(m => m.Num)
+    @Html.EditorFor(m => m.Num) <br />
+
+    @Html.DisplayNameFor(m => m.Color)
+    @Html.EditorFor(m => m.Color) <br />
+
+    @Html.DisplayNameFor(m => m.Model)
+    @Html.EditorFor(m => m.Model) <br />
+
+    @Html.DisplayNameFor(m => m.Manufacturer)
+    @Html.EditorFor(m => m.Manufacturer) <br />
+
+    <input type="submit" value="Save" />
+}
+<br />
+@Html.ActionLink("Back To List", "GetAllCars", null, new { @class = "btn btn-primary" })

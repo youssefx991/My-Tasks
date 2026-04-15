@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "ShowDetails";
+    User user = ViewBag.User;
+}
+
+<h1>ShowDetails</h1>
+
+<p>Your ID is: @user.Id</p>
+<p>Your Name is: @user.Name</p>
+
+<img src="/Images/@user.Image" alt="User Image" class="figure-img" />

@@ -1,0 +1,27 @@
+﻿@{
+    Car car = Model;
+}
+
+<h1>SelectCarById</h1>
+
+<p>
+    <h3> Selected Car Data: </h3>
+
+    @Html.DisplayNameFor(m => car.Num);
+    @Html.DisplayFor(m => car.Num) <br />
+    
+    @Html.DisplayNameFor(m => car.Color);
+    @Html.DisplayFor(m => car.Color) <br />
+
+
+    @Html.DisplayNameFor(m => car.Model);
+    @Html.DisplayFor(m => car.Model) <br />
+    @Html.DisplayNameFor(m => car.Manufacturer);
+    @Html.DisplayFor(m => car.Manufacturer)
+</p>
+
+
+<br />
+
+@Html.ActionLink("Back To List", "GetAllCars", null, new { @class = "btn btn-primary" })
+
