@@ -3,22 +3,47 @@
     List<Car> Cars = Model;
 }
 
+@functions {
 
-<h1>GetAllCars</h1>
+    public string FormatHeader(string headerText)
+    {
+        return $"<strong>{headerText}</strong>";
+    }
+    public string GetCarStyle(string color)
+    {
+        return $"color: {color};";
+    }
+
+    public string DisplayRow(List<dynamic> rowData, int colspan=1)
+    {
+        <tr>
+            @foreach (var data in rowData)
+            {
+                if (data is string && data.ToString().StartsWith("&"))
+                {
+                    <td colspan="@colspan">@Html.Raw(data)</td>
+                }
+                else if (data is string && data.ToString().StartsWith("@"))
+                {
+                    
+                }
+                else
+                {
+                    <td colspan="@colspan">@data</td>
+                }
+            }
+        </tr>
+
+        return null;
+    }
+}
+
+<h1>@Html.Raw(FormatHeader("Get All Cars"))</h1>
 
 
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
-            <th>Car Number</th>
-            <th>Car Color</th>
-            <th>Car Model</th>
-            <th>Car Manufacturer</th>
-
-            <th> &nbsp; </th>
-            <th> &nbsp; </th>
-            <th> &nbsp; </th>
-        </tr>
+        @DisplayRow(new List<dynamic> { "Car Number", "Car Color", "Car Model", "Car Manufacturer", "&nbsp;", "&nbsp;", "&nbsp;" })
     </thead>
     <tbody>
        
@@ -26,7 +51,7 @@
         {
             <tr>
                 <td>@Html.DisplayFor(m => car.Num)</td>
-                <td>@Html.DisplayFor(m => car.Color)</td>
+                <td style="@GetCarStyle(car.Color)">@Html.DisplayFor(m => car.Color)</td>
                 <td>@Html.DisplayFor(m => car.Model)</td>
                 <td>@Html.DisplayFor(m => car.Manufacturer)</td>
 
@@ -41,7 +66,7 @@
     <tfoot>
         <tr>
             <td colspan="7">
-                @Html.ActionLink("Add New Car", "CreateNewCar", null, new { @class = "btn btn-success" })
+                 @Html.ActionLink("Add New Car", "CreateNewCar", null, new { @class = "btn btn-success" })
             </td>
         </tr>
         <tr>

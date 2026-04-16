@@ -1,0 +1,21 @@
+﻿@* @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers *@
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<a href="/Home/Calculate/?X=4&Y=9" class="btn btn-primary"> Calc_PlainHtmlLink </a>
+
+
+@Html.ActionLink("Calc_HtmlHelperLink", "Calculate", "Home", new { X = 4, Y = 9 }, new {@class = "btn btn-primary"} )
+
+
+<a asp-controller="Home" asp-action="Calculate" asp-route-X="4" asp-route-Y="9" class="btn btn-primary"> Calc_TagHelperLink </a>
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

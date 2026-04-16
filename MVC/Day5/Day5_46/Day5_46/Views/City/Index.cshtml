@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Day5_46.Models.City>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+@using(Html.BeginForm())
+{
+    @Html.DropDownList("cntr", (SelectList)ViewBag.cnt)
+    <input type="submit" value="Search" />
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cntry)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cntry.CountryName)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CityID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CityID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CityID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

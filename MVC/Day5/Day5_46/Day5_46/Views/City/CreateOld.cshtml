@@ -1,0 +1,41 @@
+﻿@model Day5_46.Models.City
+
+@{
+    List<Country> CountryLst = (List<Country>)ViewBag.cID;
+}
+
+<h1>Create</h1>
+
+<h4>City</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" action="/City/Create">
+
+            <div class="form-group">
+                @Html.DisplayNameFor(m => m.CityName)
+                @Html.EditorFor(m => m.CityName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.DisplayNameFor(m => m.Cntry)
+                @* @Html.EditorFor(m => m.cID, new { @class = "form-control" }) *@
+                
+                <select name="cID" class="form-control">
+                    @foreach (var item in CountryLst)
+                    {
+                       <option value="@item.CountryID">@item.CountryName</option>
+                    }
+                </select>
+            </div>
+
+            <input type="submit" value="Create" />
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
