@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Day5.Areas.HR.Models.Employee>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    SelectList DepartmentsList = ViewBag.Departments;
+
+}
+
+
+<h1>Index</h1>
+
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <label class="form-label"> Select Department</label>
+        <select name="DeptID" asp-items="@DepartmentsList" class="form-control" itemid="456">
+            <option value="-1"> All </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JoinDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dept)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JoinDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dept.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmpID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.EmpID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EmpID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
