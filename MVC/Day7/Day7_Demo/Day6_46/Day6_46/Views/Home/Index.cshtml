@@ -1,0 +1,39 @@
+﻿@* @inject Microsoft.Extensions.Configuration.IConfiguration Configuration *@
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<h1>
+    @ViewBag.MyConfigValue  -- 
+    <br />
+    @ViewBag.MyEnvVar
+</h1>
+
+<hr />
+
+
+<h2>
+    @Env.ApplicationName  -- @Env.EnvironmentName
+</h2>
+
+<div>
+    **************************** Addtional Updates *****************************
+    <br>
+    **************************** Addtional Updates *****************************
+    <br>
+**************************** Addtional Updates *****************************
+    <br>
+**************************** Addtional Updates *****************************
+    <br>
+    **************************** Addtional Updates *****************************
+    <br>
+
+</div>

@@ -1,0 +1,14 @@
+﻿@model Product
+
+<div class="card m-3 shadow" style="width:18rem;">
+    <img src="~/images/@(Model.Image).png" class="card-img-top" alt="@Model.Name" />
+    
+    <div class="card-body">
+        <h5 class="card-title text-primary">@Model.Name</h5>
+        <p class="card-text" style="height: 50px; overflow: hidden;">@Model.Description</p>
+    </div>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Price: <strong>@Model.Price EGP</strong></li>
+    </ul>
+</div>

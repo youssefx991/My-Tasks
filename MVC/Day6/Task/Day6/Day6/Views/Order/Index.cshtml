@@ -1,11 +1,16 @@
 ﻿@model IEnumerable<Day6.Models.Order>
-
-@{
-    ViewData["Title"] = "Index";
-}
+@inject IConfiguration config
 
 <h1>Index</h1>
-
+<hr />
+<h1>Injecting Configuration Data in View</h1>
+<hr />
+<h1>My Name: @config["MyName"]</h1>
+<hr />
+<h1>My Age: @config["MyAge"]</h1>
+<hr />
+<h1>My Email: @config["MyEmail"]</h1>
+<hr />
 <form asp-action="Index" method="post">
     <div class="form-group">
         <label class="form-label"> Select Customer Email</label>

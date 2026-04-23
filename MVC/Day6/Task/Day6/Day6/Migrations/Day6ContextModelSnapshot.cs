@@ -42,6 +42,7 @@ namespace Day6.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNum")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

@@ -8,9 +8,16 @@ namespace Day6.Controllers
     public class CustomerController : Controller
     {
         private Day6Context Context = new Day6Context();
+        private IWebHostEnvironment Env { get; }
+        public CustomerController(IWebHostEnvironment env)
+        {
+            Env = env;
+        }
         // GET: CustomerController
         public ActionResult Index()
         {
+
+            ViewBag.Env = Env;
             return View(Context.Customers.ToList());
         }
 

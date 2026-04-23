@@ -1,10 +1,21 @@
 ﻿@model IEnumerable<Day6.Models.Customer>
 
 @{
-    ViewData["Title"] = "Index";
+    var env = ViewBag.Env as Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 }
 
 <h1>Index</h1>
+<hr />
+<h1>Injecting Environment Data in Controller</h1>
+<hr />
+<h1>Environment Name: @env.EnvironmentName</h1>
+<hr />
+<h1>Application Name: @env.ApplicationName</h1>
+<hr />
+<h1>Content Root Path: @env.ContentRootPath</h1>
+<hr />
+<h1>Content Root File Provider: @env.ContentRootFileProvider</h1>
+<hr />
 
 <p>
     <a asp-action="Create">Create New</a>
