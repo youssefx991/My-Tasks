@@ -1,0 +1,33 @@
+﻿@model Day9.ViewModels.Product_Cust_ViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product_Cust_ViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Products)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var product in Model.Products)
+            {
+                <partial name="_CardPartialWithoutButtons" model="product" />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.CustID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
