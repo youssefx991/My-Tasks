@@ -1,0 +1,68 @@
+﻿@model global::Task.Models.ChatPageViewModel
+
+@{
+    ViewData["Title"] = "Assistant Chat";
+}
+
+<section class="chat-shell">
+    <header class="chat-hero">
+        <div>
+            <p class="chat-eyebrow">ASP.NET Core MVC</p>
+            <h1>Chat with GPT-4o mini</h1>
+            <p class="chat-subtitle">Full session history stays on screen so every reply can build on the one before it.</p>
+        </div>
+        <div class="chat-status">Session backed conversation</div>
+    </header>
+
+    <div class="chat-panel">
+        <div class="reply-banner @(string.IsNullOrWhiteSpace(Model.ReplyToMessageId) ? "d-none" : string.Empty)" id="replyBanner">
+            <div>
+                <div class="reply-banner-label">Replying to</div>
+                <div class="reply-banner-content" id="replyBannerContent">@Model.ReplyToContent</div>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-light reply-clear" id="clearReplyButton">Cancel</button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            @if (Model.Messages.Count == 0)
+            {
+                <div class="chat-empty-state">
+                    <h2>Start the conversation</h2>
+                    <p>Ask a question, request code, or continue a running discussion. The assistant response will appear here.</p>
+                </div>
+            }
+
+            @for (var index = 0; index < Model.Messages.Count; index++)
+            {
+                var message = Model.Messages[index];
+                var bubbleClass = message.Role == global::Task.Models.ChatRole.User ? "message-bubble user" : "message-bubble assistant";
+
+                <article class="@bubbleClass" data-message-id="@message.Id">
+                    <div class="message-meta">
+                        <span>@message.Role</span>
+                        <span>@message.CreatedAtUtc.ToLocalTime().ToString("g")</span>
+                    </div>
+                    <div class="message-content">@message.Content</div>
+                    @if (message.Role == global::Task.Models.ChatRole.Assistant)
+                    {
+                        <div class="message-actions">
+                            <button type="button" class="btn btn-sm btn-outline-light reply-button" data-message-id="@message.Id" data-message-content="@message.Content">Reply</button>
+                        </div>
+                    }
+                </article>
+            }
+        </div>
+
+        <form asp-action="Index" method="post" class="composer">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="ReplyToMessageId" id="replyToMessageId" />
+            <input type="hidden" asp-for="ReplyToContent" id="replyToContent" />
+            <label asp-for="Prompt" class="visually-hidden"></label>
+            <textarea asp-for="Prompt" class="form-control chat-input" rows="3" placeholder="Write a message..."></textarea>
+            <span asp-validation-for="Prompt" class="text-warning small"></span>
+            <div class="composer-actions">
+                <button type="submit" class="btn btn-primary chat-send">Send</button>
+            </div>
+        </form>
+    </div>
+</section>

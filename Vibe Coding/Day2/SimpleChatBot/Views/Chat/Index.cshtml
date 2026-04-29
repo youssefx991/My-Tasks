@@ -1,0 +1,51 @@
+@model SimpleChatBot.Models.ChatViewModel
+
+@{
+    ViewData["Title"] = "Chat";
+}
+
+<h1 class="mb-4">Chat</h1>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card mb-3">
+            <div class="card-header">Conversation</div>
+            <div class="card-body" style="max-height: 500px; overflow-y: auto;">
+                @if (!Model.Messages.Any())
+                {
+                    <p class="text-muted mb-0">No messages yet. Start by sending a question.</p>
+                }
+                else
+                {
+                    foreach (var message in Model.Messages)
+                    {
+                        var isAssistant = message.Role.Equals("assistant", StringComparison.OrdinalIgnoreCase);
+                        <div class="mb-3">
+                            <strong>@(isAssistant ? "Assistant" : "You"):</strong>
+                            <div>@message.Content</div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <form asp-action="Index" method="post">
+            @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label asp-for="Prompt" class="form-label"></label>
+                <textarea asp-for="Prompt" class="form-control" rows="3" placeholder="Type your message..."></textarea>
+                <span asp-validation-for="Prompt" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+
+        <form asp-action="Clear" method="post" class="mt-2">
+            @Html.AntiForgeryToken()
+            <button class="btn btn-outline-secondary" type="submit">Clear Context</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
