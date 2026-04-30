@@ -31,6 +31,16 @@ namespace Day1
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors(op =>
+            {
+                op.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
+
             builder.Services.AddDbContext<StudentContext>();
             builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
             builder.Services.AddScoped<IDepartmentRepo, DepartmentRepo>();
@@ -49,7 +59,7 @@ namespace Day1
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors("AllowAll");
             app.UseAuthorization();
             app.MapControllers();
 

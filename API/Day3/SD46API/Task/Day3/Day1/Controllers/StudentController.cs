@@ -3,11 +3,14 @@ using Day1.Filters;
 using Day1.Models;
 using Day1.Repositories;
 using MapsterMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Day1.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAll")]
+
     [ApiController]
     public class StudentController : ControllerBase
     {
