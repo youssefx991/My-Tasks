@@ -79,7 +79,7 @@ namespace Day1.Controllers
 
 
         [HttpGet("throw")]
-        [ExceptionHandleFilter]
+
 
         public IActionResult ThrowException()
         {

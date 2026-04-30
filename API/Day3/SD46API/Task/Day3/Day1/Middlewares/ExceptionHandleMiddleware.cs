@@ -17,7 +17,7 @@
             }
             catch (Exception ex)
             {
-                await context.Response.WriteAsync($"Error in Request Path: {context.Request.Path}, Exception Middleware: {ex.Message}");
+                await context.Response.WriteAsync($"Error in Request Path: {context.Request.Path}, Exception Middleware: {ex.Message}, Inner Exception: {ex.InnerException?.Message}");
             }
         }
     }

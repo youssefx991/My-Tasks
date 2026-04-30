@@ -1,12 +1,18 @@
 
+using Day1.DTOs;
 using Day1.Filters;
+using Day1.Mapping;
 using Day1.Middlewares;
+using Day1.Models;
+using Day1.Repositories;
+using Mapster;
+using MapsterMapper;
 using Serilog;
 namespace Day1
 {
     public class Program
     {
-         
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -15,14 +21,22 @@ namespace Day1
              .WriteTo.File("logs/app.log", rollingInterval: RollingInterval.Day)
              .CreateLogger();
 
+            MapsterConfig.RegisterMapping();
+
             builder.Host.UseSerilog();
             // Add services to the container.
 
-            builder.Services.AddControllers(op=>op.Filters.Add<ExceptionHandleFilter>());
+            builder.Services.AddControllers(op => op.Filters.Add<ExceptionHandleFilter>());
             //builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<StudentContext>();
+            builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
+            builder.Services.AddScoped<IDepartmentRepo, DepartmentRepo>();
+            builder.Services.AddSingleton(TypeAdapterConfig.GlobalSettings);
+            builder.Services.AddScoped<IMapper, ServiceMapper>();
+
 
             var app = builder.Build();
             app.UseLoggingMiddleware();
@@ -45,7 +59,7 @@ namespace Day1
             //    await next();
 
             //});
-            
+
             app.Run();
         }
     }
