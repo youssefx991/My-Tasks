@@ -1,0 +1,47 @@
+﻿@page "/tracks/create"
+
+<h3>Create</h3>
+
+@code {
+    public Track? track { get; set; }
+    public bool Saved;
+
+    protected override Task OnInitializedAsync()
+    {
+        Saved = false;
+        track = new Track();
+        return base.OnInitializedAsync();
+    }
+
+    public void HandleValidSubmit()
+    {
+        TracksTreineesContext.AddTrack(track);
+        Saved = true;
+    }
+
+    public void HandleInvalidSubmit()
+    {
+        Saved = false;
+    }
+}
+
+@if (track == null)
+{
+    <p>Loading Track Create.........</p>
+}
+@if (!Saved && track != null)
+{
+    <TrackForm Track="track" 
+               OnValidSubmit="HandleValidSubmit" 
+               OnInvalidSubmit="HandleInvalidSubmit" 
+               SubmitButtonText="Add Track" />
+
+    <a href="/tracks" class="btn btn-secondary btn-sm">Back to List</a>
+}
+else if (Saved)
+{
+    <div class="alert alert-success" role="alert">
+        Track Added Successfully!
+    </div>
+    <a href="/tracks" class="btn btn-secondary btn-sm">Back to List</a>
+}

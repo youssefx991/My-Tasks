@@ -1,0 +1,69 @@
+﻿@page "/trainees/edit/{id:int}"
+@using Day1.Pages.Trainee.Shared
+
+<h3>Edit</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    public Trainee? trainee { get; set; }
+
+    public bool Saved;
+
+    protected override Task OnInitializedAsync()
+    {
+        Saved = false;
+        var original = TracksTreineesContext.GetTraineeByID(id);
+        if (original != null)
+        {
+            trainee = new Trainee
+                {
+                    ID = original.ID,
+                    Name = original.Name,
+                    Gender = original.Gender,
+                    Email = original.Email,
+                    MobileNo = original.MobileNo,
+                    Birthdate = original.Birthdate,
+                    IsGraduated = original.IsGraduated,
+                    TrackID = original.TrackID
+                };
+        }
+
+        return base.OnInitializedAsync();
+    }
+
+    public void HandleValidSubmit()
+    {
+        TracksTreineesContext.UpdateTrainee(trainee);
+        Saved = true;
+
+    }
+
+    public void HandleInValidSubmit()
+    {
+        Saved = false;
+    }
+
+}
+
+@if (trainee == null)
+{
+    <p>Loading Trainee Details.........</p>
+}
+@if (!Saved && trainee != null)
+{
+    <TraineeForm trainee="trainee"
+                 OnValidSubmit="HandleValidSubmit"
+                 OnInvalidSubmit="HandleInValidSubmit"
+                 SubmitButtonText="Save Trainee" />
+
+    <a href="/trainees" class="btn btn-secondary btn-sm">Back to List</a>
+}
+else if (Saved)
+{
+    <div class="alert alert-success" role="alert">
+        Trainee Updated Successfully!
+    </div>
+    <a href="/trainees" class="btn btn-secondary btn-sm">Back to List</a>
+}

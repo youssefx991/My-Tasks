@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BlazorWebAssemblyApp_46/BlazorWebAssemblyApp_46.csproj" />
+  <Project Path="MySharedLibrary/MySharedLibrary.csproj" />
+</Solution>

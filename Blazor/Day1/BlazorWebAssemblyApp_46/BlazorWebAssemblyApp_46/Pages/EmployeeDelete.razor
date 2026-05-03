@@ -1,0 +1,28 @@
+﻿@page "/empdelt/{EmployeeId:int}"
+
+<h3>employeeDelete</h3>
+
+@code {
+
+    [Parameter]
+    public int EmployeeId { get; set; }
+
+    public Employee? delEmp { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        delEmp = MockContext.Employees.FirstOrDefault(e => e.EmployeeId == EmployeeId);
+        if (delEmp != null)
+        {
+            MockContext.Employees.Remove(delEmp);
+        }
+
+        return base.OnInitializedAsync();
+    }
+}
+
+<div>
+    <h3 class="alert alert-danger">
+        Employee: @delEmp?.FirstName @delEmp?.LastName has been deleted successfully.
+    </h3>
+</div>

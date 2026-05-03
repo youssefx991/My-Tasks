@@ -54,7 +54,7 @@ namespace Day1.Controllers
         {
             var department = Mapper.Map<DepartmentDTO, Department>(departmentDTO);
             DepartmentRepo.Add(department);
-            return CreatedAtAction(nameof(Get), new { id = department.ID }, department);
+            return CreatedAtAction(nameof(Get), new { id = department.ID }, new {data=department, msg="Department created successfully."});
 
         }
 

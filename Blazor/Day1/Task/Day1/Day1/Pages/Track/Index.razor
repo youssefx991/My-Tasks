@@ -1,0 +1,40 @@
+﻿@page "/tracks"
+@using Day1.Pages.Shared
+
+<h3>Tracks Overview</h3>
+
+@code {
+
+}
+
+@if (TracksTreineesContext.tracks == null)
+{
+    <p>Loading Tracks.........</p>
+}
+else
+{
+    <a href="@($"tracks/create")" class="btn btn-primary"> Add New Track </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Track Name </th>
+                <th>Track Description </th>
+                <th> &nbsp; </th>
+                <th> &nbsp; </th>
+                <th> &nbsp; </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var track in TracksTreineesContext.tracks)
+            {
+                <tr>
+                    <td>@track.Name</td>
+                    <td>@track.Description</td>
+                    
+                    <TableButtons ModelNameURL="tracks" track="track" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}

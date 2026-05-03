@@ -1,0 +1,58 @@
+﻿@page "/tracks/edit/{id:int}"
+
+<h3>Edit</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    public Track? track { get; set; }
+    public bool Saved;
+
+    protected override Task OnInitializedAsync()
+    {
+        Saved = false;
+        var original = TracksTreineesContext.GetTrackByID(id);
+        if (original != null)
+        {
+            track = new Track
+            {
+                ID = original.ID,
+                Name = original.Name,
+                Description = original.Description
+            };
+        }
+        return base.OnInitializedAsync();
+    }
+
+    public void HandleValidSubmit()
+    {
+        TracksTreineesContext.UpdateTrack(track);
+        Saved = true;
+    }
+
+    public void HandleInvalidSubmit()
+    {
+        Saved = false;
+    }
+}
+
+@if (track == null)
+{
+    <p>Loading Track Details.........</p>
+}
+@if (!Saved && track != null)
+{
+    <TrackForm Track="track" 
+               OnValidSubmit="HandleValidSubmit" 
+               OnInvalidSubmit="HandleInvalidSubmit" 
+               SubmitButtonText="Save Track" />
+    
+    <a href="/tracks" class="btn btn-secondary btn-sm">Back to List</a>
+}
+else if (Saved)
+{
+    <div class="alert alert-success" role="alert">
+        Track Updated Successfully!
+    </div>
+    <a href="/tracks" class="btn btn-secondary btn-sm">Back to List</a>
+}

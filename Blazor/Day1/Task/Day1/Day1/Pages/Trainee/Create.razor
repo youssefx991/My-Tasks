@@ -1,0 +1,52 @@
+﻿@page "/trainees/create"
+@using Day1.Pages.Trainee.Shared
+
+<h3>Create</h3>
+
+@code {
+    [Parameter]
+
+    public Trainee? trainee { get; set; }
+
+    public bool Saved;
+
+    protected override Task OnInitializedAsync()
+    {
+        Saved = false;
+        trainee = new Trainee();
+        return base.OnInitializedAsync();
+    }
+
+    public void HandleValidSubmit()
+    {
+        TracksTreineesContext.AddTrainee(trainee);
+        Saved = true;
+
+    }
+
+    public void HandleInValidSubmit()
+    {
+        Saved = false;
+    }
+
+}
+
+@if (trainee == null)
+{
+    <p>Loading Trainee Create.........</p>
+}
+@if (!Saved && trainee != null)
+{
+    <TraineeForm trainee="trainee"
+                 OnValidSubmit="HandleValidSubmit"
+                 OnInvalidSubmit="HandleInValidSubmit"
+                 SubmitButtonText="Save Trainee" />
+    <a href="/trainees" class="btn btn-secondary btn-sm">Back to List</a>
+}
+else if (Saved)
+{
+    <div class="alert alert-success" role="alert">
+        Trainee Added Successfully!
+    </div>
+    <a href="/trainees" class="btn btn-secondary btn-sm">Back to List</a>
+}

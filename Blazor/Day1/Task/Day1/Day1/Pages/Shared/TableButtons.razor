@@ -1,0 +1,48 @@
+﻿
+@code {
+    [Parameter]
+    public string ModelNameURL { get; set; } = string.Empty;
+
+    [Parameter]
+    public Track? track { get; set; }
+
+    [Parameter]
+    public Trainee? trainee { get; set; }
+
+
+    protected override Task OnInitializedAsync()
+    {
+
+        return base.OnInitializedAsync();
+    }
+}
+
+
+@if (track != null)
+{
+    <td>
+        <a href="@($"{ModelNameURL}/details/{track.ID}")" class="btn btn-primary"> Details </a>
+    </td>
+
+    <td>
+        <a href="@($"{ModelNameURL}/edit/{track.ID}")" class="btn btn-secondary"> Edit </a>
+    </td>
+
+    <td>
+        <a href="@($"{ModelNameURL}/delete/{track.ID}")" class="btn btn-danger"> Delete </a>
+    </td>
+}
+else if (trainee != null)
+{
+    <td>
+        <a href="@($"{ModelNameURL}/details/{trainee.ID}")" class="btn btn-primary"> Details </a>
+    </td>
+
+    <td>
+        <a href="@($"{ModelNameURL}/edit/{trainee.ID}")" class="btn btn-secondary"> Edit </a>
+    </td>
+
+    <td>
+        <a href="@($"{ModelNameURL}/delete/{trainee.ID}")" class="btn btn-danger"> Delete </a>
+    </td>
+}

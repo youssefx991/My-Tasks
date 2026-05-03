@@ -1,0 +1,50 @@
+﻿@page "/trainees"
+@using Day1.Pages.Shared
+
+<h3>Trainees Overview</h3>
+
+@code {
+
+}
+
+@if (TracksTreineesContext.trainees == null)
+{
+    <p>Loading Trainees.........</p>
+}
+else
+{
+    <a href="@($"trainees/create")" class="btn btn-primary"> Add New Trainee </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Trainee Name </th>
+                <th>Trainee Gender </th>
+                <th>Trainee Email </th>
+                <th>Trainee Mobile No. </th>
+                <th>Trainee Birthdate </th>
+                <th>Trainee Is Graduated </th>
+                <th>Assigned Track</th>
+                <th> &nbsp; </th>
+                <th> &nbsp; </th>
+                <th> &nbsp; </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var trainee in TracksTreineesContext.trainees)
+            {
+                <tr>
+                    <td>@trainee.Name</td>
+                    <td>@trainee.Gender</td>
+                    <td>@trainee.Email</td>
+                    <td>@trainee.MobileNo</td>
+                    <td>@trainee.Birthdate?.ToShortDateString()</td>
+                    <td>@(trainee.IsGraduated ? "Yes" : "No")</td>
+                    <td>@TracksTreineesContext.GetTrackNameByID(trainee.TrackID ?? 0)</td>
+
+                    <TableButtons ModelNameURL="trainees" trainee="trainee" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,25 @@
+﻿@page "/tracks/delete/{id:int}"
+
+<h3>Delete</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    public string? trackName { get; set; }
+    protected override Task OnInitializedAsync()
+    {
+        trackName = TracksTreineesContext.GetTrackByID(id)?.Name;
+        TracksTreineesContext.DeleteTrack(id);
+        return base.OnInitializedAsync();
+    }
+}
+
+@{
+    <div>
+        <h3 class="alert alert-danger">
+            Track: @trackName has been deleted successfully.
+        </h3>
+    </div>
+
+    <a href="/tracks" class="btn btn-secondary btn-sm">Back to List</a>
+}

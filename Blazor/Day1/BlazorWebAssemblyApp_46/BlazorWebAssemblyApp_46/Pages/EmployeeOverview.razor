@@ -1,0 +1,52 @@
+﻿@page "/empoverview"
+
+<h3>EmployeeOverview</h3>
+
+@code {
+
+}
+
+@if(MockContext.Employees == null)
+{
+    <p>Loading................</p>
+}
+else
+{
+    <a href="@($"empnew")" class="btn btn-primary"> New Emp </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Employee-ID</th>
+                <th>Employee-FirstName</th>
+                <th>Employee-LastName</th>
+                <th> &nbsp; </th>
+                <th> &nbsp; </th>
+                <th> &nbsp; </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in MockContext.Employees)
+            {
+                <tr>
+                    <td>@employee.EmployeeId</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+
+                    <td>
+                        <a href="@($"empdetails/{employee.EmployeeId}")" class="btn btn-primary"> Details </a>
+                    </td>
+
+                    <td>
+                        <a href="@($"empedit/{employee.EmployeeId}")" class="btn btn-secondary"> Edit </a>
+                    </td>
+
+                    <td>
+                        <a href="@($"empdelt/{employee.EmployeeId}")" class="btn btn-danger"> Delete </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
