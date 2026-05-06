@@ -1,0 +1,28 @@
+Working with real data:
+=======================
+
+Continue on yesterday assignment of your WebAssembly Blazor App, which manages Trainees and their Tracks:
+	- Apply DataAnnotations on your classes
+	- Create Asp.Net Core API that will have and manage TraineeDB
+	- Implement All CRUD operations over this API
+	- Consume this API in your WebAssembly Blazor App "using HttpClientFactory",
+	and render application UI using data comes from API database
+	- Implement Repository pattern in your App
+	- Use validation and visualize errors
+ 
+
+
+Track should have the following properties:
+- ID
+- Name
+- Description
+
+Trainee should have the following properties:
+- ID
+- Name
+- Gender
+- Email
+- MobileNo
+- Birthdate
+- IsGraduated
+ 

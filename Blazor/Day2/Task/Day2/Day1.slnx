@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Day1/Day1.csproj" />
+  <Project Path="MySharedLibrary/MySharedLibrary.csproj" Id="262bcdd1-8bb6-42ac-9d2f-be5cce8e1c0f" />
+  <Project Path="MyWebAPI/MyWebAPI.csproj" Id="8bf1c690-0aef-4c3c-af27-82847aa69cbd" />
+</Solution>

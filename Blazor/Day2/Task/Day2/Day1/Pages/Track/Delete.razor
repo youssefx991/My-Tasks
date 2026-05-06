@@ -1,0 +1,36 @@
+﻿@page "/tracks/delete/{id:int}"
+
+<h3>Delete</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    public Track track { get; set; }
+
+    [Inject]
+    public ITrackDataService trackDataService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        track = await trackDataService.GetTrackByID(id);
+        if (track != null)
+        {
+            await trackDataService.DeleteTrack(id);
+        }
+    }
+}
+
+@if (track == null)
+{
+    <p>Loading Track Delete.........</p>
+}
+else
+{
+    <div>
+        <h3 class="alert alert-danger">
+            Track: @track.Name has been deleted successfully.
+        </h3>
+    </div>
+
+    <a href="/tracks" class="btn btn-secondary btn-sm">Back to List</a>
+}

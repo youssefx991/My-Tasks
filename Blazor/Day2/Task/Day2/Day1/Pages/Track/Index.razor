@@ -1,0 +1,48 @@
+﻿@page "/tracks"
+@using Day1.Pages.Shared
+
+<h3>Tracks Overview</h3>
+
+@code {
+    [Inject]
+    public ITrackDataService trackDataService { get; set; }
+
+    IEnumerable<Track> tracks { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        tracks = await trackDataService.GetAllTracks();
+    }
+}
+
+@if (tracks == null)
+{
+    <p>Loading Tracks.........</p>
+}
+else
+{
+    <a href="@($"tracks/create")" class="btn btn-primary"> Add New Track </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Track Name </th>
+                <th>Track Description </th>
+                <th> &nbsp; </th>
+                <th> &nbsp; </th>
+                <th> &nbsp; </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var track in tracks)
+            {
+                <tr>
+                    <td>@track.Name</td>
+                    <td>@track.Description</td>
+                    
+                    <TableButtons ModelNameURL="tracks" track="track" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,36 @@
+﻿@page "/trainees/delete/{id:int}"
+
+<h3>Delete</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    public Trainee? trainee { get; set; }
+
+    [Inject]
+    public ITraineeDataService traineeDataService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        trainee = await traineeDataService.GetTraineeByID(id);
+        if (trainee != null)
+        {
+            await traineeDataService.DeleteTrainee(id);
+        }
+    }
+}
+
+@if (trainee == null)
+{
+    <p>Loading Trainee Delete.........</p>
+}
+else
+{
+    <div>
+        <h3 class="alert alert-danger">
+            Trainee: @trainee?.Name has been deleted successfully.
+        </h3>
+    </div>
+
+    <a href="/trainees" class="btn btn-secondary btn-sm">Back to List</a>
+}

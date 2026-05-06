@@ -1,0 +1,65 @@
+﻿@page "/tracks/details/{id:int}"
+
+<h3>Details</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    public Track? track { get; set; }
+
+    [Inject]
+    public ITrackDataService trackDataService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var track = await trackDataService.GetTrackByID(id);
+        if (track != null)
+        {
+            this.track = track;
+        }
+    }
+}
+
+@if (track == null)
+{
+    <p>Loading Track Details.........</p>
+}
+else
+{
+
+    @if (track == null)
+    {
+        <div class="text-center">
+            <p class="text-muted">Loading Trainee Details...</p>
+        </div>
+    }
+    else
+    {
+        <div class="row mb-2">
+            <div class="col-sm-3 fw-bold">Name:</div>
+            <div class="col-sm-9">@track.Name</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-3 fw-bold">Description:</div>
+            <div class="col-sm-9">@track.Description</div>
+        </div>
+        
+
+    }
+
+           
+    <a href="/tracks" class="btn btn-secondary btn-sm">Back to List</a>
+
+
+
+
+
+
+
+
+
+
+
+}

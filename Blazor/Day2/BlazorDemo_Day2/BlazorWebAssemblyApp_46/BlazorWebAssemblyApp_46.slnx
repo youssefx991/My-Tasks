@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BlazorWebAssemblyApp_46/BlazorWebAssemblyApp_46.csproj" />
+  <Project Path="MySharedLibrary/MySharedLibrary.csproj" />
+  <Project Path="myWebAPI/myWebAPI.csproj" Id="c7594a74-3ac6-4e04-a884-7ec9c60ef428" />
+</Solution>

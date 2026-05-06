@@ -1,0 +1,50 @@
+﻿@page "/empdetails/{EmployeeId:int}"
+
+<h3>EmployeeDetails</h3>
+
+@if(CurEmp != null)
+{
+    <div class="form-group-row">
+        <label class="col-sm-2 col-form-label">Employee ID</label>
+        <label class="col-sm-10 col-form-label">@CurEmp.EmployeeId</label>
+    </div>
+
+    <div class="form-group-row">
+        <label class="col-sm-2 col-form-label"> First Name</label>
+        <label class="col-sm-10 col-form-label">@CurEmp.FirstName</label>
+    </div>
+
+    <div class="form-group-row">
+        <label class="col-sm-2 col-form-label"> Last Name</label>
+        <label class="col-sm-10 col-form-label">@CurEmp.LastName</label>
+    </div>
+
+    <div class="form-group-row">
+        <label class="col-sm-2 col-form-label"> Email </label>
+        <label class="col-sm-10 col-form-label">@CurEmp.Email</label>
+    </div>
+
+    <div class="form-group-row">
+        <label class="col-sm-2 col-form-label"> Phone Number </label>
+        <label class="col-sm-10 col-form-label">@CurEmp.PhoneNumber</label>
+    </div>
+
+    <div class="form-group-row">
+        <label class="col-sm-2 col-form-label"> Birthdate </label>
+        <label class="col-sm-10 col-form-label">@CurEmp.BirthDate</label>
+    </div>
+
+    <div class="form-group-row">
+        <label class="col-sm-2 col-form-label"> Gender </label>
+        <label class="col-sm-10 col-form-label">@CurEmp.Gender</label>
+    </div>
+
+    <div class="form-group-row">
+        <label class="col-sm-2 col-form-label"> join Date </label>
+        <label class="col-sm-10 col-form-label">@CurEmp.JoinedDate</label>
+    </div>
+}
+else
+{
+    <p>Still Loading.............</p>
+}

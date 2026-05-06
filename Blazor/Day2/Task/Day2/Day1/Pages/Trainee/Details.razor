@@ -1,0 +1,101 @@
+﻿@page "/trainees/details/{id:int}"
+
+<h3>Details</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    public Trainee? trainee { get; set; }
+
+    [Inject]
+    public ITraineeDataService traineeDataService { get; set; }
+    [Inject]
+    public ITrackDataService trackDataService { get; set; }
+
+    public string TrackName = "N/A";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var trainee = await traineeDataService.GetTraineeByID(id);
+        if (trainee != null)
+        {
+            this.trainee = trainee;
+            TrackName = await trackDataService.GetTrackNameByID(trainee?.TrackID ?? 0);
+        }
+
+    }
+}
+
+@if (trainee == null)
+{
+    <p>Loading Trainee Details.........</p>
+}
+else
+{
+   
+
+
+
+@if (trainee == null)
+{
+    <div class="text-center">
+        <p class="text-muted">Loading Trainee Details...</p>
+    </div>
+}
+else
+{
+    <div class="row mb-2">
+        <div class="col-sm-3 fw-bold">Name:</div>
+        <div class="col-sm-9">@trainee.Name</div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-sm-3 fw-bold">Gender:</div>
+        <div class="col-sm-9">@trainee.Gender</div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-sm-3 fw-bold">Email:</div>
+        <div class="col-sm-9">@trainee.Email</div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-sm-3 fw-bold">Mobile Number:</div>
+        <div class="col-sm-9">@trainee.MobileNo</div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-sm-3 fw-bold">Birth Date:</div>
+        <div class="col-sm-9">@trainee.Birthdate?.ToShortDateString()</div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-sm-3 fw-bold">Is Graduated:</div>
+        <div class="col-sm-9">@(trainee.IsGraduated ? "Yes" : "No")</div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-sm-3 fw-bold">Assigned Track:</div>
+        <div class="col-sm-9">
+            @TrackName
+        </div>
+    </div>
+}
+
+           
+<a href="/trainees" class="btn btn-secondary btn-sm">Back to List</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

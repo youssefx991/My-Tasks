@@ -1,0 +1,129 @@
+﻿@page "/empedit_DB/{EmployeeId:int}"
+
+@inject ICountryDataService countryDataService
+
+<h3>EmployeeEdit</h3>
+
+@code {
+    public bool Saved { get; set; }
+
+    [Parameter]
+    public int EmployeeId { get; set; }
+
+    public Employee? CurEmp { get; set; }
+
+    public IEnumerable<Country> AllCountries { get; set; }
+
+    [Inject]
+    public IEmployeeDataService employeeDataService { get; set; }
+
+    //[Inject]
+    //public ICountryDataService countryDataService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        CurEmp = await employeeDataService.GetEmployeeDetails(EmployeeId);
+        AllCountries = await countryDataService.GetAllCountries();
+    }
+
+    protected void HandleValidSubmit()  //ModelState.IsValid == true
+    {
+        employeeDataService.UpdateEmployee(CurEmp);
+
+        Saved = true;
+    }
+
+    protected void HandleInValidSubmit()
+    {
+        Saved = false;
+    }
+
+}
+
+
+@if (CurEmp != null)
+{
+    @if (!Saved)
+    {
+        <EditForm Model="@CurEmp" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInValidSubmit">
+
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+
+            <div class="form-group-row">
+                <label class="col-sm-2 col-form-label">Employee ID</label>
+                <label class="col-sm-10 col-form-label">@CurEmp.EmployeeId</label>
+            </div>
+
+            <div class="form-group-row">
+                <label class="col-sm-2 col-form-label">First Name</label>
+                <InputText class="col-sm-10 col-form-label" @bind-Value="CurEmp.FirstName" placeholder="Enter First Name" />
+                <ValidationMessage For="@(() => CurEmp.FirstName)"></ValidationMessage>
+            </div>
+
+            <div class="form-group-row">
+                <label class="col-sm-2 col-form-label">Last Name</label>
+                <InputText class="col-sm-10 col-form-label" @bind-Value="CurEmp.LastName" placeholder="Enter Last Name" />
+                <ValidationMessage For="@(() => CurEmp.LastName)"></ValidationMessage>
+            </div>
+
+            <div class="form-group-row">
+                <label class="col-sm-2 col-form-label">Birth Date</label>
+                <InputDate class="col-sm-10 col-form-label" @bind-Value="CurEmp.BirthDate" placeholder="Enter Birth Date" />
+            </div>
+
+            <div class="form-group-row">
+                <label class="col-sm-2 col-form-label">Joined Date</label>
+                <InputDate class="col-sm-10 col-form-label" @bind-Value="CurEmp.JoinedDate" placeholder="Enter Joined Date" />
+            </div>
+
+            <div class="form-group-row">
+                <label class="col-sm-2 col-form-label"> Gender </label>
+                <InputSelect class="col-sm-10 col-form-label" @bind-Value="CurEmp.Gender" placeholder="Enter Gender">
+                    <option value="@(Gender.Male)"> Male </option>
+                    <option value="@(Gender.Female)"> Female </option>
+                </InputSelect>
+            </div>
+
+            <div class="form-group-row">
+                <label class="col-sm-2 col-form-label"> Marital Status </label>
+                <InputSelect class="col-sm-10 col-form-label" @bind-Value="CurEmp.MaritalStatus" placeholder="Enter Marital Status">
+                    <option value="@(MaritalStatus.Single)"> Single </option>
+                    <option value="@(MaritalStatus.Married)"> Married </option>
+                    <option value="@(MaritalStatus.Other)"> Other </option>
+                </InputSelect>
+            </div>
+
+            <div class="form-group-row">
+                <label class="col-sm-2 col-form-label"> Country </label>
+                <InputSelect class="col-sm-10 col-form-label" @bind-Value="CurEmp.CountryId" placeholder="Enter Country">
+
+                    @foreach (var country in MockContext.Countries)
+                    {
+                        <option value="@country.CountryId"> @country.Name </option>
+                    }
+
+                </InputSelect>
+            </div>
+
+            <button class="btn btn-primary" type="submit"> Save Employee </button>
+
+        </EditForm>
+    }
+    else
+    {
+        <div>
+            <h3 class="alert alert-success">
+                Employee Saved successfully.............
+            </h3>
+        </div>
+    }
+}
+else
+{
+    <div>
+        <h3>
+            Still Loading.............
+        </h3>
+    </div>
+}

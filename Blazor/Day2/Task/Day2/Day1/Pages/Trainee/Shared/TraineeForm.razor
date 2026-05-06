@@ -1,0 +1,107 @@
+﻿@inject ITrackDataService trackDataService;
+
+@code {
+    [Parameter]
+    public Trainee trainee { get; set; } = default!;
+
+    [Parameter]
+    public string SubmitButtonText { get; set; } = "Save";
+
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+
+    [Parameter]
+    public EventCallback OnInvalidSubmit { get; set; }
+
+    public List<Track> tracks { get; set; }
+    override protected async Task OnInitializedAsync()
+    {
+       
+        tracks = (await trackDataService.GetAllTracks()).ToList();
+            
+        
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (OnValidSubmit.HasDelegate)
+        {
+            await OnValidSubmit.InvokeAsync();
+        }
+    }
+
+    private async Task HandleInvalidSubmit()
+    {
+        if (OnInvalidSubmit.HasDelegate)
+        {
+            await OnInvalidSubmit.InvokeAsync();
+        }
+    }
+}
+
+@if (trainee == null || tracks == null)
+{
+    <p>Loading Trainee Form.........</p>
+}
+else
+{
+    <EditForm Model="@trainee" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group-row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <InputText class="col-sm-10 col-form-label" @bind-Value="trainee.Name" placeholder="Enter Name" />
+            <ValidationMessage For="@(() => trainee.Name)"></ValidationMessage>
+        </div>
+
+        <div class="form-group-row">
+            <label class="col-sm-2 col-form-label">Gender</label>
+            <InputSelect class="col-sm-10 col-form-label" @bind-Value="trainee.Gender" placeholder="Enter Gender">
+                <option value="@(Gender.Male)"> Male </option>
+                <option value="@(Gender.Female)"> Female </option>
+            </InputSelect>
+            <ValidationMessage For="@(() => trainee.Gender)"></ValidationMessage>
+        </div>
+
+        <div class="form-group-row">
+            <label class="col-sm-2 col-form-label">Email</label>
+            <InputText class="col-sm-10 col-form-label" @bind-Value="trainee.Email" placeholder="Enter Email" />
+            <ValidationMessage For="@(() => trainee.Email)"></ValidationMessage>
+        </div>
+
+        <div class="form-group-row">
+            <label class="col-sm-2 col-form-label">Mobile Number</label>
+            <InputText class="col-sm-10 col-form-label" @bind-Value="trainee.MobileNo" placeholder="Enter Mobile Number" />
+            <ValidationMessage For="@(() => trainee.MobileNo)"></ValidationMessage>
+        </div>
+
+        <div class="form-group-row">
+            <label class="col-sm-2 col-form-label">Birth Date</label>
+            <InputDate class="col-sm-10 col-form-label" @bind-Value="trainee.Birthdate" placeholder="Enter Birth Date" />
+            <ValidationMessage For="@(() => trainee.Birthdate)"></ValidationMessage>
+        </div>
+
+
+        <div class="form-group-row">
+            <label class="col-sm-2 col-form-label"> Is Graduated </label>
+            <InputCheckbox class="col-sm-10 col-form-label" @bind-Value="trainee.IsGraduated" placeholder="Enter Graduation Status" />
+            <ValidationMessage For="@(() => trainee.IsGraduated)"></ValidationMessage>
+        </div>
+
+
+        <div class="form-group-row">
+            <label class="col-sm-2 col-form-label"> Track </label>
+            <InputSelect class="col-sm-10 col-form-label" @bind-Value="@trainee.TrackID" placeholder="Enter Track">
+
+                @foreach (var track in tracks)
+                {
+                    <option value="@track.ID"> @track.Name </option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => trainee.TrackID)"></ValidationMessage>
+        </div>
+
+        <button class="btn btn-primary" type="submit">@SubmitButtonText</button>
+    </EditForm>
+}
