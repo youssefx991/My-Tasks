@@ -12,7 +12,7 @@ namespace SD46API.Models
         [ForeignKey(nameof(Department))]
       //  [JsonIgnore]
         public int DeptId { get; set; }
-       // [JsonIgnore]
+        //[JsonIgnore]
         public Department? Department { get; set; }
     }
 }
