@@ -1,0 +1,23 @@
+﻿@page "/card"
+
+<h3>ProductCard</h3>
+
+<div class="product-card">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="@imageUrl" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@productName</h5>
+            <p class="card-text">@productDescription</p>
+            <a href="" class="btn btn-primary">Add to cart</a>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string imageUrl =
+        "https://www.ikea.com/eg/en/images/products/tjog-storage-box-with-lid-dark-grey__0921586_pe787908_s5.jpg?f=m";
+    private string productName =
+        "My Product";
+    private string productDescription =
+        "You won't believe how great this product is until you actually use it yourself.";
+}

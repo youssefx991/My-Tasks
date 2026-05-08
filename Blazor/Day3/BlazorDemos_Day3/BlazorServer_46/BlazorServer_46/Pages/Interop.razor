@@ -1,0 +1,55 @@
+﻿@page "/interop"
+
+@inject IJSRuntime jsRuntime
+
+<h3>Interop</h3>
+
+@* Calling JavaScript functions from Blazor C# Code: *@
+
+<button class="btn btn-primary" @onclick="onClickedButton">Alert Me</button>
+
+<button class="btn btn-primary" @onclick="CallExternalJsFunction">Call External JS Function</button>
+
+<p>
+    @movieName
+</p>
+
+@code {
+
+    string movieName;
+
+    private async Task onClickedButton()
+    {
+        await jsRuntime.InvokeVoidAsync("alert", "Hello from Blazor!");
+        await jsRuntime.InvokeVoidAsync("console.log", "Blazor Says Hello..........");
+
+        movieName = await jsRuntime.InvokeAsync<string>("prompt", "What is ur favourit Movie? ");
+    }
+
+    private async Task CallExternalJsFunction()
+    {
+        await jsRuntime.InvokeVoidAsync("GetName");
+    }
+
+}
+
+
+@* Calling C# functions from JavaScript: *@
+
+<button class="btn btn-primary" onclick="GiveMeRandomNumber()">Randomize</button>
+
+@code {
+
+    [JSInvokable]
+    public static Task<int> GenerateRandomInt()   //we need to call this function from JavaScript, so we need to make it static and also we need to return a Task because we are calling it from JavaScript and JavaScript is asynchronous.
+    {
+        return Task.FromResult(new Random().Next(1, 100));
+    }
+
+
+    // [JSInvokable]
+    // public static string GetCurrentTime()
+    // {
+    //     return DateTime.Now.ToString("hh:mm:ss tt");
+    // }
+}   

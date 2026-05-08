@@ -1,4 +1,5 @@
 ﻿using Day1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Day1.Repositories
 {
@@ -11,41 +12,46 @@ namespace Day1.Repositories
             this.Context = Context;
         }
 
-        public void Add(T entity)
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
         {
-            Context.Set<T>().Add(entity);
-            Save();
+            await Context.Set<T>().AddAsync(entity, cancellationToken);
+            //Save();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
-            var entity = GetByID(id);
+            var entity = await Context.Set<T>().FindAsync(new object[] { id }, cancellationToken);
             if (entity != null)
             {
                 Context.Set<T>().Remove(entity);
-                Save();
+                //Save();
             }
         }
 
-        public List<T> GetAll()
+        public async Task<List<T>> GetAllAsync(string[] match = null, CancellationToken cancellationToken = default)
         {
-            return Context.Set<T>().ToList();
+            IQueryable<T> query = Context.Set<T>();
+            foreach (var item in match ?? Array.Empty<string>())
+            {
+                query = query.Include(item);
+            }
+
+            return await query.ToListAsync(cancellationToken);
         }
 
-        public T GetByID(int id)
+        public async Task<T?> GetByIDAsync(int id, CancellationToken cancellationToken = default)
         {
-            return Context.Set<T>().Find(id);
+            return await Context.Set<T>().FindAsync(new object[] { id }, cancellationToken);
         }
 
         public void Update(T entity)
         {
             Context.Set<T>().Update(entity);
-            Save();
         }
 
-        public void Save()
+        public async Task<int> SaveAsync(CancellationToken cancellationToken = default)
         {
-            Context.SaveChanges();
+            return await Context.SaveChangesAsync(cancellationToken);
         }
     }
 

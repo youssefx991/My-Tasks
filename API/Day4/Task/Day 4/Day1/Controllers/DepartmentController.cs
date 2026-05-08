@@ -1,6 +1,7 @@
 ﻿using Day1.DTOs;
 using Day1.Models;
 using Day1.Repositories;
+using Day1.UnitOfWork;
 using MapsterMapper;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -14,66 +15,121 @@ namespace Day1.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        private readonly IDepartmentRepo DepartmentRepo;
+        private readonly IUnitOfWork _uow;
         private readonly IMapper Mapper;
-        public DepartmentController(IDepartmentRepo departmentRepo, IMapper mapper)
+        public DepartmentController(IUnitOfWork uow, IMapper mapper)
         {
-            DepartmentRepo = departmentRepo;
+            _uow = uow;
             Mapper = mapper;
         }
 
         [HttpGet("all")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken = default)
         {
-            var departments = DepartmentRepo.GetAllWithStudents();
+            var departments = await _uow.DepartmentRepo.GetAllAsync(new string[] { "Students" }, cancellationToken);
             var result = Mapper.Map<List<Department>, List<DepartmentWithStudentsDTO>>(departments);
-            return Ok(new {data=result, msg="Departments with students retrieved successfully."});
+            return Ok(new { data = result, msg = "Departments with students retrieved successfully." });
         }
 
         [HttpGet("alldepts")]
-        public IActionResult GetAllDepts()
+        public async Task<IActionResult> GetAllDepts(CancellationToken cancellationToken = default)
         {
-            var departments = DepartmentRepo.GetAll();
+            var departments = await _uow.DepartmentRepo.GetAllAsync(cancellationToken: cancellationToken);
 
             var result = Mapper.Map<List<Department>, List<DepartmentDTO>>(departments);
-            return Ok(new {data=result, msg="Departments retrieved successfully."});
+            return Ok(new { data = result, msg = "Departments retrieved successfully." });
         }
 
 
         [HttpGet("{id:int}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id, CancellationToken cancellationToken = default)
         {
-            var department = DepartmentRepo.GetByID(id);
+            var department = await _uow.DepartmentRepo.GetByIDAsync(id, cancellationToken);
             if (department == null)
                 return NotFound();
-            return Ok(new {data=department, msg="Department retrieved successfully."});
+            return Ok(new { data = department, msg = "Department retrieved successfully." });
         }
 
         [HttpPost]
-        public IActionResult Add(DepartmentDTO departmentDTO)
+        public async Task<IActionResult> Add(DepartmentDTO departmentDTO, CancellationToken cancellationToken = default)
         {
             var department = Mapper.Map<DepartmentDTO, Department>(departmentDTO);
-            DepartmentRepo.Add(department);
-            return CreatedAtAction(nameof(Get), new { id = department.ID }, new {data=department, msg="Department created successfully."});
+            await _uow.DepartmentRepo.AddAsync(department, cancellationToken);
+            int affectedRows = await _uow.SaveAsync(cancellationToken);
+            return CreatedAtAction(nameof(Get), new { id = department.ID }, new { data = department, rows = affectedRows, msg = "Department created successfully." });
 
         }
 
         [HttpPut]
-        public IActionResult Update(DepartmentDTO departmentDTO)
+        public async Task<IActionResult> Update(DepartmentDTO departmentDTO, CancellationToken cancellationToken)
         {
             var department = Mapper.Map<DepartmentDTO, Department>(departmentDTO);
-            DepartmentRepo.Update(department);
-            return Ok(new {data=department, msg="Department updated successfully."});
+            _uow.DepartmentRepo.Update(department);
+            int affectedRows = await _uow.SaveAsync(cancellationToken);
+
+            return Ok(new { data = department, rows = affectedRows, msg = "Department updated successfully." });
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
         {
-            var department = DepartmentRepo.GetByID(id);
+            var department = await _uow.DepartmentRepo.GetByIDAsync(id, cancellationToken);
             if (department == null)
                 return NotFound();
-            DepartmentRepo.Delete(department.ID);
-            return Ok(new {data=department, msg="Department deleted successfully."});
+            await _uow.DepartmentRepo.DeleteAsync(department.ID, cancellationToken);
+            int affectedRows = await _uow.SaveAsync(cancellationToken);
+
+            return Ok(new { data = department, rows = affectedRows, msg = "Department deleted successfully." });
+        }
+
+        [HttpGet("test-cancellation")]
+        public async Task<IActionResult> TestCancellation(CancellationToken cancellationToken)
+        {
+            Console.WriteLine("Started Cancellation Endpoint");
+
+            try
+            {
+                await Task.Delay(10_000, cancellationToken);
+
+                Console.WriteLine("Finished Cancellation Endpoint");
+
+                return Ok(new
+                {
+                    msg = "Cancellation test completed."
+                });
+            }
+            catch (TaskCanceledException)
+            {
+                Console.WriteLine("Task Was Cancelled");
+
+
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("test-no-cancellation")]
+        public async Task<IActionResult> TestNoCancellation()
+        {
+            Console.WriteLine("Started No Cancellation Endpoint");
+
+            try
+            {
+                await Task.Delay(10_000);
+
+                Console.WriteLine("Finished No Cancellation Endpoint");
+
+                return Ok(new
+                {
+                    msg = "No cancellation test completed."
+                });
+            }
+            catch (TaskCanceledException)
+            {
+                Console.WriteLine("Task Was Cancelled");
+
+
+                return BadRequest();
+            }
         }
     }
 }

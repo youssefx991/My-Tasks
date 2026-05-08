@@ -5,6 +5,7 @@ using Day1.Mapping;
 using Day1.Middlewares;
 using Day1.Models;
 using Day1.Repositories;
+using Day1.UnitOfWork;
 using Mapster;
 using MapsterMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -48,7 +49,7 @@ namespace Day1
 
             builder.Services.AddDbContext<StudentContext>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
-            builder.Services.AddScoped<IDepartmentRepo, DepartmentRepo>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWorkClass>();
             builder.Services.AddSingleton(TypeAdapterConfig.GlobalSettings);
             builder.Services.AddScoped<IMapper, ServiceMapper>();
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()

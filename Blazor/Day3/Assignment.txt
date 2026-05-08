@@ -1,0 +1,15 @@
+1- Create a project using (Blazor Web App) template, "Interactive-Render-Mode: Server":
+ 
+
+	- Implement JSInterop in your application, (Call java function from C#, and visa versa)
+
+
+	- Implement Identity in your Blazor application:
+		* Show/Hide application parts based on user state  
+		* Don't allow anonymous users to access pages via url
+
+	
+ 	- Create a Razor Class Library, it should contain 2 "Non-routable" custom component of your choice
+		, use them in your application
+
+

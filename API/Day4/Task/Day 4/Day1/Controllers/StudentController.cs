@@ -2,6 +2,7 @@
 using Day1.Filters;
 using Day1.Models;
 using Day1.Repositories;
+using Day1.UnitOfWork;
 using MapsterMapper;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -14,28 +15,28 @@ namespace Day1.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        private readonly IGenericRepo<Student> StudentRepo;
+        private readonly IUnitOfWork _uow;
         private readonly IMapper Mapper;
 
-        public StudentController(IGenericRepo<Student> studentRepo, IMapper mapper)
+        public StudentController(IUnitOfWork uow, IMapper mapper)
         {
-            StudentRepo = studentRepo;
+            _uow = uow;
             Mapper = mapper;
         }
 
         [HttpGet("all")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
-            var students = StudentRepo.GetAll();
+            var students = await _uow.StudentRepo.GetAllAsync(cancellationToken: cancellationToken);
             var result = Mapper.Map<List<Student>, List<StudentDTO>>(students);
 
             return Ok(new { data = result, msg = "Students Retrieved Successfully" });
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult GetByID(int id)
+        public async Task<IActionResult> GetByIDAsync(int id, CancellationToken cancellationToken)
         {
-            var student = StudentRepo.GetByID(id);
+            var student = await _uow.StudentRepo.GetByIDAsync(id, cancellationToken);
             if (student == null)
                 return NotFound($"No Student Found with this ID: {id}");
             var result = Mapper.Map<StudentDTO>(student);
@@ -52,35 +53,87 @@ namespace Day1.Controllers
         //}
 
         [HttpPost]
-        public IActionResult Add(StudentDTO studentDTO)
+        public async Task<IActionResult> Add(StudentDTO studentDTO, CancellationToken cancellationToken = default)
         {
             var student = Mapper.Map<Student>(studentDTO);
 
-            StudentRepo.Add(student);
+            await _uow.StudentRepo.AddAsync(student, cancellationToken);
+            int affectedRows = await _uow.SaveAsync(cancellationToken);
 
 
-            return CreatedAtAction(nameof(GetByID), new { id = student.ID }, new { data = student, msg = $"Student with ID {student.ID} Added Successfully" });
+            return CreatedAtAction(nameof(GetByIDAsync), new { id = student.ID }, new { data = student, rows = affectedRows, msg = $"Student with ID {student.ID} Added Successfully" });
         }
 
 
         [HttpPut]
-        public IActionResult Update(StudentDTO studentDTO)
+        public async Task<IActionResult> Update(StudentDTO studentDTO, CancellationToken cancellationToken = default)
         {
             var student = Mapper.Map<Student>(studentDTO);
-            StudentRepo.Update(student);
-            return Ok(new { data = student, msg = $"Student with ID {student.ID} Updated Successfully" });
+            _uow.StudentRepo.Update(student);
+            int affectedRows = await _uow.SaveAsync(cancellationToken);
+            return Ok(new { data = student, rows = affectedRows, msg = $"Student with ID {student.ID} Updated Successfully" });
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken = default)
         {
-            var student = StudentRepo.GetByID(id);
+            var student = await _uow.StudentRepo.GetByIDAsync(id, cancellationToken);
             if (student == null)
                 return NotFound($"No Student Found with this ID: {id}");
-            StudentRepo.Delete(student.ID);
-            return Ok(new { data = student, msg = $"Student with ID {student.ID} Deleted Successfully" });
+            await _uow.StudentRepo.DeleteAsync(student.ID, cancellationToken);
+            int affectedRows = await _uow.SaveAsync(cancellationToken);
+            return Ok(new { data = student, rows = affectedRows, msg = $"Student with ID {student.ID} Deleted Successfully" });
         }
 
+        [HttpGet("test-cancellation")]
+        public async Task<IActionResult> TestCancellation(CancellationToken cancellationToken)
+        {
+            Console.WriteLine("Started Cancellation Endpoint");
+
+            try
+            {
+                await Task.Delay(10_000, cancellationToken);
+
+                Console.WriteLine("Finished Cancellation Endpoint");
+
+                return Ok(new
+                {
+                    msg = "Cancellation test completed."
+                });
+            }
+            catch (TaskCanceledException)
+            {
+                Console.WriteLine("Task Was Cancelled");
+
+
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("test-no-cancellation")]
+        public async Task<IActionResult> TestNoCancellation()
+        {
+            Console.WriteLine("Started No Cancellation Endpoint");
+
+            try
+            {
+                await Task.Delay(10_000);
+
+                Console.WriteLine("Finished No Cancellation Endpoint");
+
+                return Ok(new
+                {
+                    msg = "No cancellation test completed."
+                });
+            }
+            catch (TaskCanceledException)
+            {
+                Console.WriteLine("Task Was Cancelled");
+
+
+                return BadRequest();
+            }
+        }
 
         [HttpGet("throw")]
 

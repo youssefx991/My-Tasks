@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BlazorWebApp_Both_46/BlazorWebApp_Both_46.csproj" />
+  <Project Path="RazorComponentLibrary/RazorComponentLibrary.csproj" />
+</Solution>
