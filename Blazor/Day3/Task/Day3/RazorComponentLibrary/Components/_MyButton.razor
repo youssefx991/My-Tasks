@@ -1,0 +1,18 @@
+﻿<button class="btn btn-lg btn-primary px-4 py-2 rounded-pill shadow-sm fw-semibold
+    d-inline-flex align-items-center gap-2"
+        @onclick="OnClick">
+
+    <i class="bi bi-lightning-charge-fill"></i>
+
+    @Text
+
+</button>
+
+@code {
+
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+}

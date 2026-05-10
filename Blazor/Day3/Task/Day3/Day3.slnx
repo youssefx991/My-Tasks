@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Day3/Day3.csproj" />
+  <Project Path="RazorComponentLibrary/RazorComponentLibrary.csproj" />
+</Solution>

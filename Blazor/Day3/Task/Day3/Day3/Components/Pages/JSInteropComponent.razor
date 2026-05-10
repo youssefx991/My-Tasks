@@ -1,0 +1,36 @@
+﻿@page "/jsinterop"
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+
+<h3>JSInteropComponent</h3>
+
+<AuthorizeView>
+
+    <Authorized>
+        <_MyButton Text="Show JS Alert" OnClick="onclickShowJSAlert" />
+        <_MyButton Text="Invoke .NET Method" OnClick="InvokeDotNetMethod" />
+        <_MyCard Title="JS Interop Example" Description="This is an example of JS Interop in Blazor Server. Click the buttons above to see it in action." />
+    </Authorized>
+    <NotAuthorized>
+        <_MyCard Title="Not Authorized" Description="You must be logged in to see the JS Interop buttons." />
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    public async Task onclickShowJSAlert()
+    {
+        await JSRuntime.InvokeVoidAsync("ShowJSAlert");
+    }
+
+    public async Task InvokeDotNetMethod()
+    {
+        await JSRuntime.InvokeVoidAsync("InvokeDotNetMethod");
+    }
+
+    [JSInvokable]
+    public static int GetRandomNumberBetween(int min, int max)
+    {
+        var random = new Random();
+        return random.Next(min, max);
+    }
+}
