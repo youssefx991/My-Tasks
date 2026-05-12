@@ -29,6 +29,7 @@ export class GameManager {
     }
     handleCardClick(element, card) {
         if (this.firstClick) {
+            this.ui.updateProgressBar(0);
             this.timer.start((time) => this.ui.updateTimer(time));
             this.audio.fulltrack.play();
             this.firstClick = false;
@@ -47,7 +48,7 @@ export class GameManager {
         this.secondElement = element;
         this.moves++;
         this.ui.updateMoves(this.moves);
-        if (this.moves >= 30 && this.matchedPairs < CardsNames.length) {
+        if (this.moves >= 40 && this.matchedPairs < CardsNames.length) {
             this.loseGame();
             return;
         }
@@ -68,6 +69,7 @@ export class GameManager {
         this.matchedPairs++;
         this.score += 10;
         this.ui.updateScore(this.score);
+        this.ui.updateProgressBar((this.matchedPairs / CardsNames.length) * 100);
         this.resetTurn();
         if (this.matchedPairs === CardsNames.length)
             this.winGame();
@@ -76,6 +78,7 @@ export class GameManager {
         this.locked = true;
         this.audio.fail.play();
         setTimeout(() => {
+            this.ui.updateProgressBar((this.matchedPairs / CardsNames.length) * 100);
             this.ui.unflipCard(this.firstELement);
             this.ui.unflipCard(this.secondElement);
             this.firstCard?.unflip();
@@ -92,6 +95,7 @@ export class GameManager {
     }
     winGame() {
         this.audio.good.play();
+        this.timer.pause();
         alert(`
             You Won!
 

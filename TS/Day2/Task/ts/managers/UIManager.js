@@ -3,6 +3,7 @@ export class UIManager {
     movesElement = document.getElementById("moves");
     timerElement = document.getElementById("timer");
     scoreElement = document.getElementById("score");
+    progressBarElement = document.getElementById("progress-bar");
     renderCards(cards, onclick) {
         this.gameBoard.innerHTML = "";
         cards.forEach((card) => {
@@ -61,5 +62,11 @@ export class UIManager {
     updateScore(score) {
         if (this.scoreElement)
             this.scoreElement.textContent = score.toString();
+    }
+    updateProgressBar(progress) {
+        if (this.progressBarElement) {
+            this.progressBarElement.style.width = `${progress}%`;
+            this.progressBarElement.textContent = `${Math.round(progress)}%`;
+        }
     }
 }

@@ -16,4 +16,9 @@ export class TimerManager {
     getTime() {
         return this.seconds;
     }
+    pause() {
+        if (this.interval) {
+            clearInterval(this.interval);
+        }
+    }
 }

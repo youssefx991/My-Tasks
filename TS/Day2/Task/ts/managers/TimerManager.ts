@@ -23,4 +23,12 @@ export class TimerManager
     {
         return this.seconds;
     }
+
+    pause(): void
+    {
+        if (this.interval)
+        {
+            clearInterval(this.interval);
+        }
+    }
 }
