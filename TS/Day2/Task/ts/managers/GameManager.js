@@ -76,16 +76,10 @@ export class GameManager {
         this.locked = true;
         this.audio.fail.play();
         setTimeout(() => {
-            if (this.firstELement) {
-                this.ui.flipCard(this.firstELement);
-                this.firstCard?.unflip();
-            }
-            if (this.secondElement) {
-                this.ui.flipCard(this.secondElement);
-                this.secondCard?.unflip();
-            }
             this.ui.unflipCard(this.firstELement);
             this.ui.unflipCard(this.secondElement);
+            this.firstCard?.unflip();
+            this.secondCard?.unflip();
             this.resetTurn();
         }, 1000);
     }

@@ -5,12 +5,11 @@ import { TimerManager } from "./TimerManager.js";
 import { CardsNames } from "../models/CardsNames.js";
 import { ShuffleArray } from "../Utils/ShuffleUtility.js";
 
-export class GameManager
-{
-    cards : Card[] = [];
-    ui : UIManager = new UIManager();
-    audio : AudioManager = new AudioManager();
-    timer : TimerManager = new TimerManager();
+export class GameManager {
+    cards: Card[] = [];
+    ui: UIManager = new UIManager();
+    audio: AudioManager = new AudioManager();
+    timer: TimerManager = new TimerManager();
     firstCard: Card | null = null;
     firstELement: HTMLElement | null = null;
     secondCard: Card | null = null;
@@ -21,20 +20,17 @@ export class GameManager
     matchedPairs: number = 0;
     firstClick: boolean = true;
 
-    start() : void 
-    {
+    start(): void {
         this.createCards();
         this.ui.renderCards(this.cards, (element, card) => this.handleCardClick(element, card));
     }
-    createCards() : void
-    {
+    createCards(): void {
         const duplicated = [...CardsNames, ...CardsNames];
         const shuffled = ShuffleArray(duplicated);
         this.cards = shuffled.map((name, index) => new Card(index, name));
     }
 
-    handleCardClick(element: HTMLElement, card: Card) : void
-    {
+    handleCardClick(element: HTMLElement, card: Card): void {
         if (this.firstClick) {
             this.timer.start((time) => this.ui.updateTimer(time));
             this.audio.fulltrack.play();
@@ -50,10 +46,10 @@ export class GameManager
             this.firstELement = element;
             return;
         }
-        
+
         this.secondCard = card;
         this.secondElement = element;
-        
+
         this.moves++;
         this.ui.updateMoves(this.moves);
         if (this.moves >= 30 && this.matchedPairs < CardsNames.length) {
@@ -64,8 +60,7 @@ export class GameManager
 
     }
 
-    checkMatch() : void
-    {
+    checkMatch(): void {
         if (this.firstCard?.image === this.secondCard?.image) {
             this.handleSuccess();
         } else {
@@ -73,8 +68,7 @@ export class GameManager
         }
     }
 
-    handleSuccess() : void
-    {
+    handleSuccess(): void {
         this.firstCard?.match();
         this.secondCard?.match();
         this.audio.good.play();
@@ -86,42 +80,33 @@ export class GameManager
             this.winGame();
     }
 
-    handleFail(): void
-    {
+    handleFail(): void {
         this.locked = true;
         this.audio.fail.play();
         setTimeout(() => {
-            if (this.firstELement)
-            {
-                this.ui.flipCard(this.firstELement);
-                this.firstCard?.unflip();
-            }
-            if (this.secondElement)
-            {
-                this.ui.flipCard(this.secondElement);
-                this.secondCard?.unflip();
-            }
-
+            
             this.ui.unflipCard(this.firstELement!);
             this.ui.unflipCard(this.secondElement!);
 
+            this.firstCard?.unflip();
+            this.secondCard?.unflip();
+
             this.resetTurn();
+
         }, 1000);
     }
-    resetTurn() : void
-    {
+    resetTurn(): void {
         this.firstCard = null;
         this.secondCard = null;
         this.firstELement = null;
         this.secondElement = null;
         this.locked = false;
     }
-    
 
-    winGame() : void
-    {
+
+    winGame(): void {
         this.audio.good.play();
-         alert(`
+        alert(`
             You Won!
 
             Moves: ${this.moves}
@@ -132,8 +117,7 @@ export class GameManager
         `);
     }
 
-    loseGame() : void
-    {
+    loseGame(): void {
         this.audio.fulltrack.stop();
         this.audio.gameover.play();
         alert(`
@@ -146,8 +130,7 @@ export class GameManager
         this.restart();
     }
 
-    restart() : void
-    {
+    restart(): void {
         this.cards = [];
         this.firstCard = null;
         this.secondCard = null;
