@@ -1,16 +1,16 @@
 export class Sound {
     name;
-    audio;
+    audioElement;
     constructor(name) {
         this.name = name;
-        this.audio = new Audio(`assets/audio/${name}.mp3`);
+        this.audioElement = new Audio(`assets/audio/${name}.mp3`);
     }
     play() {
-        this.audio.currentTime = 0;
-        this.audio.play();
+        this.audioElement.currentTime = 0;
+        this.audioElement.play();
     }
     stop() {
-        this.audio.pause();
-        this.audio.currentTime = 0;
+        this.audioElement.pause();
+        this.audioElement.currentTime = 0;
     }
 }

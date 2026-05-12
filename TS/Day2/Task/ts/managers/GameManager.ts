@@ -28,8 +28,8 @@ export class GameManager
     }
     createCards() : void
     {
-        const duplioted = [...CardsNames, ...CardsNames];
-        const shuffled = ShuffleArray(duplioted);
+        const duplicated = [...CardsNames, ...CardsNames];
+        const shuffled = ShuffleArray(duplicated);
         this.cards = shuffled.map((name, index) => new Card(index, name));
     }
 

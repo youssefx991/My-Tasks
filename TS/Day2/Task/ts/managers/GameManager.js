@@ -23,8 +23,8 @@ export class GameManager {
         this.ui.renderCards(this.cards, (element, card) => this.handleCardClick(element, card));
     }
     createCards() {
-        const duplioted = [...CardsNames, ...CardsNames];
-        const shuffled = ShuffleArray(duplioted);
+        const duplicated = [...CardsNames, ...CardsNames];
+        const shuffled = ShuffleArray(duplicated);
         this.cards = shuffled.map((name, index) => new Card(index, name));
     }
     handleCardClick(element, card) {
