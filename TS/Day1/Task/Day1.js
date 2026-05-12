@@ -6,11 +6,10 @@ let profile1 = {
     username: "youssef",
     email: "youssef@example.com"
 };
-;
 let colors = {
-    red: { code: "#FF0000" },
-    green: { code: "#00FF00" },
-    blue: { code: "#0000FF" }
+    red: "#FF0000",
+    green: "#00FF00",
+    blue: "#0000FF"
 };
 console.log(colors.red);
 let Person1 = {

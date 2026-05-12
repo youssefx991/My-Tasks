@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memory Game</title>
+    <link rel="icon" type="image/jpeg" href="assets/brain.jpg">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-dark text-light">
+
+    <div class="container py-4">
+
+        <!-- Header -->
+        <div class="row mb-4">
+
+            <div class="col text-center">
+
+                <h1 class="fw-bold display-4">
+                    Memory Game
+                </h1>
+
+                <p class="text-secondary">
+                    Match all cards to win
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Stats -->
+        <div class="row g-3 mb-4">
+
+            <div class="col-md-3">
+
+                <div class="bg-secondary-subtle text-dark rounded p-3 text-center shadow">
+
+                    <h5>Moves</h5>
+
+                    <span id="moves" class="fs-4 fw-bold">
+                        0
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <div class="bg-secondary-subtle text-dark rounded p-3 text-center shadow">
+
+                    <h5>Score</h5>
+
+                    <span id="score" class="fs-4 fw-bold">
+                        0
+                    </span>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="bg-secondary-subtle text-dark rounded p-3 text-center shadow">
+
+                    <h5>Timer</h5>
+
+                    <span id="timer" class="fs-4 fw-bold">
+                        0
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3 d-flex align-items-center justify-content-center">
+
+                <button
+                    id="restart-btn"
+                    class="btn btn-primary px-4 py-2"
+                    
+                >
+                    Restart Game
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Board -->
+        <div class="row justify-content-center">
+
+            <div class="col-lg-10">
+
+                <div id="game-board">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Audio -->
+    <audio id="bg-music" src="assets/audio/fulltrack.mp3" loop></audio>
+
+    <audio id="flip-sound" src="assets/audio/flip.mp3"></audio>
+
+    <audio id="game-over-sound" src="assets/audio/game-over.mp3"></audio>
+
+    <audio id="fail-sound" src="assets/audio/fail.mp3"></audio>
+
+    <audio id="win-sound" src="assets/audio/good.mp3"></audio>
+
+    <!-- JS -->
+    <script type="module" src="ts/main.js"></script>
+
+</body>
+
+</html>

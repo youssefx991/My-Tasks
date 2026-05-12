@@ -24,18 +24,17 @@ let profile1: Required<Profile> = {
 
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------
-// 3- Use Record to create an object where keys are "red", "green", and "blue", and values are their corresponding hex color codes (strings). 
+// 3- Use Record to create an object where keys are "red", "green", and "blue", 
+// and values are their corresponding hex color codes (strings). 
 //    Test by accessing the red key.
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------
 type Keys = "red" | "green" | "blue";
-interface Values {
-    code : string;
-};
+type Values = string;
 
 let colors : Record<Keys, Values> = {
-    red: { code: "#FF0000" },
-    green: { code: "#00FF00" },
-    blue: { code: "#0000FF" }
+    red:  "#FF0000" ,
+    green:  "#00FF00" ,
+    blue:  "#0000FF"
 }
 
 console.log(colors.red);

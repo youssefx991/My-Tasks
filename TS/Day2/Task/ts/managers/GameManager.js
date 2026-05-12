@@ -1,0 +1,131 @@
+import { Card } from "../models/Card.js";
+import { UIManager } from "./UIManager.js";
+import { AudioManager } from "./AudioManager.js";
+import { TimerManager } from "./TimerManager.js";
+import { CardsNames } from "../models/CardsNames.js";
+import { ShuffleArray } from "../Utils/ShuffleUtility.js";
+export class GameManager {
+    cards = [];
+    ui = new UIManager();
+    audio = new AudioManager();
+    timer = new TimerManager();
+    firstCard = null;
+    firstELement = null;
+    secondCard = null;
+    secondElement = null;
+    moves = 0;
+    score = 0;
+    locked = false;
+    matchedPairs = 0;
+    start() {
+        this.timer.start((time) => this.ui.updateTimer(time));
+        this.audio.fulltrack.play();
+        this.createCards();
+        this.ui.renderCards(this.cards, (element, card) => this.handleCardClick(element, card));
+    }
+    createCards() {
+        const duplioted = [...CardsNames, ...CardsNames];
+        const shuffled = ShuffleArray(duplioted);
+        this.cards = shuffled.map((name, index) => new Card(index, name));
+    }
+    handleCardClick(element, card) {
+        if (this.locked || card.isFlipped || card.isMatched)
+            return;
+        this.ui.flipCard(element);
+        card.flip();
+        this.audio.flip.play();
+        if (!this.firstELement) {
+            this.firstCard = card;
+            this.firstELement = element;
+            return;
+        }
+        this.secondCard = card;
+        this.secondElement = element;
+        this.moves++;
+        this.ui.updateMoves(this.moves);
+        this.checkMatch();
+    }
+    checkMatch() {
+        if (this.firstCard?.image === this.secondCard?.image) {
+            this.handleSuccess();
+        }
+        else {
+            this.handleFail();
+        }
+    }
+    handleSuccess() {
+        this.firstCard?.match();
+        this.secondCard?.match();
+        this.audio.good.play();
+        this.matchedPairs++;
+        this.score += 10;
+        this.ui.updateScore(this.score);
+        this.resetTurn();
+        if (this.matchedPairs === CardsNames.length)
+            this.winGame();
+    }
+    handleFail() {
+        this.locked = true;
+        this.audio.fail.play();
+        setTimeout(() => {
+            if (this.firstELement) {
+                this.ui.flipCard(this.firstELement);
+                this.firstCard?.unflip();
+            }
+            if (this.secondElement) {
+                this.ui.flipCard(this.secondElement);
+                this.secondCard?.unflip();
+            }
+            this.ui.unflipCard(this.firstELement);
+            this.ui.unflipCard(this.secondElement);
+            this.resetTurn();
+        }, 1000);
+    }
+    resetTurn() {
+        this.firstCard = null;
+        this.secondCard = null;
+        this.firstELement = null;
+        this.secondElement = null;
+        this.locked = false;
+    }
+    winGame() {
+        this.audio.good.play();
+        alert(`
+            You Won!
+
+            Moves: ${this.moves}
+
+            Score: ${this.score}
+
+            Time: ${this.timer.getTime()}s
+        `);
+    }
+    loseGame() {
+        this.audio.fail.play();
+        alert(`
+            Game Over!
+
+            Moves: ${this.moves}
+
+            Time: ${this.timer.getTime()}s
+        `);
+    }
+    restart() {
+        this.cards = [];
+        this.firstCard = null;
+        this.secondCard = null;
+        this.firstELement = null;
+        this.secondElement = null;
+        this.moves = 0;
+        this.score = 0;
+        this.locked = false;
+        this.matchedPairs = 0;
+        this.timer.reset();
+        this.audio.fulltrack.stop();
+        this.audio.fulltrack.play();
+        this.ui.updateMoves(this.moves);
+        this.ui.updateTimer(this.timer.getTime());
+        this.ui.updateScore(this.score);
+        this.start();
+    }
+}
