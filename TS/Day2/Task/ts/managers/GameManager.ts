@@ -56,6 +56,10 @@ export class GameManager
         
         this.moves++;
         this.ui.updateMoves(this.moves);
+        if (this.moves >= 30 && this.matchedPairs < CardsNames.length) {
+            this.loseGame();
+            return;
+        }
         this.checkMatch();
 
     }
@@ -130,14 +134,16 @@ export class GameManager
 
     loseGame() : void
     {
-        this.audio.fail.play();
+        this.audio.fulltrack.stop();
+        this.audio.gameover.play();
         alert(`
             Game Over!
-
+            
             Moves: ${this.moves}
-
+            
             Time: ${this.timer.getTime()}s
-        `);
+            `);
+        this.restart();
     }
 
     restart() : void
