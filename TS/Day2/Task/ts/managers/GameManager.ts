@@ -19,11 +19,10 @@ export class GameManager
     score: number = 0;
     locked: boolean = false;
     matchedPairs: number = 0;
+    firstClick: boolean = true;
 
     start() : void 
     {
-        this.timer.start((time) => this.ui.updateTimer(time));
-        this.audio.fulltrack.play();
         this.createCards();
         this.ui.renderCards(this.cards, (element, card) => this.handleCardClick(element, card));
     }
@@ -36,6 +35,11 @@ export class GameManager
 
     handleCardClick(element: HTMLElement, card: Card) : void
     {
+        if (this.firstClick) {
+            this.timer.start((time) => this.ui.updateTimer(time));
+            this.audio.fulltrack.play();
+            this.firstClick = false;
+        }
         if (this.locked || card.isFlipped || card.isMatched) return;
         this.ui.flipCard(element);
         card.flip();
@@ -149,7 +153,7 @@ export class GameManager
         this.matchedPairs = 0;
         this.timer.reset();
         this.audio.fulltrack.stop();
-        this.audio.fulltrack.play();
+        this.firstClick = true;
         this.ui.updateMoves(this.moves);
         this.ui.updateTimer(this.timer.getTime());
         this.ui.updateScore(this.score);
