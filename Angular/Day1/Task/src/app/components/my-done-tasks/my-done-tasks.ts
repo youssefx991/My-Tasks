@@ -9,15 +9,18 @@ import { Task } from '../../types';
 })
 export class MyDoneTasks {
   data : Task[] = [];
+  originalData: Task[] = [];
 
   @Input()
   set TasksFromList(tasks: Task[]) {
+    this.originalData = tasks;
     this.data = tasks.filter(task => task.isDone);
   }
 
   @Output() SendUpdatedTaskIDToList = new EventEmitter<string>();
 
   markAsDone(task: Task) {
+    this.originalData.find(t => t.id === task.id)!.isDone = true;
     task.isDone = true;
   }
 
@@ -26,6 +29,7 @@ export class MyDoneTasks {
   }
 
   markAsNotDone(task: Task) {
+    this.originalData.find(t => t.id === task.id)!.isDone = false;
     task.isDone = false;
     this.data = this.data.filter(task => task.isDone);
   }
@@ -33,6 +37,13 @@ export class MyDoneTasks {
   deleteTask(task: Task) {
     const index = this.data.indexOf(task);
     if (index > -1)
+    {
       this.data.splice(index, 1);
+    }
+    const originalIndex = this.originalData.findIndex(t => t.id === task.id);
+    if (originalIndex > -1)
+    {
+      this.originalData.splice(originalIndex, 1);
+    }
   }
 }
