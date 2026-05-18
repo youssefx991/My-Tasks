@@ -9,24 +9,16 @@ import { Task } from '../../types';
   styleUrl: './my-not-done-tasks.css',
 })
 export class MyNotDoneTasks {
-  data: Task[] = [];
-  originalData: Task[] = [];
+  @Input() TasksFromList: Task[] = [];
 
-  @Input()
-  set TasksFromList(tasks: Task[]) {
-    this.originalData = tasks;
-    this.data = tasks.filter(task => !task.isDone);
+  get data(): Task[] {
+    return this.TasksFromList.filter(task => !task.isDone);
   }
 
   @Output() SendUpdatedTaskIDToList = new EventEmitter<{ taskId: string; uuid: string }>();
 
   markAsDone(task: Task) {
-    const originalTask = this.originalData.find(t => t.id === task.id);
-    if (originalTask) {
-      originalTask.isDone = true;
-    }
     task.isDone = true;
-    this.data = this.data.filter(task => !task.isDone);
   }
 
   updateTask(task: Task) {
@@ -34,10 +26,6 @@ export class MyNotDoneTasks {
   }
 
   markAsNotDone(task: Task) {
-    const originalTask = this.originalData.find(t => t.id === task.id);
-    if (originalTask) {
-      originalTask.isDone = false;
-    }
     task.isDone = false;
   }
 
@@ -46,8 +34,8 @@ export class MyNotDoneTasks {
     if (index > -1)
       this.data.splice(index, 1);
 
-    const originalIndex = this.originalData.findIndex(t => t.id === task.id);
+    const originalIndex = this.TasksFromList.findIndex(t => t.id === task.id);
     if (originalIndex > -1)
-      this.originalData.splice(originalIndex, 1);
+      this.TasksFromList.splice(originalIndex, 1);
   }
 }
