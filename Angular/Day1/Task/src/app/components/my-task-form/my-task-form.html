@@ -1,23 +1,37 @@
 <div id="my-task-form">
 
-Task Title: <input placeholder="Task Title" [(ngModel)]="FormTask.title" /> <p>{{FormTask.title}}</p>
-Task Description: <input placeholder="Task Description" [(ngModel)]="FormTask.description" /> <p>{{FormTask.description}}</p>
-Task Priority: <select placeholder="Task Priority" [(ngModel)]="FormTask.priority">
-  <option value="low">Low</option>
-  <option value="medium">Medium</option>
-  <option value="high">High</option>
-</select> <p>{{FormTask.priority}}</p>
-Task Due Date: <input type="date" [(ngModel)]="FormTask.dueDate" /> <p>{{FormTask.dueDate}}</p>
-Task Category: <select placeholder="Task Category" [(ngModel)]="FormTask.category">
-  <option value="work">Work</option>
-  <option value="personal">Personal</option>
-  <option value="study">Study</option>
-</select> <p>{{FormTask.category}}</p>
-Task Tags: <input placeholder="Task Tags (space separated)" [(ngModel)]="FormTags" /> <p>{{FormTask.tags.join(', ')}}</p>
-Is Done: <input type="checkbox" [(ngModel)]="FormTask.isDone" /> <p>{{FormTask.isDone}}</p>
-<button (click)="addTask()">Add Task</button>
+  Task Title: <input placeholder="Task Title" [(ngModel)]="FormTask.title" />
+  <p>{{FormTask.title}}</p>
+  Task Description: <input placeholder="Task Description" [(ngModel)]="FormTask.description" />
+  <p>{{FormTask.description}}</p>
+  Task Priority: <select placeholder="Task Priority" [(ngModel)]="FormTask.priority">
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+  </select>
+  <p>{{FormTask.priority}}</p>
+  Task Due Date: <input type="date" [(ngModel)]="FormTask.dueDate" />
+  <p>{{FormTask.dueDate}}</p>
+  Task Category: <select placeholder="Task Category" [(ngModel)]="FormTask.category">
+    <option value="work">Work</option>
+    <option value="personal">Personal</option>
+    <option value="study">Study</option>
+  </select>
+  <p>{{FormTask.category}}</p>
+  Task Tags: <input placeholder="Task Tags (space separated)" [(ngModel)]="FormTags" />
+  <p>{{FormTask.tags.join(', ')}}</p>
+  Is Done: <input type="checkbox" [(ngModel)]="FormTask.isDone" />
+  <p>{{FormTask.isDone}}</p>
+  <button (click)="addTask()">
+    @if (FormTaskID !== '') {
+    Update Task
+    }
+    @else {
+    Add Task
+    }
+  </button>
 
-<!-- <p>You have {{Tasks.length}} tasks.</p>
+  <!-- <p>You have {{Tasks.length}} tasks.</p>
 <p>{{Tasks}}</p> -->
 
 </div>

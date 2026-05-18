@@ -27,6 +27,7 @@ export class MyDoneTasks {
 
   markAsNotDone(task: Task) {
     task.isDone = false;
+    this.data = this.data.filter(task => task.isDone);
   }
 
   deleteTask(task: Task) {
