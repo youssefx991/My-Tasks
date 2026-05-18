@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Category, Priority, Task } from '../../types';
 
@@ -9,9 +9,10 @@ import { Category, Priority, Task } from '../../types';
   styleUrl: './my-task-form.css',
 })
 export class MyTaskForm {
-  FormTask : Task = new Task();
-  FormTags : string = '';
+  @Input() FormTaskID: string = '';
   @Input() TasksFromProject: Task[] = [];
+  FormTags : string = '';
+  FormTask : Task = this.FormTaskID === '' ? new Task() : this.TasksFromProject.find(task => task.id === this.FormTaskID) || new Task();
   @Output() SendTaskToProject = new EventEmitter<Task>();
 
   addTask() {
@@ -27,9 +28,27 @@ export class MyTaskForm {
       this.FormTask.tags,
       this.FormTask.isDone
     );
-    this.SendTaskToProject.emit(newTask);
 
-    console.log(this.TasksFromProject);
+    if (this.FormTaskID !== '')
+    {
+      console.log("updating task: ", newTask);
+      const task = this.TasksFromProject.find(task => task.id === this.FormTaskID);
+      if (task) {
+        task.title = newTask.title;
+        task.description = newTask.description;
+        task.priority = newTask.priority;
+        task.dueDate = newTask.dueDate;
+        task.category = newTask.category;
+        task.tags = newTask.tags;
+        task.isDone = newTask.isDone;
+      }
+      
+      this.FormTaskID = '';
+    }
+    else
+      this.SendTaskToProject.emit(newTask);
+
+    // console.log(this.TasksFromProject);
 
   }
 }

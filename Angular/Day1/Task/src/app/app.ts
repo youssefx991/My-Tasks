@@ -39,6 +39,6 @@ export class App {
 
   ReceiveTaskFromProject(TaskFromProject: Task) {
     this.AppTasks.push(TaskFromProject);
-    // console.log(this.AppTasks);
+    console.log(this.AppTasks);
   }
 }

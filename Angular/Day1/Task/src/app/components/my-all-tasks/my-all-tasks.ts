@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../types';
 
 @Component({
@@ -9,14 +9,16 @@ import { Task } from '../../types';
 })
 export class MyAllTasks {
   @Input() TasksFromList : Task[] = [];
+  @Output() SendUpdateFlagToList = new EventEmitter<string>();
+
 
   markAsDone(task: Task) {
     task.isDone = true;
   }
 
   updateTask(task: Task) {
-    // Implement the logic to update the task
-
+    console.log("update from all tasks: ", task);
+    this.SendUpdateFlagToList.emit(task.id);
   }
 
   markAsNotDone(task: Task) {

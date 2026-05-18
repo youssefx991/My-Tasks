@@ -13,8 +13,15 @@ export class MyTaskProject {
   ProjectTask! : Task;
   @Input() TasksFromApp: Task[] = [];
   @Output() SendTaskToApp = new EventEmitter<Task>();
+  FormTaskID: string = '';
   ReceiveTaskFromForm(TaskFromForm: Task) {
     this.ProjectTask = TaskFromForm;
     this.SendTaskToApp.emit(this.ProjectTask);
+  }
+
+  ReceiveUpdateFlagFromList(taskId: string) {
+    console.log("update flag from project: ", taskId);
+    this.FormTaskID = taskId;
+
   }
 }

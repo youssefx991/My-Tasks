@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MyTabs } from "../my-tabs/my-tabs";
 import { MyAllTasks } from "../my-all-tasks/my-all-tasks";
 import { Task } from '../../types';
@@ -13,9 +13,15 @@ import { MyNotDoneTasks } from "../my-not-done-tasks/my-not-done-tasks";
 })
 export class MyTaskList {
   @Input() TasksFromProject: Task[] = [];
-  choice : string = "all";
+  choice: string = "all";
   onTabChoice(tab: string) {
     this.choice = tab;
-}
+  }
+
+  @Output() SendUpdateFlagToProject = new EventEmitter<string>();
+  ReceiveUpdateFlag(taskId: string) {
+    console.log("update flag from Task List: ", taskId);
+    this.SendUpdateFlagToProject.emit(taskId);
+  }
 
 }

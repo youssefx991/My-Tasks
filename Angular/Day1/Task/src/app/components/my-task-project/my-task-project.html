@@ -1,6 +1,6 @@
 
 <div id="my-task-project">
   <p>my-task-project works!</p>
-  <app-my-task-form (SendTaskToProject)="ReceiveTaskFromForm($event)" [TasksFromProject]="TasksFromApp"></app-my-task-form>
-  <app-my-task-list [TasksFromProject]="TasksFromApp"></app-my-task-list>
+  <app-my-task-form (SendTaskToProject)="ReceiveTaskFromForm($event)" [TasksFromProject]="TasksFromApp" [FormTaskID]="FormTaskID"></app-my-task-form>
+  <app-my-task-list [TasksFromProject]="TasksFromApp" (SendUpdateFlagToProject)="ReceiveUpdateFlagFromList($event)"></app-my-task-list>
 </div>
