@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid';
 import { Task } from '../../types';
 
 @Component({
@@ -17,19 +18,25 @@ export class MyDoneTasks {
     this.data = tasks.filter(task => task.isDone);
   }
 
-  @Output() SendUpdatedTaskIDToList = new EventEmitter<string>();
+  @Output() SendUpdatedTaskIDToList = new EventEmitter<{ taskId: string; uuid: string }>();
 
   markAsDone(task: Task) {
-    this.originalData.find(t => t.id === task.id)!.isDone = true;
+    const originalTask = this.originalData.find(t => t.id === task.id);
+    if (originalTask) {
+      originalTask.isDone = true;
+    }
     task.isDone = true;
   }
 
   updateTask(task: Task) {
-    this.SendUpdatedTaskIDToList.emit(task.id);
+    this.SendUpdatedTaskIDToList.emit({ taskId: task.id, uuid: uuidv4() });
   }
 
   markAsNotDone(task: Task) {
-    this.originalData.find(t => t.id === task.id)!.isDone = false;
+    const originalTask = this.originalData.find(t => t.id === task.id);
+    if (originalTask) {
+      originalTask.isDone = false;
+    }
     task.isDone = false;
     this.data = this.data.filter(task => task.isDone);
   }

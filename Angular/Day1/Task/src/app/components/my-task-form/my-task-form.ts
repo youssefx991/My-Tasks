@@ -1,6 +1,6 @@
-import { Component, EventEmitter, input, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Category, Priority, Task } from '../../types';
+import { Task } from '../../types';
 
 @Component({
   selector: 'app-my-task-form',
@@ -9,11 +9,32 @@ import { Category, Priority, Task } from '../../types';
   styleUrl: './my-task-form.css',
 })
 export class MyTaskForm {
-  @Input() FormTaskID: string = '';
+  private _formTaskIDObj: { taskId: string; uuid: string } = { taskId: '', uuid: '' };
   @Input() TasksFromProject: Task[] = [];
+
+
   FormTags : string = '';
-  FormTask : Task = this.FormTaskID === '' ? new Task() : this.TasksFromProject.find(task => task.id === this.FormTaskID) || new Task();
+  FormTask : Task = new Task();
   @Output() SendTaskToProject = new EventEmitter<Task>();
+
+  @Input()
+  set FormTaskIDObj(value: { taskId: string; uuid: string }) {
+    this._formTaskIDObj = value;
+    if (value.taskId === '') {
+      this.resetForm();
+      return;
+    }
+
+    const task = this.TasksFromProject.find(task => task.id === value.taskId);
+    if (task) {
+      this.FormTask = { ...task };
+      this.FormTags = this.FormTask.tags ? this.FormTask.tags.join(' ') : '';
+    }
+  }
+
+  get FormTaskIDObj(): { taskId: string; uuid: string } {
+    return this._formTaskIDObj;
+  }
 
   addTask() {
     if (this.FormTask.tags)
@@ -29,10 +50,11 @@ export class MyTaskForm {
       this.FormTask.isDone
     );
 
-    if (this.FormTaskID !== '')
-    {
+    if (this.FormTaskIDObj.taskId === '') {
+      this.SendTaskToProject.emit(newTask);
+    } else {
       console.log("updating task: ", newTask);
-      const task = this.TasksFromProject.find(task => task.id === this.FormTaskID);
+      const task = this.TasksFromProject.find(task => task.id === this.FormTaskIDObj.taskId);
       if (task) {
         task.title = newTask.title;
         task.description = newTask.description;
@@ -42,15 +64,17 @@ export class MyTaskForm {
         task.tags = newTask.tags;
         task.isDone = newTask.isDone;
       }
-      
-      this.FormTaskID = '';
+
+      this.resetForm();
     }
-    else
-      this.SendTaskToProject.emit(newTask);
+  }
 
-    // console.log(this.TasksFromProject);
-
+  resetForm() {
+    this.FormTask = new Task();
+    this.FormTags = '';
+    this._formTaskIDObj = { taskId: '', uuid: '' };
   }
 }
+
 
 

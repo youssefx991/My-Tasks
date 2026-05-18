@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid';
 import { Task } from '../../types';
 
 @Component({
@@ -9,7 +10,7 @@ import { Task } from '../../types';
 })
 export class MyAllTasks {
   @Input() TasksFromList : Task[] = [];
-  @Output() SendUpdatedTaskIDToList = new EventEmitter<string>();
+  @Output() SendUpdatedTaskIDToList = new EventEmitter<{ taskId: string; uuid: string }>();
 
 
   markAsDone(task: Task) {
@@ -18,7 +19,7 @@ export class MyAllTasks {
 
   updateTask(task: Task) {
     console.log("update from all tasks: ", task);
-    this.SendUpdatedTaskIDToList.emit(task.id);
+    this.SendUpdatedTaskIDToList.emit({ taskId: task.id, uuid: uuidv4() });
   }
 
   markAsNotDone(task: Task) {

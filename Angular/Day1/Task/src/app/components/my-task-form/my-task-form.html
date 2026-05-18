@@ -23,7 +23,7 @@
   Is Done: <input type="checkbox" [(ngModel)]="FormTask.isDone" />
   <p>{{FormTask.isDone}}</p>
   <button (click)="addTask()">
-    @if (FormTaskID !== '') {
+    @if (FormTaskIDObj.taskId !== '') {
     Update Task
     }
     @else {

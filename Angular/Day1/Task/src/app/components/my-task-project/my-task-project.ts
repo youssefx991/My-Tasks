@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MyTaskForm } from "../my-task-form/my-task-form";
 import { MyTaskList } from "../my-task-list/my-task-list";
 import { Task } from '../../types';
@@ -13,15 +13,15 @@ export class MyTaskProject {
   ProjectTask! : Task;
   @Input() TasksFromApp: Task[] = [];
   @Output() SendTaskToApp = new EventEmitter<Task>();
-  FormTaskID: string = '';
+  FormTaskIDObj: { taskId: string; uuid: string } = { taskId: '', uuid: '' };
   ReceiveTaskFromForm(TaskFromForm: Task) {
     this.ProjectTask = TaskFromForm;
     this.SendTaskToApp.emit(this.ProjectTask);
   }
 
-  ReceiveUpdatedTaskIDFromList(taskId: string) {
-    console.log("update flag from project: ", taskId);
-    this.FormTaskID = taskId;
+  ReceiveUpdatedTaskIDFromList(updateObj: { taskId: string; uuid: string }) {
+    console.log("update flag from project: ", updateObj);
+    this.FormTaskIDObj = updateObj;
 
   }
 }

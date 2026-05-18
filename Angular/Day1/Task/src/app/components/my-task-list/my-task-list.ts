@@ -18,10 +18,10 @@ export class MyTaskList {
     this.choice = tab;
   }
 
-  @Output() SendUpdatedTaskIDToProject = new EventEmitter<string>();
-  ReceiveUpdatedTaskID(taskId: string) {
-    console.log("update flag from Task List: ", taskId);
-    this.SendUpdatedTaskIDToProject.emit(taskId);
+  @Output() SendUpdatedTaskIDToProject = new EventEmitter<{ taskId: string; uuid: string }>();
+  ReceiveUpdatedTaskID(updateObj: { taskId: string; uuid: string }) {
+    console.log("update flag from Task List: ", updateObj);
+    this.SendUpdatedTaskIDToProject.emit(updateObj);
   }
 
 }
