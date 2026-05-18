@@ -9,7 +9,7 @@ import { Task } from '../../types';
 })
 export class MyAllTasks {
   @Input() TasksFromList : Task[] = [];
-  @Output() SendUpdateFlagToList = new EventEmitter<string>();
+  @Output() SendUpdatedTaskIDToList = new EventEmitter<string>();
 
 
   markAsDone(task: Task) {
@@ -18,7 +18,7 @@ export class MyAllTasks {
 
   updateTask(task: Task) {
     console.log("update from all tasks: ", task);
-    this.SendUpdateFlagToList.emit(task.id);
+    this.SendUpdatedTaskIDToList.emit(task.id);
   }
 
   markAsNotDone(task: Task) {

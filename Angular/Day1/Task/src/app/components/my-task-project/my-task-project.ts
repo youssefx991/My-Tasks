@@ -19,7 +19,7 @@ export class MyTaskProject {
     this.SendTaskToApp.emit(this.ProjectTask);
   }
 
-  ReceiveUpdateFlagFromList(taskId: string) {
+  ReceiveUpdatedTaskIDFromList(taskId: string) {
     console.log("update flag from project: ", taskId);
     this.FormTaskID = taskId;
 

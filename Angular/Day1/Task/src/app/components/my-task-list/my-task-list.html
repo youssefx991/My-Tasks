@@ -4,12 +4,12 @@
 </div>
 
 @if (choice === "all") {
-  <app-my-all-tasks [TasksFromList]="TasksFromProject" (SendUpdateFlagToList)="ReceiveUpdateFlag($event)"></app-my-all-tasks>
+  <app-my-all-tasks [TasksFromList]="TasksFromProject" (SendUpdatedTaskIDToList)="ReceiveUpdatedTaskID($event)"></app-my-all-tasks>
 }
 @else if (choice === "done") {
-  <app-my-done-tasks [TasksFromList]="TasksFromProject" (SendUpdateFlagToList)="ReceiveUpdateFlag($event)"></app-my-done-tasks>
+  <app-my-done-tasks [TasksFromList]="TasksFromProject" (SendUpdatedTaskIDToList)="ReceiveUpdatedTaskID($event)"></app-my-done-tasks>
 }
 
 @else if (choice === "not-done") {
-  <app-my-not-done-tasks [TasksFromList]="TasksFromProject" (SendUpdateFlagToList)="ReceiveUpdateFlag($event)"></app-my-not-done-tasks>
+  <app-my-not-done-tasks [TasksFromList]="TasksFromProject" (SendUpdatedTaskIDToList)="ReceiveUpdatedTaskID($event)"></app-my-not-done-tasks>
 }

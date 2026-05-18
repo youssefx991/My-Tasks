@@ -15,14 +15,14 @@ export class MyDoneTasks {
     this.data = tasks.filter(task => task.isDone);
   }
 
-  @Output() SendUpdateFlagToList = new EventEmitter<string>();
+  @Output() SendUpdatedTaskIDToList = new EventEmitter<string>();
 
   markAsDone(task: Task) {
     task.isDone = true;
   }
 
   updateTask(task: Task) {
-    this.SendUpdateFlagToList.emit(task.id);
+    this.SendUpdatedTaskIDToList.emit(task.id);
   }
 
   markAsNotDone(task: Task) {
