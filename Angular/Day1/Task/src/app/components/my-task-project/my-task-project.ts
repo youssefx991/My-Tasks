@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { MyTaskForm } from "../my-task-form/my-task-form";
 import { MyTaskList } from "../my-task-list/my-task-list";
+import { Task } from '../../types';
 
 @Component({
   selector: 'app-my-task-project',
@@ -8,4 +9,12 @@ import { MyTaskList } from "../my-task-list/my-task-list";
   templateUrl: './my-task-project.html',
   styleUrl: './my-task-project.css',
 })
-export class MyTaskProject {}
+export class MyTaskProject {
+  ProjectTask! : Task;
+  @Input() TasksFromApp: Task[] = [];
+  @Output() SendTaskToApp = new EventEmitter<Task>();
+  ReceiveTaskFromForm(TaskFromForm: Task) {
+    this.ProjectTask = TaskFromForm;
+    this.SendTaskToApp.emit(this.ProjectTask);
+  }
+}

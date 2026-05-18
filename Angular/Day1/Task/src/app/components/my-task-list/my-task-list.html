@@ -1,3 +1,16 @@
+<app-my-tabs (SendTabChoiceToList)="onTabChoice($event)"></app-my-tabs>
 <div id="my-task-list">
   <p>my-task-list works!</p>
 </div>
+
+@if (choice === "all") {
+  <app-my-all-tasks [TasksFromList]="TasksFromProject"></app-my-all-tasks>
+}
+
+@else if (choice === "done") {
+  <app-my-done-tasks [TasksFromList]="TasksFromProject"></app-my-done-tasks>
+}
+
+@else if (choice === "not-done") {
+  <app-my-not-done-tasks [TasksFromList]="TasksFromProject"></app-my-not-done-tasks>
+}

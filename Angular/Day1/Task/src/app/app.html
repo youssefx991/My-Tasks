@@ -4,5 +4,5 @@
 <br>
 <app-my-slider></app-my-slider>
 <br>
-<app-my-task-project></app-my-task-project>
+<app-my-task-project (SendTaskToApp)="ReceiveTaskFromProject($event)" [TasksFromApp]="AppTasks"></app-my-task-project>
 <br>

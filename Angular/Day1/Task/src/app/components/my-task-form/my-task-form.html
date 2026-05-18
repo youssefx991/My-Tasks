@@ -1,22 +1,23 @@
 <div id="my-task-form">
 
-Task Title: <input placeholder="Task Title" [(ngModel)]="TaskTitle" /> <p>{{TaskTitle}}</p>
-Task Description: <input placeholder="Task Description" [(ngModel)]="TaskDescription" /> <p>{{TaskDescription}}</p>
-Task Priority: <select placeholder="Task Priority" [(ngModel)]="TaskPriority">
+Task Title: <input placeholder="Task Title" [(ngModel)]="FormTask.title" /> <p>{{FormTask.title}}</p>
+Task Description: <input placeholder="Task Description" [(ngModel)]="FormTask.description" /> <p>{{FormTask.description}}</p>
+Task Priority: <select placeholder="Task Priority" [(ngModel)]="FormTask.priority">
   <option value="low">Low</option>
   <option value="medium">Medium</option>
   <option value="high">High</option>
-</select> <p>{{TaskPriority}}</p>
-Task Due Date: <input type="date" [(ngModel)]="TaskDueDate" /> <p>{{TaskDueDate}}</p>
-Task Category: <select placeholder="Task Category" [(ngModel)]="TaskCategory">
+</select> <p>{{FormTask.priority}}</p>
+Task Due Date: <input type="date" [(ngModel)]="FormTask.dueDate" /> <p>{{FormTask.dueDate}}</p>
+Task Category: <select placeholder="Task Category" [(ngModel)]="FormTask.category">
   <option value="work">Work</option>
   <option value="personal">Personal</option>
   <option value="study">Study</option>
-</select> <p>{{TaskCategory}}</p>
-Task Tags: <input placeholder="Task Tags (space separated)" [(ngModel)]="TaskTags" /> <p>{{TaskTagsArray.join(', ')}}</p>
+</select> <p>{{FormTask.category}}</p>
+Task Tags: <input placeholder="Task Tags (space separated)" [(ngModel)]="FormTags" /> <p>{{FormTask.tags.join(', ')}}</p>
+Is Done: <input type="checkbox" [(ngModel)]="FormTask.isDone" /> <p>{{FormTask.isDone}}</p>
 <button (click)="addTask()">Add Task</button>
 
-<p>You have {{Tasks.length}} tasks.</p>
-<p>{{Tasks}}</p>
+<!-- <p>You have {{Tasks.length}} tasks.</p>
+<p>{{Tasks}}</p> -->
 
 </div>

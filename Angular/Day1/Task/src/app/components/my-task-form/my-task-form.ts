@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Category, Priority, Task } from '../../types';
 
 @Component({
   selector: 'app-my-task-form',
@@ -8,53 +9,29 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './my-task-form.css',
 })
 export class MyTaskForm {
-  TaskTitle: string = 'N/A';
-  TaskDescription: string = 'N/A';
-  TaskPriority: Priority = Priority.Low;
-  TaskDueDate: Date = new Date();
-  TaskCategory: Category = Category.Work;
-  TaskTags: string = 'N/A';
-  TaskTagsArray: string[] = [];
-  Tasks: Task[] = [];
-
-
+  FormTask : Task = new Task();
+  FormTags : string = '';
+  @Input() TasksFromProject: Task[] = [];
+  @Output() SendTaskToProject = new EventEmitter<Task>();
 
   addTask() {
+    if (this.FormTask.tags)
+      this.FormTask.tags = this.FormTags.split(' ').map(tag => tag.trim());
 
-    if (this.TaskTags)
-      this.TaskTagsArray = this.TaskTags.split(' ').map(tag => tag.trim());
-    this.Tasks.push(new Task(this.TaskTitle, this.TaskDescription, this.TaskPriority, this.TaskDueDate, this.TaskCategory, this.TaskTagsArray));
-    console.log(this.Tasks);
+    const newTask = new Task(
+      this.FormTask.title,
+      this.FormTask.description,
+      this.FormTask.priority,
+      this.FormTask.dueDate,
+      this.FormTask.category,
+      this.FormTask.tags,
+      this.FormTask.isDone
+    );
+    this.SendTaskToProject.emit(newTask);
+
+    console.log(this.TasksFromProject);
 
   }
 }
 
-class Task {
-  title: string;
-  description: string;
-  priority: Priority;
-  dueDate: Date;
-  category: Category;
-  tags: string[];
 
-  constructor(title: string, description: string, priority: Priority, dueDate: Date, category: Category, tags: string[]) {
-    this.title = title;
-    this.description = description;
-    this.priority = priority;
-    this.dueDate = dueDate;
-    this.category = category;
-    this.tags = tags;
-  }
-}
-
-enum Priority {
-  Low = 'low',
-  Medium = 'medium',
-  High = 'high',
-}
-
-enum Category {
-  Work = 'work',
-  Personal = 'personal',
-  Study = 'study',
-}
