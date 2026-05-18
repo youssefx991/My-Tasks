@@ -30,12 +30,8 @@ export class MyNotDoneTasks {
   }
 
   deleteTask(task: Task) {
-    const index = this.data.indexOf(task);
+    const index = this.TasksFromList.findIndex(t => t.id === task.id);
     if (index > -1)
-      this.data.splice(index, 1);
-
-    const originalIndex = this.TasksFromList.findIndex(t => t.id === task.id);
-    if (originalIndex > -1)
-      this.TasksFromList.splice(originalIndex, 1);
+      this.TasksFromList.splice(index, 1);
   }
 }
