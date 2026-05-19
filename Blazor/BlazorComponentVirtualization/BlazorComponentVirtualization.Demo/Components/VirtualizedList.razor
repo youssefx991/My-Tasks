@@ -1,0 +1,57 @@
+﻿@page "/virtualized-list"
+@rendermode InteractiveServer
+
+<h3 class="mb-4">Blazor Virtualization Demo</h3>
+
+<p>
+    This page uses the Virtualize component.
+</p>
+
+<button class="btn btn-primary" @onclick="ClearItems">
+    Clear Items
+</button>
+
+<button class="btn btn-primary" @onclick="FilterEvenItems">
+    Filter Even Items
+</button>
+<button class="btn btn-primary" @onclick="ResetItems">
+    Reset Items
+</button>
+
+
+
+<Virtualize Items="items" Context="item">
+
+    <ItemContent>
+        <div class="border rounded p-2 m-1">
+            Item @item
+        </div>
+    </ItemContent>
+
+    <EmptyContent>
+        <div class="alert alert-info">
+            No items to display.
+        </div>
+    </EmptyContent>
+
+
+</Virtualize>
+
+@code {
+    List<int> items = Enumerable.Range(1, 100_000).ToList();
+
+    void ClearItems()
+    {
+        items.Clear();
+    }
+
+    void FilterEvenItems()
+    {
+        items = items.Where(i => i % 2 == 0).ToList();
+    }
+
+    void ResetItems()
+    {
+        items = Enumerable.Range(1, 100_000).ToList();
+    }
+}

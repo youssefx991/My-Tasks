@@ -20,7 +20,7 @@ export class MyTaskList {
 
   @Output() SendUpdatedTaskIDToProject = new EventEmitter<{ taskId: string; uuid: string }>();
   ReceiveUpdatedTaskID(updateObj: { taskId: string; uuid: string }) {
-    console.log("update flag from Task List: ", updateObj);
+    // console.log("update flag from Task List: ", updateObj);
     this.SendUpdatedTaskIDToProject.emit(updateObj);
   }
 

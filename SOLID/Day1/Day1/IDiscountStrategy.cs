@@ -1,0 +1,11 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Day1
+{
+    public interface IDiscountStrategy
+    {
+        decimal GetDiscount(Order order);
+    }
+}

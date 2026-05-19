@@ -20,8 +20,7 @@ export class MyTaskProject {
   }
 
   ReceiveUpdatedTaskIDFromList(updateObj: { taskId: string; uuid: string }) {
-    console.log("update flag from project: ", updateObj);
+    // console.log("update flag from project: ", updateObj);
     this.FormTaskIDObj = updateObj;
-
   }
 }

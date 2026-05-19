@@ -1,0 +1,83 @@
+﻿@page "/provider-list"
+@rendermode InteractiveServer
+
+<h3>Virtualization with ItemProvider</h3>
+
+<p>
+    This demo loads data dynamically.
+</p>
+
+<div style="height:500px; overflow-y:auto; border:1px solid gray;" tabindex="0">
+
+    <Virtualize Context="employee"
+                ItemsProvider="LoadEmployees"
+                OverscanCount="10"
+                ItemSize="75">
+                
+
+        <ItemContent>
+
+            <div class="card shadow-sm p-3 m-2">
+
+                <h5>Employee @employee.Id</h5>
+
+                <p>Department: IT</p>
+
+            </div>
+        </ItemContent>
+
+        <Placeholder>
+            <div class="alert alert-info m-2">
+                Loading employees...
+            </div>
+        </Placeholder>
+
+        <EmptyContent>
+
+            <div class="alert alert-warning m-2">
+
+                No employees found.
+
+            </div>
+
+        </EmptyContent>
+
+    </Virtualize>
+
+</div>
+
+
+
+@code {
+
+    private async ValueTask<ItemsProviderResult<Employee>>
+    LoadEmployees(ItemsProviderRequest request)
+    {
+        await Task.Delay(100);
+
+        var employees = Enumerable.Range(
+            request.StartIndex + 1,
+            request.Count
+        )
+        .Select(i => new Employee
+        {
+            Id = i,
+            Department = "IT"
+        })
+        .ToList();
+
+        return new ItemsProviderResult<Employee>(
+            employees,
+            10000
+        );
+    }
+
+    public class Employee
+    {
+        public int Id { get; set; }
+
+        public string Department { get; set; } = "";
+    }
+
+
+}

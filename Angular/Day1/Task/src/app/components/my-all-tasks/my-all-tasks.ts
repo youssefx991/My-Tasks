@@ -18,7 +18,7 @@ export class MyAllTasks {
   }
 
   updateTask(task: Task) {
-    console.log("update from all tasks: ", task);
+    // console.log("update from all tasks: ", task);
     this.SendUpdatedTaskIDToList.emit({ taskId: task.id, uuid: uuidv4() });
   }
 

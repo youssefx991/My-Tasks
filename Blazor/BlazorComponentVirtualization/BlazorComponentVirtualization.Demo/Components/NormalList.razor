@@ -1,0 +1,18 @@
+﻿@page "/normal-list"
+
+<h3 class="mb-4">Normal List Rendering</h3>
+
+<p>
+    This page renders 10,000 items normally.
+</p>
+
+
+<div style="height:500px; overflow-y:auto; border:1px solid gray;">
+
+    @for (int i = 1; i <= 100_000; i++)
+    {
+        <div class="border rounded p-2 m-1">
+            Item @i
+        </div>
+    }
+</div>

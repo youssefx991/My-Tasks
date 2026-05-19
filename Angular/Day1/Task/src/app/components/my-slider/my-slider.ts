@@ -37,7 +37,7 @@ export class MySlider {
   startSlider(): void {
     this.interval = setInterval(() => {
       this.currentIndex = (this.currentIndex + 1) % this.images.length;
-    }, 2000);
+    }, 1000);
   }
 
   stopSlider(): void {
