@@ -6,7 +6,12 @@ namespace Day1
 {
     public class OrderEmailSender : IOrderNotifier, IOrderEmailSender
     {
-        private readonly SmtpEmailSender _emailer = new SmtpEmailSender();
+        private readonly IEmailClient _emailer;
+
+        public OrderEmailSender(IEmailClient emailer)
+        {
+            _emailer = emailer;
+        }
 
         public void SendConfirmationEmail(Order order)
         {

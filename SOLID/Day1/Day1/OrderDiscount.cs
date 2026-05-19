@@ -7,6 +7,12 @@ namespace Day1
     public class OrderDiscount : IOrderDiscount
     {
         private readonly IDiscountStrategy _discountStrategy;
+
+        public OrderDiscount(IDiscountStrategy discountStrategy)
+        {
+            _discountStrategy = discountStrategy;
+        }
+
         public decimal CalculateFinalAmount(Order order)
         {
             var discount = CalculateDiscount(order);
