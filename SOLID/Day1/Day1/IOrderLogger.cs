@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Day1
 {
-    internal class IOrderLogger
+    public interface IOrderLogger
     {
+        public void Log(string message);
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Day1
 {
-    internal interface IOrderValidator
+    public interface IOrderValidator
     {
+        public bool IsValid(Order order);
     }
 }

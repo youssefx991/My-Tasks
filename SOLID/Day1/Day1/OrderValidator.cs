@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Day1
 {
-    public class OrderValidator
+    public class OrderValidator : IOrderValidator
     {
         public bool IsValid(Order order)
         {

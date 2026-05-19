@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Day1
 {
-    internal class ConsoleOrderLogger
+    public class ConsoleOrderLogger : IOrderLogger
     {
+        public void Log(string message)
+        {
+            Console.WriteLine(message);
+        }
     }
 }

@@ -6,5 +6,8 @@ using System.Text;
 
 namespace Day1
 {
-    public class FileOrderLogger { public void Log(string msg) => Console.WriteLine($"[LOG] {msg}"); }
+    public class FileOrderLogger : IOrderLogger
+    { 
+        public void Log(string msg) => Console.WriteLine($"[LOG] {msg}"); 
+    }
 }

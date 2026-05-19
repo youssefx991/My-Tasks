@@ -1,6 +1,7 @@
 ﻿namespace Day1
 {
-    internal interface IOrderDiscount
+    public interface IOrderDiscount
     {
+        public decimal CalculateFinalAmount(Order order);
     }
 }

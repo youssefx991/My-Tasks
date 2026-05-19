@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Day1
 {
-    public class OrderDiscount
+    public class OrderDiscount : IOrderDiscount
     {
         private readonly IDiscountStrategy _discountStrategy;
         public decimal CalculateFinalAmount(Order order)
