@@ -27,6 +27,10 @@ namespace CarsApp
         public double Velocity { get; set; }
         public DrivingMode DrivingMode { get; set; } = DrivingMode.Stopped;
 
+        #region My Attributes
+        private string? Color = null;
+        #endregion
+
         public Car()
         {
 
@@ -135,6 +139,24 @@ namespace CarsApp
         {
             Car car = obj as Car;
             return this.Type == car.Type;
+        }
+
+
+        #region My Methods
+        public void SetColor(string color)
+        {
+            this.Color = color;
+        }
+
+        public string GetColor() 
+        { 
+            return this.Color; 
+        }
+        #endregion
+
+        public bool IsColored()
+        {
+            return this.Color != null;
         }
     }
 }

@@ -53,9 +53,20 @@ namespace CarsApp
         //    return true;
         //}
 
+        
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
+
+        #region My Methods
+        public void ColorAllCars(string color)
+        {
+            foreach (var car in Cars)
+            {
+                car.SetColor(color);
+            }
+        }
+        #endregion
     }
 }
