@@ -64,13 +64,9 @@ namespace StringCalculatorTests
             // Arrange
             var calculator = new StringCalculator();
             // Act
-            try
-            {
-                var res = calculator.Add("1,-2,3,-4");
-            }// Assert
-            catch (Exception ex) {
-                Assert.Equal("negatives not allowed: -2,-4", ex.Message);
-            }
+            var exception = Assert.Throws<Exception>(() => calculator.Add("1,-2,3,-4"));
+            // Assert
+            Assert.Equal("negatives not allowed: -2,-4", exception.Message);
         }
     }
 }

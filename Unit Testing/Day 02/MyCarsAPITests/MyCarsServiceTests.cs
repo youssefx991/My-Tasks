@@ -61,6 +61,7 @@ namespace MyCarsAPITests
             // Arrange
             var newCar = new Car(1, CarType.Audi, 100);
             _carsRepositoryMock.Setup(r => r.AddCar(newCar)).Returns(true);
+            _carsRepositoryMock.Setup(r => r.GetCarById(newCar.Id)).Returns(newCar);
             // Act
             var result = _carsService.AddCar(newCar);
             var existingCar = _carsService.GetCarById(newCar.Id);
