@@ -50,7 +50,7 @@ namespace MyTests
             _car.SetColor(color);
 
             // Assert
-            Assert.Equal(_car.GetColor(), color);
+            Assert.Equal(color, _car.GetColor());
         }
 
         [Fact]
@@ -77,12 +77,12 @@ namespace MyTests
             var color = _car.GetColor();
 
             // Assert
-            Assert.Contains("ee", check);
+            Assert.Contains("ee", color);
         }
 
         [Theory]
         [InlineData("green")]
-        [InlineData("gray")] 
+        [InlineData("gray")]
         public void GetColor_Color_StartsWithSubstring(string check)
         {
             // Arrange
@@ -92,7 +92,18 @@ namespace MyTests
             var color = _car.GetColor();
 
             // Assert
-            Assert.StartsWith("gr", check);
+            Assert.StartsWith("gr", color);
+        }
+
+        [Fact]
+        public void GetDirection_DrivingModeForward_ShouldReturnForward()
+        {
+            // Arrange
+            _car.DrivingMode = DrivingMode.Forward;
+            // Act
+            var direction = _car.GetDirection();
+            // Assert
+            Assert.Equal("Forward", direction);
         }
     }
 }

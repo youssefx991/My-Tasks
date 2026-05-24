@@ -67,6 +67,13 @@ namespace CarsApp
                 car.SetColor(color);
             }
         }
+
+        public void ColorOneCar(string color, int index)
+        {
+            if (index < 0 || index >= Cars.Count)
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+            Cars[index].SetColor(color);
+        }
         #endregion
     }
 }

@@ -1,0 +1,26 @@
+﻿using CarAPI.Entities;
+using CarAPI.Repositories_DAL;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CarApiTests.Fake
+{
+    internal class FakeOwnersRepository : IOwnersRepository
+    {
+        public bool AddOwner(Owner owner)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Owner> GetAllOwners()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Owner GetOwnerById(int id)
+        {
+            return new Owner(id, "");
+        }
+    }
+}

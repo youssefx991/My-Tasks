@@ -1,0 +1,7 @@
+FizzBuzz is a simple number game i which you count, but replace certain numbers with words "Fizz" and/or "Buzz", here are the rule:
+
+1) Create a FizzBuzz() method that prints the number.
+2) Instead of numbers divisible by 3, the method should output "Fizz". ==> Done
+3) Instead of numbers divisible by 5, the method should output "Buzz". ==> Done
+4) Instead of numbers divisible by 3 and 5, the method should output "FizzBuzz". ==> Done
+5) Otherwise print the number ==> Done

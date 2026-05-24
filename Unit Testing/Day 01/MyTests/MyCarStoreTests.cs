@@ -13,7 +13,7 @@ namespace MyTests
             _carStore = new CarStore();
         }
         [Fact]
-        public void ColorAllCars_WithSameColor_AllColored()
+        public void ColorAllCars_AllCarsChangedToRed_AllColoredRed()
         {
             // Arrange
             _carStore.AddCars(new List<Car>
@@ -30,7 +30,7 @@ namespace MyTests
         }
 
         [Fact]
-        public void ColorAllCars_WithSameColorExecptOne_AllColored()
+        public void ColorOneCar_OnlyOneCarChangedToRed_OnlyOneColoredRed()
         {
             // Arrange
             _carStore.AddCars(new List<Car>
@@ -38,14 +38,11 @@ namespace MyTests
                 new Car(CarType.Honda),
                 new Car(CarType.Toyota)
             });
-
             // Act
-            _carStore.ColorAllCars("red");
+            _carStore.ColorOneCar("red", 0);
             var cars = _carStore.GetAllStoreCars();
-            cars[1].SetColor("blue");
-
             // Assert
-            Assert.Single(cars, car => car.GetColor() == "blue");
+            Assert.Single(cars, car => car.GetColor() == "red");
         }
     }
 }
