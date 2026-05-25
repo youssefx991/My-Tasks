@@ -67,7 +67,6 @@ export class MyTaskList {
 
   @Output() SendTaskActionObjToApp = new EventEmitter<TaskAction>();
   ReceiveTaskActionObjFromFilteredList(TaskActionObj: TaskAction) {
-    // this.SendTaskActionObjToApp.emit(TaskActionObj);
     switch (TaskActionObj.action) {
       case 'delete':
         this.Tasks = this.Tasks.filter(task => task.id !== TaskActionObj.taskId);

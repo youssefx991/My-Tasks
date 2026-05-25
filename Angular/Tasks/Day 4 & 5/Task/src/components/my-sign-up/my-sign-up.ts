@@ -15,7 +15,6 @@ export class MySignUp {
 
   router = inject(Router);
   onSignUp() {
-    // save in local storage - check if username or email already exists
     if (localStorage.getItem('username') === this.username){
       alert('Username already exists. Please choose a different username.');
       return;
