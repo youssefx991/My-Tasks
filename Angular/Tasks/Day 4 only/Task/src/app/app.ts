@@ -42,7 +42,6 @@ export class App {
   TaskActionObj: TaskAction = new TaskAction();
 
   ReceiveTaskActionObjFromForm(TaskActionObj: TaskAction) {
-    this.TaskActionObj = { ...TaskActionObj };
     if (TaskActionObj.action === TaskActionType.ADD) {
       this.AllTasks = [...this.AllTasks, TaskActionObj.taskObj];
     } else if (TaskActionObj.action === TaskActionType.UPDATE) {
@@ -53,6 +52,9 @@ export class App {
         );
       }
     }
+
+    // Keep form in add mode after submit; update mode should only come from list edit clicks.
+    this.TaskActionObj = new TaskAction();
   }
 
   ReceiveTaskActionObjFromList(TaskActionObj: TaskAction) {
