@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { MyTaskForm } from '../my-task-form/my-task-form';
+import { MyTaskList } from '../my-task-list/my-task-list';
 import { Task, TaskAction, TaskActionType} from '../../types';
 
 @Component({
   selector: 'app-my-task-project',
-  imports: [],
+  imports: [MyTaskForm, MyTaskList],
   templateUrl: './my-task-project.html',
   styleUrl: './my-task-project.css',
 })
@@ -38,7 +40,6 @@ export class MyTaskProject {
   TaskActionObj : TaskAction = new TaskAction();
 
   ReceiveTaskActionObjFromForm(TaskActionObj: TaskAction) {
-    this.TaskActionObj = { ...TaskActionObj };
     if (TaskActionObj.action === TaskActionType.ADD) {
       this.AllTasks = [...this.AllTasks, TaskActionObj.taskObj];
     } else if (TaskActionObj.action === TaskActionType.UPDATE) {
@@ -46,6 +47,8 @@ export class MyTaskProject {
         task.id === TaskActionObj.taskId ? TaskActionObj.taskObj : task
       );
     }
+
+    this.TaskActionObj = new TaskAction();
   }
 
   ReceiveTaskActionObjFromList(TaskActionObj: TaskAction) {

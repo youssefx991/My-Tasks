@@ -1,6 +1,4 @@
-<!--
 <div id="my-task-project">
-  <p>my-task-project works!</p>
   <app-my-task-form (SendTaskActionObjToApp)="ReceiveTaskActionObjFromForm($event)" [TaskActionObjFromApp]="TaskActionObj"></app-my-task-form>
-  <app-my-task-list  (SendTaskActionObjToApp)="ReceiveTaskActionObjFromList($event)"></app-my-task-list>
-</div> -->
+  <app-my-task-list  (SendTaskActionObjToApp)="ReceiveTaskActionObjFromList($event)" [TasksFromApp]="[...AllTasks]"></app-my-task-list>
+</div>
