@@ -7,13 +7,14 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angula
   styleUrl: './my-slider.css',
 })
 export class MySlider {
+  img : string = 'Messi';
   images: string[] = [
-    'Barca/1.jpg',
-    'Barca/2.jpg',
-    'Barca/3.jpg',
-    'Barca/4.jpg',
-    'Barca/5.jpg',
-    'Barca/6.jpg'
+    this.img+'/1.jpg',
+    this.img+'/2.jpg',
+    this.img+'/3.jpg',
+    this.img+'/4.jpg',
+    this.img+'/5.jpg',
+    this.img+'/6.jpg'
   ];
 
   currentIndex: number = 0;

@@ -28,7 +28,6 @@ export class MyNotDoneTasks {
   }
 
   updateTask(task: Task) {
-    // console.log("update from all tasks: ", task);
     this.SendTaskActionObjToList.emit(new TaskAction(task.id, task, TaskActionType.UPDATE));
   }
 
