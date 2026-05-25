@@ -11,7 +11,7 @@ import { MyNotDoneTasks } from "../my-not-done-tasks/my-not-done-tasks";
   templateUrl: './my-task-list.html',
   styleUrl: './my-task-list.css',
 })
-export class MyTaskList implements OnChanges {
+export class MyTaskList {
   @Input() TasksFromApp: Task[] = [];
   DisplayedTasks: Task[] = [];
   TabChoice = TabChoice;
@@ -35,6 +35,7 @@ export class MyTaskList implements OnChanges {
         break;
     }
   }
+
   ngOnChanges(changes: SimpleChanges) {
     console.log("Tasks in List onChanges: ", this.TasksFromApp);
     console.log("Tasks in List onChanges: ", changes['TasksFromApp']?.firstChange);
@@ -47,7 +48,7 @@ export class MyTaskList implements OnChanges {
   @Output() SendTaskActionObjToApp = new EventEmitter<TaskAction>();
   ReceiveTaskActionObjFromFilteredList(TaskActionObj: TaskAction) {
     this.SendTaskActionObjToApp.emit(TaskActionObj);
-
+    this.applyFilter();
   }
 
 }
