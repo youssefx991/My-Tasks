@@ -1,0 +1,9 @@
+app-third {
+  display: block;
+  background-color: chartreuse;
+  border: 2px black solid;
+}
+
+h1 {
+  background-color: yellow;
+}

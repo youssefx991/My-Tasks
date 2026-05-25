@@ -1,0 +1,9 @@
+<div class="tab-pane fade show active bg-warning p-4">
+  @if (cart) {
+    @for (p of cart; track p.id) {
+      <app-card [prod]="p" />
+    }
+  } @else {
+    <p>no products</p>
+  }
+</div>

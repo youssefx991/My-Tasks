@@ -1,0 +1,14 @@
+<h1 class="text-white bg-warning bg-gradient p-3 m-2 rounded-3 text-center">APP ROOT COMP</h1>
+<app-form (sendProdToParent)="addToProductList($event)" />
+<app-productlists [productInChild]="product"   [i1]="500" />
+
+<!-- <h2>App Count : {{ count }}</h2> -->
+<!-- <button class="d-block btn btn-outline-dark" (click)="count = count + 1">Inc</button> -->
+<!-- <app-counter (data)="updateCount($event)" [countFromParent]="count" /> -->
+<!-- 
+
+<button class="d-block btn btn-outline-dark" (click)="show = !show">show</button>
+
+@if (show) {
+  <app-counter [(countFromParent)]="count" />
+} -->
