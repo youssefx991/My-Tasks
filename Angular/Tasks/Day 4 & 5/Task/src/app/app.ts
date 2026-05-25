@@ -4,10 +4,11 @@ import { MySlider } from "../components/my-slider/my-slider";
 import { MyTaskForm } from "../components/my-task-form/my-task-form";
 import { MyTaskList } from "../components/my-task-list/my-task-list";
 import { Task, TaskAction, TaskActionType } from '../types';
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  imports: [MyHeader, MySlider, MyTaskForm, MyTaskList],
+  imports: [MyHeader, MySlider, MyTaskForm, MyTaskList, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
