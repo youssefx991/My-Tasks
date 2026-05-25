@@ -59,3 +59,8 @@ export enum TabChoice {
   DONE = 'done',
   NOT_DONE = 'not-done',
 }
+
+export type error = {
+  message: string;
+  state: boolean;
+};
