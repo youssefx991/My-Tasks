@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-my-header',
@@ -7,4 +7,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './my-header.html',
   styleUrl: './my-header.css',
 })
-export class MyHeader {}
+export class MyHeader {
+  logout() {
+    localStorage.setItem('isLoggedIn', 'false');
+  }
+}
