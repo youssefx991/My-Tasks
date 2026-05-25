@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angular/core';
 
 @Component({
   selector: 'app-my-slider',
@@ -6,7 +6,7 @@ import { ChangeDetectorRef, Component, Inject } from '@angular/core';
   templateUrl: './my-slider.html',
   styleUrl: './my-slider.css',
 })
-export class MySlider {
+export class MySlider implements OnInit, OnDestroy {
   images: string[] = [
     'Barca/1.jpg',
     'Barca/2.jpg',
@@ -18,40 +18,38 @@ export class MySlider {
 
   currentIndex: number = 0;
 
-  interval : any = null;
-
-  cd = Inject(ChangeDetectorRef);
-
-  nextImage(): void {
-    if (this.currentIndex < this.images.length - 1)
-      this.currentIndex++;
-  }
-
-  prevImage(): void {
-    if (this.currentIndex > 0)
-      this.currentIndex--;
-  }
+  interval: ReturnType<typeof setInterval> | null = null;
+  private readonly cdr = inject(ChangeDetectorRef);
 
   changeImage(index: number): void {
     this.currentIndex = index;
   }
 
   startSlider(): void {
-    this.cd.detectChanges();
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+
     this.interval = setInterval(() => {
       this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      this.cdr.detectChanges();
     }, 1000);
-    this.cd.detectChanges();
-
   }
 
   stopSlider(): void {
-    clearInterval(this.interval);
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
 
   }
 
-  ngOninit() {
+  ngOnInit() {
     this.startSlider();
+  }
+
+  ngOnDestroy(): void {
+    this.stopSlider();
   }
 }
 
