@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MyTabs } from "../my-tabs/my-tabs";
 import { MyAllTasks } from "../my-all-tasks/my-all-tasks";
 import { TabChoice, Task, TaskAction } from '../../types';
@@ -56,27 +56,14 @@ export class MyTaskList {
         break;
     }
   }
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("Tasks in List onChanges: ", this.Tasks);
-    console.log("Tasks in List onChanges: ", changes['Tasks']?.firstChange);
-    if (changes['Tasks']) {
-      this.applyFilter();
-    }
-
-  }
-
   @Output() SendTaskActionObjToApp = new EventEmitter<TaskAction>();
   ReceiveTaskActionObjFromFilteredList(TaskActionObj: TaskAction) {
     switch (TaskActionObj.action) {
       case 'delete':
         this.Tasks = this.Tasks.filter(task => task.id !== TaskActionObj.taskId);
-        this.DisplayedTasks = this.DisplayedTasks.filter(task => task.id !== TaskActionObj.taskId);
         break;
       case 'done':
         this.Tasks = this.Tasks.map(task =>
-          task.id === TaskActionObj.taskId ? { ...task, isDone: true } : task
-        );
-        this.DisplayedTasks = this.DisplayedTasks.map(task =>
           task.id === TaskActionObj.taskId ? { ...task, isDone: true } : task
         );
         break;
@@ -84,11 +71,10 @@ export class MyTaskList {
         this.Tasks = this.Tasks.map(task =>
           task.id === TaskActionObj.taskId ? { ...task, isDone: false } : task
         );
-        this.DisplayedTasks = this.DisplayedTasks.map(task =>
-          task.id === TaskActionObj.taskId ? { ...task, isDone: false } : task
-        );
         break;
     }
+
+    this.applyFilter();
   }
 
 }

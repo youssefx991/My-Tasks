@@ -12,9 +12,9 @@ import { Task, TaskAction, TaskActionType } from '../../types';
 export class MyNotDoneTasks {
   @Input() TasksFromList: Task[] = [];
 
-  get data(): Task[] {
-    return this.TasksFromList.filter(task => !task.isDone);
-  }
+  // get data(): Task[] {
+  //   return this.TasksFromList.filter(task => !task.isDone);
+  // }
 
   @Output() SendTaskActionObjToList = new EventEmitter<TaskAction>();
   ngOnChanges(changes: SimpleChanges) {
