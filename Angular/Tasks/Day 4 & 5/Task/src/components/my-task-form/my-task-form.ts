@@ -9,8 +9,6 @@ import { error, Task, TaskAction, TaskActionType } from '../../types';
   styleUrl: './my-task-form.css',
 })
 export class MyTaskForm {
-  [x: string]: any;
-
   @Input() TaskActionObjFromApp: TaskAction = new TaskAction();
 
   FormTags: string = '';
