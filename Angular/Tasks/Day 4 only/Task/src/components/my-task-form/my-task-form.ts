@@ -1,6 +1,6 @@
 import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { error, Task, TaskAction, TaskActionType } from '../../types';
+import { Task, TaskAction, TaskActionType } from '../../types';
 
 @Component({
   selector: 'app-my-task-form',
@@ -9,14 +9,13 @@ import { error, Task, TaskAction, TaskActionType } from '../../types';
   styleUrl: './my-task-form.css',
 })
 export class MyTaskForm {
-  [x: string]: any;
+[x: string]: any;
 
   @Input() TaskActionObjFromApp: TaskAction = new TaskAction();
 
-  FormTags: string = '';
-  FormTask: Task = new Task();
-  action: TaskActionType = TaskActionType.ADD;
-  error: error = { message: '', state: false };
+  FormTags : string = '';
+  FormTask : Task = new Task();
+  action : TaskActionType = TaskActionType.ADD;
 
   ngOnChanges() {
     console.log("TaskActionObjFromApp in form ngOnChanges: ", this.TaskActionObjFromApp);
@@ -24,7 +23,7 @@ export class MyTaskForm {
       this.FormTask = { ...this.TaskActionObjFromApp.taskObj };
       this.FormTags = this.FormTask.tags ? this.FormTask.tags.join(' ') : '';
       this.action = TaskActionType.UPDATE;
-    } else if (this.TaskActionObjFromApp.action === TaskActionType.ADD) {
+    }else if (this.TaskActionObjFromApp.action === TaskActionType.ADD) {
       this.resetForm();
       this.action = TaskActionType.ADD;
     }
@@ -34,14 +33,9 @@ export class MyTaskForm {
 
 
   addTask() {
-    console.log("FormTask before validation: ", this.FormTask);
     if (this.FormTask.tags)
       this.FormTask.tags = this.FormTags.split(' ').map(tag => tag.trim());
 
-    if (this.FormTags === '') {
-      this.error = { message: 'Please fill all the fields', state: true };
-      return;
-    }
     const newTask = new Task(
       this.FormTask.title,
       this.FormTask.description,
@@ -52,12 +46,6 @@ export class MyTaskForm {
       this.FormTask.isDone
     );
 
-    for (const key of Object.keys(newTask) as (keyof Task)[]) {
-      if (newTask[key] === '' || newTask[key] === null || newTask[key] === undefined) {
-        this.error = { message: 'Please fill all the fields', state: true };
-        return;
-      }
-    }
     if (this.action === TaskActionType.ADD) {
       console.log("adding task in form: ", newTask);
       this.SendTaskActionObjToApp.emit(new TaskAction(newTask.id, newTask, TaskActionType.ADD));
@@ -73,7 +61,6 @@ export class MyTaskForm {
     this.FormTask = new Task();
     this.FormTags = '';
     this.action = TaskActionType.ADD;
-    this.error = { message: '', state: false };
   }
 }
 
