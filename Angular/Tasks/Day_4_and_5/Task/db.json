@@ -2,17 +2,17 @@
   "tasks": [
     {
       "id": "e1c3f6b9",
-      "title": "Build study flashcards",
+      "title": "Build study flashcards updated",
       "description": "Create flashcards for Angular directives, services, and dependency injection.",
       "priority": "medium",
-      "dueDate": "2026-06-13T15:00:00.000Z",
+      "dueDate": "2026-06-13T00:00:00.000Z",
       "category": "study",
       "tags": [
         "angular",
         "flashcards",
         "revision"
       ],
-      "isDone": false
+      "isDone": true
     }
   ],
   "users": [

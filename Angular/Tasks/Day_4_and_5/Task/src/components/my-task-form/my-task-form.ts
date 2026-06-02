@@ -1,7 +1,8 @@
-import { Component, EventEmitter, inject, Input, OnChanges, Output } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Category, error, Priority, Task, TaskAction, TaskActionType } from '../../types';
+import { Category, error, Priority, Task } from '../../types';
 import { APIService } from '../../app/services/apiservice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-task-form',
@@ -9,8 +10,9 @@ import { APIService } from '../../app/services/apiservice';
   templateUrl: './my-task-form.html',
   styleUrl: './my-task-form.css',
 })
-export class MyTaskForm implements OnChanges {
+export class MyTaskForm implements OnInit {
   apiService = inject(APIService);
+  router = inject(Router);
 
   taskForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -22,26 +24,27 @@ export class MyTaskForm implements OnChanges {
     isDone: new FormControl(false)
   });
 
-  @Input() TaskActionObjFromApp: TaskAction = new TaskAction();
-
-  FormTags: string = '';
-  FormTask: Task = new Task();
-  action: TaskActionType = TaskActionType.ADD;
   error: error = { message: '', state: false };
 
-  ngOnChanges() {
-    console.log("TaskActionObjFromApp in form ngOnChanges: ", this.TaskActionObjFromApp);
-    if (this.TaskActionObjFromApp.action === TaskActionType.UPDATE) {
-      this.FormTask = { ...this.TaskActionObjFromApp.taskObj };
-      this.FormTags = this.FormTask.tags ? this.FormTask.tags.join(' ') : '';
-      this.action = TaskActionType.UPDATE;
-    } else if (this.TaskActionObjFromApp.action === TaskActionType.ADD) {
-      this.resetForm();
-      this.action = TaskActionType.ADD;
-    }
+  get isEditing() {
+    return !!this.apiService.getTaskToEdit();
   }
 
-  @Output() SendTaskActionObjToApp = new EventEmitter<TaskAction>();
+  ngOnInit() {
+    const taskToEdit = this.apiService.getTaskToEdit();
+
+    if (taskToEdit) {
+      this.taskForm.patchValue({
+        title: taskToEdit.title,
+        description: taskToEdit.description,
+        priority: taskToEdit.priority,
+        dueDate: new Date(taskToEdit.dueDate).toISOString().slice(0, 10),
+        category: taskToEdit.category,
+        tags: taskToEdit.tags.join(' '),
+        isDone: taskToEdit.isDone,
+      });
+    }
+  }
 
 
   addTask() {
@@ -51,6 +54,7 @@ export class MyTaskForm implements OnChanges {
     }
 
     const formValue = this.taskForm.getRawValue();
+    const taskToEdit = this.apiService.getTaskToEdit();
 
     const newTask = new Task(
       formValue.title ?? '',
@@ -62,29 +66,28 @@ export class MyTaskForm implements OnChanges {
       formValue.isDone ?? false
     );
 
-    if (this.action === TaskActionType.UPDATE) {
-      newTask.id = this.FormTask.id;
+    if (taskToEdit) {
+      newTask.id = taskToEdit.id;
     }
 
-
-
-    if (this.action === TaskActionType.ADD) {
-      this.apiService.addTask(newTask).subscribe((addedTask: Task) => {
-        this.SendTaskActionObjToApp.emit(new TaskAction(addedTask.id, addedTask, TaskActionType.ADD));
-        console.log("Added Task in form: ", addedTask);
+    if (taskToEdit) {
+      this.apiService.updateTask(newTask).subscribe((updatedTask: Task) => {
+        console.log("Updated Task in form: ", updatedTask);
+        this.apiService.clearTaskToEdit();
         this.resetForm();
+        this.router.navigate(['/list']);
       });
     } else {
-      this.apiService.updateTask(newTask).subscribe((updatedTask: Task) => {
-        this.SendTaskActionObjToApp.emit(new TaskAction(updatedTask.id, updatedTask, TaskActionType.UPDATE));
-        console.log("Updated Task in form: ", updatedTask);
+      this.apiService.addTask(newTask).subscribe((addedTask: Task) => {
+        console.log("Added Task in form: ", addedTask);
+        this.apiService.clearTaskToEdit();
         this.resetForm();
+        this.router.navigate(['/list']);
       });
     }
   }
 
   resetForm() {
-    this.FormTask = new Task();
     this.taskForm.reset({
       title: '',
       description: '',
@@ -94,8 +97,6 @@ export class MyTaskForm implements OnChanges {
       tags: '',
       isDone: false,
     });
-    this.FormTags = '';
-    this.action = TaskActionType.ADD;
     this.error = { message: '', state: false };
   }
 }

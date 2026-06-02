@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
-import { v4 as uuidv4 } from 'uuid';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task, TaskAction, TaskActionType } from '../../types';
 
 @Component({
@@ -8,15 +7,9 @@ import { Task, TaskAction, TaskActionType } from '../../types';
   templateUrl: './my-all-tasks.html',
 })
 export class MyAllTasks {
-  @Input() TasksFromList : Task[] = [];
+  @Input() TasksFromList: Task[] = [];
   @Output() SendTaskActionObjToList = new EventEmitter<TaskAction>();
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("Tasks in All Tasks onChanges: ", this.TasksFromList);
-    if (!changes['TasksFromList']?.firstChange) {
-      this.TasksFromList = [...this.TasksFromList];
-    }
-  }
   markAsDone(task: Task) {
     this.SendTaskActionObjToList.emit(new TaskAction(task.id, task, TaskActionType.DONE));
   }

@@ -1,10 +1,11 @@
-import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MyTabs } from "../my-tabs/my-tabs";
 import { MyAllTasks } from "../my-all-tasks/my-all-tasks";
-import { TabChoice, Task, TaskAction } from '../../types';
+import { TabChoice, Task, TaskAction, TaskActionType } from '../../types';
 import { MyDoneTasks } from "../my-done-tasks/my-done-tasks";
 import { MyNotDoneTasks } from "../my-not-done-tasks/my-not-done-tasks";
 import { APIService } from '../../app/services/apiservice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-task-list',
@@ -12,8 +13,9 @@ import { APIService } from '../../app/services/apiservice';
   templateUrl: './my-task-list.html',
   styleUrl: './my-task-list.css',
 })
-export class MyTaskList {
+export class MyTaskList implements OnInit {
   apiService = inject(APIService);
+  router = inject(Router);
   Tasks = signal<Task[]>([]);
 
   DisplayedTasks: Task[] = [...this.Tasks()];
@@ -46,29 +48,35 @@ export class MyTaskList {
         break;
     }
   }
-  @Output() SendTaskActionObjToApp = new EventEmitter<TaskAction>();
   ReceiveTaskActionObjFromFilteredList(TaskActionObj: TaskAction) {
     switch (TaskActionObj.action) {
-      case 'delete':
+      case TaskActionType.DELETE:
         this.apiService.deleteTask(TaskActionObj.taskId).subscribe(() => {
           this.Tasks.set(this.Tasks().filter(task => task.id !== TaskActionObj.taskId));
+          this.applyFilter();
         });
         break;
-      case 'done':
-        TaskActionObj.taskObj.isDone = true;
-        this.apiService.updateTask(TaskActionObj.taskObj).subscribe((updatedTask) => {
+      case TaskActionType.DONE: {
+        const updatedTaskObj = { ...TaskActionObj.taskObj, isDone: true };
+        this.apiService.updateTask(updatedTaskObj).subscribe((updatedTask) => {
           this.Tasks.set(this.Tasks().map(task => task.id === TaskActionObj.taskId ? updatedTask : task));
+          this.applyFilter();
         });
         break;
-      case 'not_done':
-        TaskActionObj.taskObj.isDone = false;
-        this.apiService.updateTask(TaskActionObj.taskObj).subscribe((updatedTask) => {
+      }
+      case TaskActionType.NOT_DONE: {
+        const updatedTaskObj = { ...TaskActionObj.taskObj, isDone: false };
+        this.apiService.updateTask(updatedTaskObj).subscribe((updatedTask) => {
           this.Tasks.set(this.Tasks().map(task => task.id === TaskActionObj.taskId ? updatedTask : task));
+          this.applyFilter();
         });
+        break;
+      }
+      case TaskActionType.UPDATE:
+        this.apiService.setTaskToEdit(TaskActionObj.taskObj);
+        this.router.navigate(['/form']);
         break;
     }
-
-    this.applyFilter();
   }
 
 }

@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { baseUrl, User, Task } from '../../types';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,6 +10,7 @@ export class APIService {
   baseUrl: string = baseUrl;
   tasksUrl: string = this.baseUrl + 'tasks/';
   usersUrl: string = this.baseUrl + 'users/';
+  private readonly taskToEdit = signal<Task | null>(null);
 
   getTasks() {
     return this.http.get<Task[]>(this.tasksUrl);
@@ -17,6 +18,18 @@ export class APIService {
 
   addTask(task: Task) {
     return this.http.post<Task>(this.tasksUrl, task);
+  }
+
+  setTaskToEdit(task: Task | null) {
+    this.taskToEdit.set(task ? { ...task } : null);
+  }
+
+  getTaskToEdit() {
+    return this.taskToEdit();
+  }
+
+  clearTaskToEdit() {
+    this.taskToEdit.set(null);
   }
 
   deleteTask(id: string) {

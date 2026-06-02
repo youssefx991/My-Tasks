@@ -6,7 +6,7 @@
         <div class="card-body">
           <form [formGroup]="taskForm" (ngSubmit)="addTask()">
             <h2 class="text-center mb-4">
-              @if (action.toString().toLowerCase() === 'update') {
+              @if (isEditing) {
               Update Task
               } @else {
               Add New Task
@@ -106,7 +106,7 @@
 
             <button class="btn btn-primary w-100" [disabled]="taskForm.invalid" type="submit">
 
-              @if (action.toString().toLowerCase() === 'update') {
+              @if (isEditing) {
               Update Task
               } @else {
               Add Task
