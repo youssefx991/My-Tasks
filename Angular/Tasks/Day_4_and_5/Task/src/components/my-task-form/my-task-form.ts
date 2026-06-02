@@ -34,15 +34,6 @@ export class MyTaskForm implements OnChanges {
     if (this.TaskActionObjFromApp.action === TaskActionType.UPDATE) {
       this.FormTask = { ...this.TaskActionObjFromApp.taskObj };
       this.FormTags = this.FormTask.tags ? this.FormTask.tags.join(' ') : '';
-      this.taskForm.patchValue({
-        title: this.FormTask.title,
-        description: this.FormTask.description,
-        priority: this.FormTask.priority,
-        dueDate: this.FormTask.dueDate ? new Date(this.FormTask.dueDate).toISOString().slice(0, 10) : '',
-        category: this.FormTask.category,
-        tags: this.FormTags,
-        isDone: this.FormTask.isDone,
-      });
       this.action = TaskActionType.UPDATE;
     } else if (this.TaskActionObjFromApp.action === TaskActionType.ADD) {
       this.resetForm();

@@ -13,22 +13,6 @@
         "revision"
       ],
       "isDone": false
-    },
-    {
-      "id": "UKY93jezLDo",
-      "title": "asdasdasd",
-      "description": "asdsadasdasd",
-      "priority": "medium",
-      "dueDate": "0003-01-02T00:00:00.000Z",
-      "category": "work",
-      "tags": [
-        "asdas",
-        "asd",
-        "asd",
-        "asd",
-        "asd"
-      ],
-      "isDone": false
     }
   ],
   "users": [
