@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export class Task {
-  id : string;
+  id: string;
   title: string;
   description: string;
   priority: Priority;
@@ -39,7 +39,7 @@ export class TaskAction {
   taskId: string;
   taskObj: Task;
   action: TaskActionType;
-  constructor(taskId: string='', taskObj: Task=new Task(), action: TaskActionType=TaskActionType.ADD) {
+  constructor(taskId: string = '', taskObj: Task = new Task(), action: TaskActionType = TaskActionType.ADD) {
     this.taskId = taskId;
     this.taskObj = taskObj;
     this.action = action;
@@ -64,3 +64,10 @@ export type error = {
   message: string;
   state: boolean;
 };
+
+
+export type User = {
+  username: string;
+  email: string;
+  password: string;
+}
