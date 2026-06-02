@@ -6,10 +6,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class APIService {
-  http : HttpClient = inject(HttpClient);
-  baseUrl : string = baseUrl;
-  tasksUrl : string = this.baseUrl + 'tasks/';
-  usersUrl : string = this.baseUrl + 'users/';
+  http: HttpClient = inject(HttpClient);
+  baseUrl: string = baseUrl;
+  tasksUrl: string = this.baseUrl + 'tasks/';
+  usersUrl: string = this.baseUrl + 'users/';
 
   getTasks() {
     return this.http.get<Task[]>(this.tasksUrl);
@@ -20,14 +20,14 @@ export class APIService {
   }
 
   deleteTask(id: string) {
-    return this.http.delete(this.tasksUrl + "/" + id);
+    return this.http.delete(this.tasksUrl + id);
   }
 
   updateTask(task: Task) {
-    return this.http.put<Task>(this.tasksUrl + "/" + task.id, task);
+    return this.http.put<Task>(this.tasksUrl + task.id, task);
   }
 
-  
+
   getUsers() {
     return this.http.get<User[]>(this.usersUrl);
   }

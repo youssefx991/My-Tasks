@@ -6,7 +6,6 @@ import { Task, TaskAction, TaskActionType } from '../../types';
   selector: 'app-my-all-tasks',
   imports: [],
   templateUrl: './my-all-tasks.html',
-  styleUrl: './my-all-tasks.css',
 })
 export class MyAllTasks {
   @Input() TasksFromList : Task[] = [];
