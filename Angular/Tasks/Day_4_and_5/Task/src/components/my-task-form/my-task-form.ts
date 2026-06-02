@@ -1,14 +1,24 @@
 import { Component, EventEmitter, input, Input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
 import { error, Task, TaskAction, TaskActionType } from '../../types';
 
 @Component({
   selector: 'app-my-task-form',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './my-task-form.html',
   styleUrl: './my-task-form.css',
 })
 export class MyTaskForm {
+  taskForm = new FormGroup({
+    title: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    priority: new FormControl('Low', [Validators.required]),
+    dueDate: new FormControl(new Date(), [Validators.required]),
+    category: new FormControl('Work', [Validators.required]),
+    tags: new FormControl('', [Validators.required]),
+    isDone: new FormControl(false)
+  });
+
   @Input() TaskActionObjFromApp: TaskAction = new TaskAction();
 
   FormTags: string = '';
@@ -32,14 +42,11 @@ export class MyTaskForm {
 
 
   addTask() {
-    console.log("FormTask before validation: ", this.FormTask);
-    if (this.FormTask.tags)
-      this.FormTask.tags = this.FormTags.split(' ').map(tag => tag.trim());
-
-    if (this.FormTags === '') {
-      this.error = { message: 'Please fill all the fields', state: true };
+    if (this.taskForm.invalid) {
+      this.error = { message: 'Please fill all the fields correctly', state: true };
       return;
     }
+    
     const newTask = new Task(
       this.FormTask.title,
       this.FormTask.description,
