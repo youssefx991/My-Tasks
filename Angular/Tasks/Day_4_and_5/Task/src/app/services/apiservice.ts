@@ -15,6 +15,19 @@ export class APIService {
     return this.http.get<Task[]>(this.tasksUrl);
   }
 
+  addTask(task: Task) {
+    return this.http.post<Task>(this.tasksUrl, task);
+  }
+
+  deleteTask(id: string) {
+    return this.http.delete(this.tasksUrl + "/" + id);
+  }
+
+  updateTask(task: Task) {
+    return this.http.put<Task>(this.tasksUrl + "/" + task.id, task);
+  }
+
+  
   getUsers() {
     return this.http.get<User[]>(this.usersUrl);
   }
