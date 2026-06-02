@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { MyTabs } from "../my-tabs/my-tabs";
 import { MyAllTasks } from "../my-all-tasks/my-all-tasks";
 import { TabChoice, Task, TaskAction, TaskActionType } from '../../types';
@@ -16,59 +16,49 @@ import { Router } from '@angular/router';
 export class MyTaskList implements OnInit {
   apiService = inject(APIService);
   router = inject(Router);
-  Tasks = signal<Task[]>([]);
+  tasks = signal<Task[]>([]);
+  displayedTasks = computed(() => {
+    const tasks = this.tasks();
 
-  DisplayedTasks: Task[] = [...this.Tasks()];
+    switch (this.choice()) {
+      case TabChoice.DONE:
+        return tasks.filter(task => task.isDone);
+      case TabChoice.NOT_DONE:
+        return tasks.filter(task => !task.isDone);
+      default:
+        return tasks;
+    }
+  });
   TabChoice = TabChoice;
 
-  choice: TabChoice = TabChoice.ALL;
+  choice = signal<TabChoice>(TabChoice.ALL);
 
   ngOnInit() {
     this.apiService.getTasks().subscribe((tasks: Task[]) => {
-      this.Tasks.set(tasks);
-      this.applyFilter();
-
+      this.tasks.set(tasks);
     });
   }
   onTabChoice(tab: TabChoice) {
-    this.choice = tab;
-    this.applyFilter();
-  }
-
-  applyFilter() {
-    switch (this.choice) {
-      case TabChoice.ALL:
-        this.DisplayedTasks = [...this.Tasks()];
-        break;
-      case TabChoice.DONE:
-        this.DisplayedTasks = [...this.Tasks().filter(task => task.isDone)];
-        break;
-      case TabChoice.NOT_DONE:
-        this.DisplayedTasks = [...this.Tasks().filter(task => !task.isDone)];
-        break;
-    }
+    this.choice.set(tab);
   }
   ReceiveTaskActionObjFromFilteredList(TaskActionObj: TaskAction) {
     switch (TaskActionObj.action) {
       case TaskActionType.DELETE:
         this.apiService.deleteTask(TaskActionObj.taskId).subscribe(() => {
-          this.Tasks.set(this.Tasks().filter(task => task.id !== TaskActionObj.taskId));
-          this.applyFilter();
+          this.tasks.set(this.tasks().filter(task => task.id !== TaskActionObj.taskId));
         });
         break;
       case TaskActionType.DONE: {
         const updatedTaskObj = { ...TaskActionObj.taskObj, isDone: true };
         this.apiService.updateTask(updatedTaskObj).subscribe((updatedTask) => {
-          this.Tasks.set(this.Tasks().map(task => task.id === TaskActionObj.taskId ? updatedTask : task));
-          this.applyFilter();
+          this.tasks.set(this.tasks().map(task => task.id === TaskActionObj.taskId ? updatedTask : task));
         });
         break;
       }
       case TaskActionType.NOT_DONE: {
         const updatedTaskObj = { ...TaskActionObj.taskObj, isDone: false };
         this.apiService.updateTask(updatedTaskObj).subscribe((updatedTask) => {
-          this.Tasks.set(this.Tasks().map(task => task.id === TaskActionObj.taskId ? updatedTask : task));
-          this.applyFilter();
+          this.tasks.set(this.tasks().map(task => task.id === TaskActionObj.taskId ? updatedTask : task));
         });
         break;
       }
