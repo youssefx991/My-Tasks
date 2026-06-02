@@ -67,7 +67,10 @@ export type error = {
 
 
 export type User = {
+  id: string;
   username: string;
   email: string;
   password: string;
 }
+
+export const baseUrl = 'http://localhost:3000/';

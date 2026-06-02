@@ -8,4 +8,6 @@ import { RouterOutlet } from "@angular/router";
   templateUrl: './my-home.html',
   styleUrl: './my-home.css',
 })
-export class MyHome {}
+export class MyHome {
+  
+}
