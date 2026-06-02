@@ -1,5 +1,5 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../types';
 import { APIService } from '../../app/services/apiservice';
@@ -22,11 +22,11 @@ export class MySignUp implements OnInit {
   apiService = inject(APIService);
   users: User[] = [];
   ngOnInit() {
-      this.apiService.getUsers().subscribe((users: User[]) => {
-        this.users = users;
-        console.log("Users:", users);
-      });
-    }
+    this.apiService.getUsers().subscribe((users: User[]) => {
+      this.users = users;
+      console.log("Users:", users);
+    });
+  }
   onSignUp() {
     if (this.signUpForm.invalid) {
       alert('Please fill in all fields correctly.');
@@ -34,7 +34,7 @@ export class MySignUp implements OnInit {
     }
     // check if username or email already exists in the users array
     const emailExists = this.users.some(u => u.email === this.signUpForm.value.email);
-     if (emailExists) {
+    if (emailExists) {
       alert('Email already exists. Please choose a different email.');
       return;
     }
@@ -43,30 +43,6 @@ export class MySignUp implements OnInit {
       alert('Username already exists. Please choose a different username.');
       return;
     }
-    const user = this.users.find(u => u.email === this.signUpForm.value.email);
-    if (user) {
-      alert('Email already exists. Please choose a different email.');
-      return;
-    }
-
-
-    // if (localStorage.getItem('username') === this.signUpForm.value.username) {
-    //   alert('Username already exists. Please choose a different username.');
-    //   return;
-    // }
-    // if (localStorage.getItem('email') === this.signUpForm.value.email) {
-    //   alert('Email already exists. Please choose a different email.');
-    //   return;
-    // }
-
-    // if (this.signUpForm.value.username === '' || this.signUpForm.value.email === '' || this.signUpForm.value.password === '') {
-    //   alert('Please fill in all fields.');
-    //   return;
-    // }
-    // localStorage.setItem('username', this.signUpForm.get('username')?.value || '');
-    // localStorage.setItem('email', this.signUpForm.get('email')?.value || '');
-    // localStorage.setItem('password', this.signUpForm.get('password')?.value || '');
-
     const newUser: User = {
       id: uuidv4().split('-')[0],
       username: this.signUpForm.value.username || '',
@@ -75,8 +51,8 @@ export class MySignUp implements OnInit {
     };
     this.apiService.addUser(newUser).subscribe((addedUser: User) => {
       alert('Sign up successful! You can now log in with your credentials.');
+      this.router.navigate(['/login']);
     });
-    this.router.navigate(['/login']);
   }
 }
 

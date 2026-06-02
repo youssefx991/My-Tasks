@@ -940,6 +940,12 @@
       "username": "ali",
       "email": "ali@gmail.com",
       "password": "ali123"
+    },
+    {
+      "id": "DsIUipTbmpI",
+      "username": "medhat",
+      "email": "medhat@gmail.com",
+      "password": "medhat123"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
