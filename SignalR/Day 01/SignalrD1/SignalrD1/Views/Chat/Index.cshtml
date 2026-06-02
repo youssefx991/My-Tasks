@@ -1,0 +1,36 @@
+﻿@model  List<Message> ;
+<div>
+    <input type="text" id="txt" />
+    <input type="button" value="send" onclick="send()" />
+    <br />
+    <ul id="mess">
+        @foreach (var item in Model)
+        {
+            <li>@item.Name : @item.Messagebody</li>
+        }
+    </ul>
+</div>
+@section Scripts{
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        var name=prompt("please enter your name");
+         var con = new signalR.HubConnectionBuilder().withUrl("/mychat",signalR.HttpTransportType.ServerSentEvents ).build();
+         con.start();
+
+         function send(){
+            var obj={
+                name:name,
+                messagebody:$("#txt").val()
+            };
+            con.invoke("sendmessage",obj);
+            //con.invoke("sendmessage",name ,$("#txt").val()).then((s)=>{console.log("return"+s)});
+         }
+
+
+         con.on("newmessage",(m)=>{
+            
+             $("#mess").append("<li>"+m.name+":"+m.messagebody+"</li>")
+           //  $("#txt").val("typing...");
+         })
+    </script>
+}

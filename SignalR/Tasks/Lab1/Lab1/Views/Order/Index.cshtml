@@ -1,0 +1,75 @@
+@model IEnumerable<Lab1.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="orderTableBody">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ItemCount)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        // define connection
+        var conn = new signalR.HubConnectionBuilder().withUrl("/orderhub",signalR.HttpTransportType.ServerSentEvents ).build();
+
+        // start connection
+        conn.start();
+
+        // define callback method
+        conn.on("addorder", (o) => {
+        let row = `<tr>
+                    <td>${o.customerName}</td>
+                    <td>${o.itemName}</td>
+                    <td>${o.itemCount}</td>
+                    <td>
+                    <a href="/Order/Edit/${o.id}">Edit</a> |
+                    <a href="/Order/Details/${o.id}">Details</a> |
+                    <a href="/Order/Delete/${o.id}">Delete</a>
+                    </td>
+                </tr>`;
+        document.getElementById("orderTableBody").innerHTML += row;
+        });
+
+    </script>
+}

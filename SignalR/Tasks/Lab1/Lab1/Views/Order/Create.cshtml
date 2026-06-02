@@ -1,0 +1,65 @@
+@model Lab1.Models.Order
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="CustomerName"></label>
+            <input id="CustomerName" asp-for="CustomerName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ItemName"></label>
+            <input id="ItemName" asp-for="ItemName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ItemCount"></label>
+            <input id="ItemCount" asp-for="ItemCount" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <button type="button" id="btnCreate" class="btn btn-primary">
+                Create
+            </button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+
+    <script>
+        // define connection
+        const connection = new signalR.HubConnectionBuilder().withUrl("/orderhub",signalR.HttpTransportType.ServerSentEvents ).build();
+
+        // start connection
+        connection.start();
+
+        
+        document.getElementById("btnCreate")
+        .addEventListener("click", function () {
+
+        
+        const order = {
+        customerName: document.getElementById("CustomerName").value,
+        itemName: document.getElementById("ItemName").value,
+        itemCount: parseInt(document.getElementById("ItemCount").value)
+        };
+
+        // calling server method
+        connection.send("addorder", order);
+        });
+    </script>
+}
