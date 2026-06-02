@@ -32,7 +32,6 @@ export class MySignUp implements OnInit {
       alert('Please fill in all fields correctly.');
       return;
     }
-    // check if username or email already exists in the users array
     const emailExists = this.users.some(u => u.email === this.signUpForm.value.email);
     if (emailExists) {
       alert('Email already exists. Please choose a different email.');
