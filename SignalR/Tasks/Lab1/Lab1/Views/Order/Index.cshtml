@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.CustomerName)
             </th>
             <th>
@@ -28,6 +31,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Id)
+                </td>
                 <td>
                     @Html.DisplayFor(model => item.CustomerName)
                 </td>
@@ -59,6 +65,7 @@
         // define callback method
         conn.on("addorder", (o) => {
         let row = `<tr>
+                    <td>${o.id}</td>
                     <td>${o.customerName}</td>
                     <td>${o.itemName}</td>
                     <td>${o.itemCount}</td>

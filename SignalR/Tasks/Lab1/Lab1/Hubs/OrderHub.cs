@@ -19,9 +19,9 @@ namespace Lab1.Hubs
             Console.WriteLine(OrderContext?.Orders == null); // false
             Console.WriteLine(Clients == null); // false
 
-            Clients?.All.SendAsync("addorder", order);
             OrderContext?.Orders?.Add(order);
             OrderContext?.SaveChanges();
+            Clients?.All.SendAsync("addorder", order);
         }
     }
 }
