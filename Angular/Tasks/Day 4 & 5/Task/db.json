@@ -1,0 +1,927 @@
+{
+  "tasks": [
+    {
+      "id": "a1f3c9d2",
+      "title": "Design the dashboard shell",
+      "description": "Create the main layout for the task dashboard with header, sidebar, and content region.",
+      "priority": "high",
+      "dueDate": "2026-06-05T09:00:00.000Z",
+      "category": "work",
+      "tags": [
+        "ui",
+        "layout",
+        "angular"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b2e4d8a1",
+      "title": "Write task form validation",
+      "description": "Validate required fields, dates, and tag input before submitting a new task.",
+      "priority": "high",
+      "dueDate": "2026-06-04T14:30:00.000Z",
+      "category": "study",
+      "tags": [
+        "forms",
+        "validation",
+        "typescript"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "c3a5b7e0",
+      "title": "Refactor task list filtering",
+      "description": "Split the current filtering logic into smaller helpers for all, done, and not-done states.",
+      "priority": "medium",
+      "dueDate": "2026-06-07T12:00:00.000Z",
+      "category": "work",
+      "tags": [
+        "filter",
+        "refactor",
+        "state"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "d4b6c8f9",
+      "title": "Prepare Angular routing demo",
+      "description": "Build a small demo showing route guards, lazy-like navigation, and fallback pages.",
+      "priority": "medium",
+      "dueDate": "2026-06-08T10:15:00.000Z",
+      "category": "study",
+      "tags": [
+        "routing",
+        "guards",
+        "demo"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "e5c7a9b3",
+      "title": "Review authentication flow",
+      "description": "Check the login and sign-up behavior and make the validation messages consistent.",
+      "priority": "high",
+      "dueDate": "2026-06-03T16:45:00.000Z",
+      "category": "personal",
+      "tags": [
+        "auth",
+        "login",
+        "signup"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "f6d8a1c4",
+      "title": "Add completed task badge",
+      "description": "Show a visual badge for completed tasks in all list views.",
+      "priority": "low",
+      "dueDate": "2026-06-09T08:00:00.000Z",
+      "category": "work",
+      "tags": [
+        "badge",
+        "ui"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "a7e9b2d5",
+      "title": "Prepare study notes for RxJS",
+      "description": "Summarize common operators, subscriptions, and observable patterns.",
+      "priority": "medium",
+      "dueDate": "2026-06-10T18:20:00.000Z",
+      "category": "study",
+      "tags": [
+        "rxjs",
+        "observables",
+        "notes"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b8f0c3e6",
+      "title": "Update task card spacing",
+      "description": "Tighten the spacing and alignment inside each task card for a cleaner layout.",
+      "priority": "low",
+      "dueDate": "2026-06-11T11:30:00.000Z",
+      "category": "work",
+      "tags": [
+        "css",
+        "spacing",
+        "cards"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "c9a1d4f7",
+      "title": "Plan weekend grocery list",
+      "description": "Collect groceries for the weekend and organize items by category.",
+      "priority": "low",
+      "dueDate": "2026-06-06T17:00:00.000Z",
+      "category": "personal",
+      "tags": [
+        "home",
+        "shopping",
+        "errands"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "d0b2e5a8",
+      "title": "Create API mock documentation",
+      "description": "Document the endpoints and example payloads used by the mock backend.",
+      "priority": "medium",
+      "dueDate": "2026-06-12T13:10:00.000Z",
+      "category": "work",
+      "tags": [
+        "api",
+        "docs",
+        "json-server"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "e1c3f6b9",
+      "title": "Build study flashcards",
+      "description": "Create flashcards for Angular directives, services, and dependency injection.",
+      "priority": "medium",
+      "dueDate": "2026-06-13T15:00:00.000Z",
+      "category": "study",
+      "tags": [
+        "angular",
+        "flashcards",
+        "revision"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "f2d4a7c0",
+      "title": "Clean up component imports",
+      "description": "Remove unused imports and standardize the import order across components.",
+      "priority": "low",
+      "dueDate": "2026-06-14T09:40:00.000Z",
+      "category": "work",
+      "tags": [
+        "cleanup",
+        "imports",
+        "lint"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "a3e5c8d1",
+      "title": "Schedule dentist appointment",
+      "description": "Call the clinic and book a routine checkup appointment.",
+      "priority": "medium",
+      "dueDate": "2026-06-07T08:30:00.000Z",
+      "category": "personal",
+      "tags": [
+        "health",
+        "appointment"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b4f6a9e2",
+      "title": "Prepare presentation slides",
+      "description": "Draft slides for the upcoming project presentation and add screenshots.",
+      "priority": "high",
+      "dueDate": "2026-06-15T19:00:00.000Z",
+      "category": "work",
+      "tags": [
+        "slides",
+        "presentation",
+        "project"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "c5a7d0f3",
+      "title": "Read Angular signals guide",
+      "description": "Review signals and their usage for state management in Angular 21.",
+      "priority": "medium",
+      "dueDate": "2026-06-16T20:00:00.000Z",
+      "category": "study",
+      "tags": [
+        "signals",
+        "angular",
+        "reading"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "d6b8e1a4",
+      "title": "Organize desktop files",
+      "description": "Move screenshots and downloads into their correct folders.",
+      "priority": "low",
+      "dueDate": "2026-06-05T22:00:00.000Z",
+      "category": "personal",
+      "tags": [
+        "cleanup",
+        "desktop"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "e7c9f2b5",
+      "title": "Implement task due date formatter",
+      "description": "Display due dates in a readable format across the application.",
+      "priority": "medium",
+      "dueDate": "2026-06-18T07:25:00.000Z",
+      "category": "work",
+      "tags": [
+        "date",
+        "formatting",
+        "ui"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "f8a0c3d6",
+      "title": "Revise TypeScript generics notes",
+      "description": "Go over generic constraints, utility types, and common typing patterns.",
+      "priority": "medium",
+      "dueDate": "2026-06-19T13:50:00.000Z",
+      "category": "study",
+      "tags": [
+        "typescript",
+        "generics",
+        "notes"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "a9b1d4e7",
+      "title": "Confirm team meeting time",
+      "description": "Send a message to confirm the revised meeting time with the team.",
+      "priority": "high",
+      "dueDate": "2026-06-04T07:15:00.000Z",
+      "category": "work",
+      "tags": [
+        "meeting",
+        "communication"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b0c2e5f8",
+      "title": "Plan a workout routine",
+      "description": "Set up a simple weekly workout plan with rest days and progress tracking.",
+      "priority": "low",
+      "dueDate": "2026-06-20T06:30:00.000Z",
+      "category": "personal",
+      "tags": [
+        "fitness",
+        "routine",
+        "health"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "c1d3f6a9",
+      "title": "Write unit tests for task actions",
+      "description": "Cover add, update, delete, done, and not-done actions with focused tests.",
+      "priority": "high",
+      "dueDate": "2026-06-21T12:45:00.000Z",
+      "category": "study",
+      "tags": [
+        "testing",
+        "vitest",
+        "angular"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "d2e4a7b0",
+      "title": "Improve empty state messaging",
+      "description": "Show friendly empty state text when there are no tasks in a tab.",
+      "priority": "low",
+      "dueDate": "2026-06-22T09:05:00.000Z",
+      "category": "work",
+      "tags": [
+        "empty-state",
+        "ui"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "e3f5c8d1",
+      "title": "Back up project notes",
+      "description": "Copy notes and references into a backup folder for safe keeping.",
+      "priority": "low",
+      "dueDate": "2026-06-06T15:55:00.000Z",
+      "category": "personal",
+      "tags": [
+        "backup",
+        "notes"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "f4a6d9e2",
+      "title": "Review tag input behavior",
+      "description": "Decide whether tags should be comma-separated or space-separated in the form.",
+      "priority": "medium",
+      "dueDate": "2026-06-23T18:10:00.000Z",
+      "category": "work",
+      "tags": [
+        "tags",
+        "form",
+        "ux"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "a5b7c0f3",
+      "title": "Prepare a study plan for next week",
+      "description": "Organize topics into a realistic study plan with daily focus items.",
+      "priority": "medium",
+      "dueDate": "2026-06-24T08:25:00.000Z",
+      "category": "study",
+      "tags": [
+        "plan",
+        "study",
+        "productivity"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b6c8d1a4",
+      "title": "Organize project screenshots",
+      "description": "Sort screenshots by feature area so they are ready for documentation.",
+      "priority": "low",
+      "dueDate": "2026-06-08T21:10:00.000Z",
+      "category": "personal",
+      "tags": [
+        "assets",
+        "documentation"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "c7d9e2b5",
+      "title": "Add color coding for priority",
+      "description": "Use subtle UI colors to visually distinguish high, medium, and low priority tasks.",
+      "priority": "high",
+      "dueDate": "2026-06-25T14:35:00.000Z",
+      "category": "work",
+      "tags": [
+        "priority",
+        "color",
+        "design"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "d8a0c3f6",
+      "title": "Practice interview questions",
+      "description": "Review common Angular and TypeScript interview questions with short answers.",
+      "priority": "medium",
+      "dueDate": "2026-06-26T19:45:00.000Z",
+      "category": "study",
+      "tags": [
+        "interview",
+        "angular",
+        "typescript"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "e9b1d4a7",
+      "title": "Buy a new notebook",
+      "description": "Pick up a notebook for planning and daily task notes.",
+      "priority": "low",
+      "dueDate": "2026-06-09T16:20:00.000Z",
+      "category": "personal",
+      "tags": [
+        "shopping",
+        "stationery"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "f0c2e5b8",
+      "title": "Document form errors",
+      "description": "Write down the expected validation error messages for the form component.",
+      "priority": "low",
+      "dueDate": "2026-06-27T11:10:00.000Z",
+      "category": "work",
+      "tags": [
+        "validation",
+        "docs",
+        "forms"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "a1d3f6c9",
+      "title": "Prepare a clean Git branch checklist",
+      "description": "List the steps needed before pushing changes to keep the branch tidy.",
+      "priority": "medium",
+      "dueDate": "2026-06-28T07:50:00.000Z",
+      "category": "study",
+      "tags": [
+        "git",
+        "workflow",
+        "checklist"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b2e4a7d0",
+      "title": "Replace placeholder task names",
+      "description": "Swap out generic task titles for realistic examples in the mock dataset.",
+      "priority": "medium",
+      "dueDate": "2026-06-29T10:05:00.000Z",
+      "category": "work",
+      "tags": [
+        "data",
+        "mock",
+        "content"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "c3f5c8e1",
+      "title": "Clean browser bookmarks",
+      "description": "Remove old bookmarks and sort the important ones into folders.",
+      "priority": "low",
+      "dueDate": "2026-06-10T12:30:00.000Z",
+      "category": "personal",
+      "tags": [
+        "browser",
+        "cleanup"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "d4a6d9f2",
+      "title": "Create task statistics section",
+      "description": "Display counts for total, done, and pending tasks in the dashboard.",
+      "priority": "high",
+      "dueDate": "2026-06-30T09:20:00.000Z",
+      "category": "work",
+      "tags": [
+        "stats",
+        "dashboard",
+        "summary"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "e5b7c0a3",
+      "title": "Review old class notes",
+      "description": "Go through archived notes and keep only the important study material.",
+      "priority": "low",
+      "dueDate": "2026-07-01T18:00:00.000Z",
+      "category": "study",
+      "tags": [
+        "archive",
+        "notes"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "f6c8d1b4",
+      "title": "Set up weekend coding session",
+      "description": "Reserve time to work through feature improvements and bug fixes.",
+      "priority": "medium",
+      "dueDate": "2026-06-14T15:25:00.000Z",
+      "category": "personal",
+      "tags": [
+        "coding",
+        "weekend",
+        "planning"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "a7d9e2c5",
+      "title": "Improve keyboard navigation",
+      "description": "Make sure the task form and task cards are friendly to keyboard users.",
+      "priority": "high",
+      "dueDate": "2026-07-02T13:15:00.000Z",
+      "category": "work",
+      "tags": [
+        "accessibility",
+        "keyboard",
+        "ui"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b8a0c3d6",
+      "title": "Practice debugging exercises",
+      "description": "Work through a few debugging exercises to sharpen troubleshooting skills.",
+      "priority": "medium",
+      "dueDate": "2026-07-03T17:40:00.000Z",
+      "category": "study",
+      "tags": [
+        "debugging",
+        "practice"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "c9b1d4e7",
+      "title": "Arrange a quick home cleanup",
+      "description": "Spend a short block of time on basic cleanup and organization at home.",
+      "priority": "low",
+      "dueDate": "2026-06-11T20:10:00.000Z",
+      "category": "personal",
+      "tags": [
+        "home",
+        "cleanup"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "d0c2e5f8",
+      "title": "Add loading state to task list",
+      "description": "Show a loading indicator while task data is being fetched from the API.",
+      "priority": "medium",
+      "dueDate": "2026-07-04T09:55:00.000Z",
+      "category": "work",
+      "tags": [
+        "loading",
+        "api",
+        "state"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "e1d3f6a9",
+      "title": "Review Angular forms basics",
+      "description": "Refresh the differences between template-driven and reactive forms.",
+      "priority": "medium",
+      "dueDate": "2026-07-05T11:35:00.000Z",
+      "category": "study",
+      "tags": [
+        "forms",
+        "angular",
+        "study"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "f2e4a7b0",
+      "title": "Create a meal prep plan",
+      "description": "Pick recipes and plan meals for the next few days.",
+      "priority": "low",
+      "dueDate": "2026-06-12T18:25:00.000Z",
+      "category": "personal",
+      "tags": [
+        "meal",
+        "planning",
+        "home"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "a3f5c8d1",
+      "title": "Standardize task IDs",
+      "description": "Keep task IDs short and readable while still unique in the mock data.",
+      "priority": "low",
+      "dueDate": "2026-07-06T08:10:00.000Z",
+      "category": "work",
+      "tags": [
+        "data",
+        "ids",
+        "mock"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b4a6d9e2",
+      "title": "Prepare a review checklist",
+      "description": "Make a checklist for checking UI, validation, and routing before demos.",
+      "priority": "medium",
+      "dueDate": "2026-07-07T14:05:00.000Z",
+      "category": "study",
+      "tags": [
+        "review",
+        "checklist",
+        "qa"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "c5b7c0f3",
+      "title": "Call family in the evening",
+      "description": "Set aside time to catch up with family after work.",
+      "priority": "low",
+      "dueDate": "2026-06-13T19:30:00.000Z",
+      "category": "personal",
+      "tags": [
+        "family",
+        "call"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "d6c8d1a4",
+      "title": "Verify done and not-done filters",
+      "description": "Check that the tabs correctly split completed and pending tasks.",
+      "priority": "high",
+      "dueDate": "2026-07-08T16:15:00.000Z",
+      "category": "work",
+      "tags": [
+        "filters",
+        "tabs",
+        "testing"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "e7d9e2b5",
+      "title": "Read about JSON Server routes",
+      "description": "Learn how collection names map to REST endpoints and query parameters.",
+      "priority": "medium",
+      "dueDate": "2026-07-09T12:10:00.000Z",
+      "category": "study",
+      "tags": [
+        "json-server",
+        "api",
+        "routes"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "f8a0c3d6",
+      "title": "Water indoor plants",
+      "description": "Check the plants and water the ones that need attention.",
+      "priority": "low",
+      "dueDate": "2026-06-15T08:20:00.000Z",
+      "category": "personal",
+      "tags": [
+        "plants",
+        "home"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "a9b1d4e7",
+      "title": "Add sample user accounts",
+      "description": "Provide a few mock users for future login and registration experiments.",
+      "priority": "low",
+      "dueDate": "2026-07-10T10:45:00.000Z",
+      "category": "work",
+      "tags": [
+        "users",
+        "mock",
+        "auth"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b0c2e5f8",
+      "title": "Review CSS utilities",
+      "description": "Go over utility classes and decide what can be reused in the app.",
+      "priority": "medium",
+      "dueDate": "2026-07-11T15:20:00.000Z",
+      "category": "study",
+      "tags": [
+        "css",
+        "utilities",
+        "layout"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "c1d3f6a9",
+      "title": "Buy groceries for the week",
+      "description": "Restock basics and plan a few meals for the upcoming week.",
+      "priority": "medium",
+      "dueDate": "2026-06-16T17:50:00.000Z",
+      "category": "personal",
+      "tags": [
+        "shopping",
+        "groceries"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "d2e4a7b0",
+      "title": "Create endpoint examples",
+      "description": "List example GET, POST, PATCH, and DELETE requests for the mock backend.",
+      "priority": "high",
+      "dueDate": "2026-07-12T09:30:00.000Z",
+      "category": "work",
+      "tags": [
+        "api",
+        "examples",
+        "docs"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "e3f5c8d1",
+      "title": "Plan next learning session",
+      "description": "Choose one topic to focus on for the next study block.",
+      "priority": "low",
+      "dueDate": "2026-07-13T18:05:00.000Z",
+      "category": "study",
+      "tags": [
+        "learning",
+        "plan"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "f4a6d9e2",
+      "title": "Declutter downloads folder",
+      "description": "Remove duplicate files and move useful downloads into named folders.",
+      "priority": "low",
+      "dueDate": "2026-06-17T09:15:00.000Z",
+      "category": "personal",
+      "tags": [
+        "downloads",
+        "cleanup"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "a5b7c0f3",
+      "title": "Draft release notes",
+      "description": "Summarize the latest changes in a short release note draft.",
+      "priority": "medium",
+      "dueDate": "2026-07-14T13:40:00.000Z",
+      "category": "work",
+      "tags": [
+        "release",
+        "notes",
+        "docs"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b6c8d1a4",
+      "title": "Study component communication patterns",
+      "description": "Review input, output, and shared service communication in Angular components.",
+      "priority": "medium",
+      "dueDate": "2026-07-15T11:00:00.000Z",
+      "category": "study",
+      "tags": [
+        "components",
+        "communication",
+        "angular"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "c7d9e2b5",
+      "title": "Set aside time for a walk",
+      "description": "Take a short walk in the afternoon to clear the mind.",
+      "priority": "low",
+      "dueDate": "2026-06-18T16:10:00.000Z",
+      "category": "personal",
+      "tags": [
+        "health",
+        "walk"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "d8a0c3f6",
+      "title": "Prepare a mock API guide",
+      "description": "Write down the setup steps for running json-server with this dataset.",
+      "priority": "high",
+      "dueDate": "2026-07-16T08:45:00.000Z",
+      "category": "work",
+      "tags": [
+        "guide",
+        "json-server",
+        "setup"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "e9b1d4a7",
+      "title": "Review task lifecycle states",
+      "description": "Make sure add, update, done, and delete actions are all covered in the UI.",
+      "priority": "medium",
+      "dueDate": "2026-07-17T17:35:00.000Z",
+      "category": "study",
+      "tags": [
+        "state",
+        "lifecycle",
+        "tasks"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "f0c2e5b8",
+      "title": "Plan a movie night",
+      "description": "Pick a movie and prepare snacks for a relaxed evening.",
+      "priority": "low",
+      "dueDate": "2026-06-19T20:30:00.000Z",
+      "category": "personal",
+      "tags": [
+        "leisure",
+        "movie"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "a1d3f6c9",
+      "title": "Prepare final dataset polish",
+      "description": "Tidy the mock data so it looks realistic and balanced across categories.",
+      "priority": "medium",
+      "dueDate": "2026-07-18T10:20:00.000Z",
+      "category": "work",
+      "tags": [
+        "dataset",
+        "polish",
+        "mock"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "b2e4a7d0",
+      "title": "Read about REST query filtering",
+      "description": "Review how to query subsets of data with json-server filtering parameters.",
+      "priority": "medium",
+      "dueDate": "2026-07-19T14:55:00.000Z",
+      "category": "study",
+      "tags": [
+        "rest",
+        "query",
+        "json-server"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "c3f5c8e1",
+      "title": "Finish a small home chore",
+      "description": "Complete one small household chore before the day ends.",
+      "priority": "low",
+      "dueDate": "2026-06-20T18:40:00.000Z",
+      "category": "personal",
+      "tags": [
+        "home",
+        "chore"
+      ],
+      "isDone": true
+    },
+    {
+      "id": "d4a6d9f2",
+      "title": "Create a task seed refresh guide",
+      "description": "Document how to reset and repopulate the mock backend dataset.",
+      "priority": "low",
+      "dueDate": "2026-07-20T12:00:00.000Z",
+      "category": "work",
+      "tags": [
+        "seed",
+        "guide",
+        "backend"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "e5b7c0a3",
+      "title": "Review Angular project structure",
+      "description": "Go over the app, components, services, and shared types folders.",
+      "priority": "medium",
+      "dueDate": "2026-07-21T16:25:00.000Z",
+      "category": "study",
+      "tags": [
+        "structure",
+        "angular",
+        "project"
+      ],
+      "isDone": false
+    },
+    {
+      "id": "f6c8d1b4",
+      "title": "Prepare clothes for tomorrow",
+      "description": "Set out clothes and bag items for the next day.",
+      "priority": "low",
+      "dueDate": "2026-06-21T21:15:00.000Z",
+      "category": "personal",
+      "tags": [
+        "prep",
+        "daily"
+      ],
+      "isDone": false
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "demo",
+      "email": "demo@example.com",
+      "password": "demo123"
+    },
+    {
+      "id": 2,
+      "username": "student",
+      "email": "student@example.com",
+      "password": "student123"
+    },
+    {
+      "id": 3,
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "admin123"
+    }
+  ]
+}
