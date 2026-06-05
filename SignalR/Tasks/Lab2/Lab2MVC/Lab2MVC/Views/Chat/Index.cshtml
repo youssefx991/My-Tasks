@@ -113,6 +113,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row align-items-center g-3">
+                    <div class="col-md-3">
+                        <label for="SendDesktopMessage" class="form-label mb-0 fw-medium text-secondary">Send Desktop Message
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="SendDesktopMessage" class="form-control" placeholder="Type desktop message...">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-secondary w-100" style="background-color: #6c757d;"
+                                    onclick="SendDesktopMessage()">Send Desktop Message</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="card shadow-sm border-light-subtle p-4 mt-4">
                     <h5 class="card-title text-secondary mb-3 fw-semibold fs-6">Message List:</h5>
 
@@ -184,6 +199,12 @@
                     $("#messageList").append(`<li><strong>${sender.email}</strong> (private): ${message}</li>`);
                     });
 
+                     conn.on("desktopmessage", (message) => {
+                    console.log(`desktopmessage event received: ${message}`);
+                    $("#messageList").append(`<li><strong>Desktop</strong>: ${message}</li>`);
+                    });
+
+        
                     // start connection
                     const connectionReady = conn.start().catch(err => {
                     console.error("SignalR connection failed to start:", err);
@@ -260,6 +281,20 @@
                     console.error("SendPrivateMessage failed:", err);
                     }
                     $("#privateMessageInput").val("");
+                    }
+                    }
+
+                    async function SendDesktopMessage() {
+                    console.log("SendDesktopMessage called");
+                    var message = $("#SendDesktopMessage").val();
+                    if (message) {
+                    try {
+                    await connectionReady;
+                    await conn.invoke("SendDesktopMessage", message);
+                    } catch (err) {
+                    console.error("SendDesktopMessage failed:", err);
+                    }
+                    $("#SendDesktopMessage").val("");
                     }
                     }
                 </script>

@@ -135,6 +135,11 @@ namespace Lab2MVC.Hubs
             }
         }
 
+        public async Task SendDesktopMessage(string message)
+        {
+            await Clients.All.SendAsync("desktopmessage", message);
+        }
+
 
 
     }
