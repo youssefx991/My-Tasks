@@ -1,44 +1,47 @@
 ﻿using Lab2MVC.Data;
 using Lab2MVC.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
-using System.Runtime.InteropServices;
 
 namespace Lab2MVC.Hubs
 {
     public class ChatHub : Hub
     {
         public ApplicationDbContext dbContext { get; }
-        public ChatHub(ApplicationDbContext _context)
+        public UserManager<IdentityUser> UserManager { get; }
+
+        public ChatHub(ApplicationDbContext _context, UserManager<IdentityUser> userManager)
         {
             dbContext = _context;
+            UserManager = userManager;
 
         }
 
-        public override Task OnConnectedAsync()
+        public override async Task OnConnectedAsync()
         {
             var email = Context.User?.Identity?.Name ?? "Unknown";
-            Clients.All.SendAsync("connected", email);
-            return base.OnConnectedAsync();
+            await Clients.All.SendAsync("connected", email);
+            await base.OnConnectedAsync();
         }
 
-        public override Task OnDisconnectedAsync(Exception? exception)
+        public override async Task OnDisconnectedAsync(Exception? exception)
         {
             var email = Context.User?.Identity?.Name ?? "Unknown";
-            Clients.All.SendAsync("disconnected", email);
-            return base.OnDisconnectedAsync(exception);
+            await Clients.All.SendAsync("disconnected", email);
+            await base.OnDisconnectedAsync(exception);
         }
 
-        public void CreateRoom(string roomName)
+        public async Task CreateRoom(string roomName)
         {
             var room = new Models.Room { Name = roomName };
             dbContext.Rooms.Add(room);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             var email = Context.User?.Identity?.Name ?? "Unknown";
-            Clients.All.SendAsync("createroom", email, room);
+            await Clients.All.SendAsync("createroom", email, room);
         }
 
-        public void DeleteRoom(int roomId)
+        public async Task DeleteRoom(int roomId)
         {
             var room = dbContext.Rooms.Find(roomId);
             if (room != null)
@@ -49,56 +52,78 @@ namespace Lab2MVC.Hubs
                     dbContext.ChatMessages.Remove(message);
                 }
                 dbContext.Rooms.Remove(room);
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
             }
             var email = Context.User?.Identity?.Name ?? "Unknown";
-            Clients.All.SendAsync("deleteroom", email, room);
+            await Clients.All.SendAsync("deleteroom", email, room);
         }
 
-        public void AddUserToRoom(int roomId)
+        public async Task AddUserToRoom(int roomId)
         {
             var room = dbContext.Rooms.Find(roomId);
-            var email = Context.User?.Identity?.Name ?? "Unknown";
-            var user = dbContext.Users.FirstOrDefault(u => u.Email == email);
-
-            if (room != null && user != null)
+            var principal = Context.User;
+            if (room == null || principal == null)
             {
+                return;
+            }
+
+            var user = await UserManager.GetUserAsync(principal);
+
+            if (user != null)
+            {
+                await Groups.AddToGroupAsync(Context.ConnectionId, room.Name);
+
                 var alreadyExists = dbContext.UserRooms.Any(ur => ur.RoomId == roomId && ur.UserId == user.Id);
                 if (!alreadyExists)
                 {
-                    Groups.AddToGroupAsync(Context.ConnectionId, room.Name);
-                    Clients.OthersInGroup(room.Name).SendAsync("userjoined", user, room);
                     dbContext.UserRooms.Add(new UserRoom { RoomId = roomId, UserId = user.Id });
-                    dbContext.SaveChanges();
+                    await dbContext.SaveChangesAsync();
                 }
+
+                await Clients.Caller.SendAsync("userjoined", user.Email, room.Name);
+                await Clients.OthersInGroup(room.Name).SendAsync("userjoined", user.Email, room.Name);
             }
         }
 
-        public void SendPublicMessage(int roomId, string message)
+        public async Task SendPublicMessage(int roomId, string message)
         {
             var room = dbContext.Rooms.Find(roomId);
-            var email = Context.User?.Identity?.Name ?? "Unknown";
-            var user = dbContext.Users.FirstOrDefault(u => u.Email == email);
-
-            Clients.Group(room.Name).SendAsync("publicmessage", user.Email, room.Name, message);
-            dbContext.ChatMessages.Add(new ChatMessage
+            var principal = Context.User;
+            if (room == null || principal == null)
             {
-                Text = message,
-                SentAt = DateTime.UtcNow,
-                RoomId = roomId,
-                SenderId = user.Id
-            });
-            dbContext.SaveChanges();
+                return;
+            }
+
+            var user = await UserManager.GetUserAsync(principal);
+
+            if (user != null)
+            {
+                dbContext.ChatMessages.Add(new ChatMessage
+                {
+                    Text = message,
+                    SentAt = DateTime.UtcNow,
+                    RoomId = roomId,
+                    SenderId = user.Id
+                });
+                await dbContext.SaveChangesAsync();
+
+                await Clients.Group(room.Name).SendAsync("publicmessage", user.Email, room.Name, message);
+            }
         }
 
-        public void SendPrivateMessage(string receiverId, string message)
+        public async Task SendPrivateMessage(string receiverId, string message)
         {
-            var email = Context.User?.Identity?.Name ?? "Unknown";
-            var sender = dbContext.Users.FirstOrDefault(u => u.Email == email);
+            var principal = Context.User;
+            if (principal == null)
+            {
+                return;
+            }
+
+            var sender = await UserManager.GetUserAsync(principal);
             var receiver = dbContext.Users.Find(receiverId);
             if (sender != null && receiver != null)
             {
-                Clients.User(receiver.Id).SendAsync("privatemessage", sender, message);
+                await Clients.User(receiver.Id).SendAsync("privatemessage", sender, message);
                 dbContext.ChatMessages.Add(new ChatMessage
                 {
                     Text = message,
@@ -106,7 +131,7 @@ namespace Lab2MVC.Hubs
                     SenderId = sender.Id,
                     ReceiverId = receiver.Id
                 });
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
             }
         }
 

@@ -34,193 +34,233 @@
 
         <div class="row align-items-center g-3 mt-1">
             <div class="col-md-3">
-                <label for="addUsertoRoomSelect" class="form-label mb-0 fw-medium text-secondary">Add User to Room</label>
+                <label for="addUsertoRoomSelect" class="form-label mb-0 fw-medium text-secondary">Add User to
+                    Room</label>
+                </div>
+                <div class="col-md-6">
+                    <select id="addUsertoRoomSelect" class="form-select">
+                        @foreach (var room in Model.Rooms)
+                        {
+                            <option value="@room.Id">@room.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-success w-100" onclick="AddUserToRoom()">Add User to Room</button>
+                </div>
             </div>
-            <div class="col-md-6">
-                <select id="addUsertoRoomSelect" class="form-select">
-                    @foreach (var room in Model.Rooms)
-                    {
-                        <option value="@room.Id">@room.Name</option>
+        </div>
+
+        <div class="card shadow-sm border-light-subtle mb-4 p-4">
+            <div class="row align-items-center mb-3 g-3">
+                <div class="col-md-3">
+                    <label for="selectRoomPublic" class="form-label mb-0 fw-medium text-secondary">Select Room</label>
+                </div>
+                <div class="col-md-6">
+                    <select id="selectRoomPublic" class="form-select">
+                        @foreach (var room in Model.Rooms)
+                        {
+                            <option value="@room.Id">@room.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+
+            <div class="row align-items-center g-3">
+                <div class="col-md-3">
+                    <label for="publicMessageInput" class="form-label mb-0 fw-medium text-secondary">Send Public
+                        Message</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="publicMessageInput" class="form-control" placeholder="Type public message...">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-info text-white w-100" onclick="SendPublicMessage()">Send Public Message</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-light-subtle p-4">
+                <div class="row align-items-center mb-3 g-3">
+                    <div class="col-md-3">
+                        <label for="selectUserPrivate" class="form-label mb-0 fw-medium text-secondary">Select User</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="selectUserPrivate" class="form-select">
+                            @foreach (var user in Model.Users)
+                            {
+                                <option value="@user.Id">@user.Email</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+
+                <div class="row align-items-center g-3">
+                    <div class="col-md-3">
+                        <label for="privateMessageInput" class="form-label mb-0 fw-medium text-secondary">Send Private
+                            Message</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="privateMessageInput" class="form-control" placeholder="Type private message...">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-secondary w-100" style="background-color: #6c757d;"
+                                    onclick="SendPrivateMessage()">Send Private Message</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow-sm border-light-subtle p-4 mt-4">
+                    <h5 class="card-title text-secondary mb-3 fw-semibold fs-6">Message List:</h5>
+
+                    <div class="p-3 bg-light rounded border border-light-subtle" style="max-height: 250px; overflow-y: auto;">
+                        <ul id="messageList" class="list-unstyled mb-0 d-flex flex-column gap-2 text-dark"
+                            style="font-size: 0.95rem;">
+                            @foreach (var message in Model.Messages.OrderBy(m => m.SentAt))
+                            {
+                                <li>
+                                    <strong>Message</strong>: @message.Text
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @section Scripts {
+                <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+                <script>
+                    // define connection
+                    var conn = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+                    function AddRoomToSelects(room) {
+                    $("#deleteRoomSelect").append(`<option value="${room.id}">${room.name}</option>`);
+                    $("#selectRoomPublic").append(`<option value="${room.id}">${room.name}</option>`);
+                    $("#addUsertoRoomSelect").append(`<option value="${room.id}">${room.name}</option>`);
                     }
-                </select>
-            </div>
-            <div class="col-md-3">
-                <button class="btn btn-success w-100" onclick="AddUserToRoom()">Add User to Room</button>
-            </div>
-        </div>
-    </div>
 
-    <div class="card shadow-sm border-light-subtle mb-4 p-4">
-        <div class="row align-items-center mb-3 g-3">
-            <div class="col-md-3">
-                <label for="selectRoomPublic" class="form-label mb-0 fw-medium text-secondary">Select Room</label>
-            </div>
-            <div class="col-md-6">
-                <select id="selectRoomPublic" class="form-select">
-                    @foreach (var room in Model.Rooms)
-                    {
-                        <option value="@room.Id">@room.Name</option>
+                    function RemoveRoomFromSelects(room) {
+                    $(`#deleteRoomSelect option[value="${room.id}"]`).remove();
+                    $(`#selectRoomPublic option[value="${room.id}"]`).remove();
+                    $(`#addUsertoRoomSelect option[value="${room.id}"]`).remove();
                     }
-                </select>
-            </div>
-            <div class="col-md-3">
-            </div>
-        </div>
 
-        <div class="row align-items-center g-3">
-            <div class="col-md-3">
-                <label for="publicMessageInput" class="form-label mb-0 fw-medium text-secondary">Send Public Message</label>
-            </div>
-            <div class="col-md-6">
-                <input type="text" id="publicMessageInput" class="form-control" placeholder="Type public message...">
-            </div>
-            <div class="col-md-3">
-                <button class="btn btn-info text-white w-100" onclick="SendPublicMessage()">Send Public Message</button>
-            </div>
-        </div>
-    </div>
+                    conn.on("connected", (email) => {
+                    console.log("Connected to chat hub as " + email);
+                    $("#messageList").append(`<li class="text-success">${email} has joined the chat.</li>`);
+                    });
 
-    <div class="card shadow-sm border-light-subtle p-4">
-        <div class="row align-items-center mb-3 g-3">
-            <div class="col-md-3">
-                <label for="selectUserPrivate" class="form-label mb-0 fw-medium text-secondary">Select User</label>
-            </div>
-            <div class="col-md-6">
-                <select id="selectUserPrivate" class="form-select">
-                    @foreach (var user in Model.Users)
-                    {
-                        <option value="@user.Id">@user.Email</option>
+                    conn.on("disconnected", (email) => {
+                    console.log("Disconnected from chat hub as " + email);
+                    $("#messageList").append(`<li class="text-danger">${email} has left the chat.</li>`);
+                    });
+
+                    conn.on("createroom", (email, room) => {
+                    $("#messageList").append(`<li class="text-success">${email} created room ${room.name}</li>`);
+                    AddRoomToSelects(room);
+                    });
+
+                    conn.on("deleteroom", (email, room) => {
+                    console.log("deleteroom event received for room " + room.name);
+                    $("#messageList").append(`<li class="text-info">${email} deleted room ${room.name}</li>`);
+                    RemoveRoomFromSelects(room);
+                    });
+
+                    conn.on("userjoined", (email, roomName) => {
+                    console.log(`userjoined event received: ${email} joined room ${roomName}`);
+                    $("#messageList").append(`<li class="text-success">${email} joined room ${roomName}</li>`);
+                    });
+
+                    conn.on("publicmessage", (email, roomName, message) => {
+                    console.log(`publicmessage event received from ${email} in room ${roomName}: ${message}`);
+                    $("#messageList").append(`<li><strong>${email}</strong> in <em>${roomName}</em>: ${message}</li>`);
+                    });
+
+                    conn.on("privatemessage", (sender, message) => {
+                    console.log(`privatemessage event received from ${sender.email}: ${message}`);
+                    $("#messageList").append(`<li><strong>${sender.email}</strong> (private): ${message}</li>`);
+                    });
+
+                    // start connection
+                    const connectionReady = conn.start().catch(err => {
+                    console.error("SignalR connection failed to start:", err);
+                    throw err;
+                    });
+
+                    async function CreateRoom() {
+                    console.log("CreateRoom called");
+                    var roomName = $("#createRoomInput").val();
+                    if (roomName) {
+                    try {
+                    await connectionReady;
+                    await conn.invoke("CreateRoom", roomName);
+                    } catch (err) {
+                    console.error("CreateRoom failed:", err);
                     }
-                </select>
-            </div>
-            <div class="col-md-3">
-            </div>
-        </div>
+                    $("#createRoomInput").val("");
+                    }
+                    }
 
-        <div class="row align-items-center g-3">
-            <div class="col-md-3">
-                <label for="privateMessageInput" class="form-label mb-0 fw-medium text-secondary">Send Private Message</label>
-            </div>
-            <div class="col-md-6">
-                <input type="text" id="privateMessageInput" class="form-control" placeholder="Type private message...">
-            </div>
-            <div class="col-md-3">
-                <button class="btn btn-secondary w-100" style="background-color: #6c757d;" onclick="SendPrivateMessage()">Send Private Message</button>
-            </div>
-        </div>
-    </div>
-    <div class="card shadow-sm border-light-subtle p-4 mt-4">
-        <h5 class="card-title text-secondary mb-3 fw-semibold fs-6">Message List:</h5>
+                    async function DeleteRoom() {
+                    console.log("DeleteRoom called");
+                    var roomId = $("#deleteRoomSelect").val();
+                    console.log("Selected room ID to delete: " + roomId);
+                    if (roomId) {
+                    console.log("Invoking DeleteRoom with room ID: " + roomId);
+                    try {
+                    await connectionReady;
+                    await conn.invoke("DeleteRoom", parseInt(roomId));
+                    } catch (err) {
+                    console.error("DeleteRoom failed:", err);
+                    }
+                    }
+                    }
 
-        <div class="p-3 bg-light rounded border border-light-subtle" style="max-height: 250px; overflow-y: auto;">
-            <ul id="messageList" class="list-unstyled mb-0 d-flex flex-column gap-2 text-dark" style="font-size: 0.95rem;">
+                    async function AddUserToRoom() {
+                    console.log("AddUserToRoom called");
+                    var roomId = $("#addUsertoRoomSelect").val();
+                    if (roomId) {
+                    console.log("Invoking AddUserToRoom with room ID: " + roomId);
+                    try {
+                    await connectionReady;
+                    await conn.invoke("AddUserToRoom", parseInt(roomId));
+                    } catch (err) {
+                    console.error("AddUserToRoom failed:", err);
+                    }
+                    }
+                    }
 
-            </ul>
-        </div>
-    </div>
-</div>
+                    async function SendPublicMessage() {
+                    console.log("SendPublicMessage called");
+                    var roomId = $("#selectRoomPublic").val();
+                    var message = $("#publicMessageInput").val();
+                    if (roomId && message) {
+                    try {
+                    await connectionReady;
+                    await conn.invoke("SendPublicMessage", parseInt(roomId), message);
+                    } catch (err) {
+                    console.error("SendPublicMessage failed:", err);
+                    }
+                    $("#publicMessageInput").val("");
+                    }
+                    }
 
-@section Scripts {
-    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
-    <script>
-        // define connection
-        var conn = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-        // start connection
-        conn.start();
-
-        function AddRoomToSelects(room){
-            $("#deleteRoomSelect").append(`<option value="${room.id}">${room.name}</option>`);
-            $("#selectRoomPublic").append(`<option value="${room.id}">${room.name}</option>`);
-            $("#addUsertoRoomSelect").append(`<option value="${room.id}">${room.name}</option>`);
-        }
-
-        function RemoveRoomFromSelects(room){
-            $(`#deleteRoomSelect option[value="${room.id}"]`).remove();
-            $(`#selectRoomPublic option[value="${room.id}"]`).remove();
-            $(`#addUsertoRoomSelect option[value="${room.id}"]`).remove();
-        }
-        conn.on("connected", (email)=>{
-        console.log("Connected to chat hub as " + email);
-            $("#messageList").append(`<li class="text-success">${email} has joined the chat.</li>`);
-        });
-        
-        conn.on("disconnected", (email)=>{
-        console.log("Disconnected from chat hub as " + email);
-            $("#messageList").append(`<li class="text-danger">${email} has left the chat.</li>`);
-        });
-        
-        function CreateRoom(){
-        console.log("CreateRoom called");
-            var roomName = $("#createRoomInput").val();
-            if(roomName){
-                conn.invoke("CreateRoom", roomName);
-                $("#createRoomInput").val("");
+                    async function SendPrivateMessage() {
+                    console.log("SendPrivateMessage called");
+                    var receiverId = $("#selectUserPrivate").val();
+                    var message = $("#privateMessageInput").val();
+                    if (receiverId && message) {
+                    try {
+                    await connectionReady;
+                    await conn.invoke("SendPrivateMessage", receiverId, message);
+                    } catch (err) {
+                    console.error("SendPrivateMessage failed:", err);
+                    }
+                    $("#privateMessageInput").val("");
+                    }
+                    }
+                </script>
             }
-        }
-
-        conn.on("createroom", (email, room)=>{
-            $("#messageList").append(`<li class="text-success">${email} created room ${room.name}</li>`);
-            AddRoomToSelects(room);
-        });
-
-        function DeleteRoom(){
-        console.log("DeleteRoom called");
-            var roomId = $("#deleteRoomSelect").val();
-            console.log("Selected room ID to delete: " + roomId);
-            if(roomId){
-                console.log("Invoking DeleteRoom with room ID: " + roomId);
-                conn.invoke("DeleteRoom", parseInt(roomId));
-            }
-        }
-
-        conn.on("deleteroom", (email, room)=>{
-        console.log("deleteroom event received for room " + room.name);
-            $("#messageList").append(`<li class="text-info">${email} deleted room ${room.name}</li>`);
-            RemoveRoomFromSelects(room);
-        });
-
-        function AddUserToRoom(){
-        console.log("AddUserToRoom called");
-            var roomId = $("#selectRoomPublic").val();
-            if(roomId){
-                console.log("Invoking AddUserToRoom with room ID: " + roomId);
-                conn.invoke("AddUserToRoom", parseInt(roomId));
-            }
-        }
-
-        conn.on("userjoined", (user, room)=>{
-        console.log(`userjoined event received: ${user.email} joined room ${room.name}`);
-            $("#messageList").append(`<li class="text-success">${user.email} joined room ${room.name}</li>`);
-        });
-        
-        function SendPublicMessage(){
-            console.log("SendPublicMessage called");
-            var roomId = $("#selectRoomPublic").val();
-            var message = $("#publicMessageInput").val();
-            if(roomId && message){
-                conn.invoke("SendPublicMessage", parseInt(roomId), message);
-                $("#publicMessageInput").val("");
-            }
-        }
-
-        function SendPrivateMessage(){
-            console.log("SendPrivateMessage called");
-            var receiverId = $("#selectUserPrivate").val();
-            var message = $("#privateMessageInput").val();
-            if(receiverId && message){
-                conn.invoke("SendPrivateMessage", receiverId, message);
-                $("#privateMessageInput").val("");
-            }
-        }
-
-        conn.on("publicmessage", (email, roomName, message)=>{
-        console.log(`publicmessage event received from ${email} in room ${roomName}: ${message}`);
-            $("#messageList").append(`<li><strong>${email}</strong> in <em>${roomName}</em>: ${message}</li>`);
-        });
-
-        conn.on("privatemessage", (sender, message)=>{
-            console.log(`privatemessage event received from ${sender.email}: ${message}`);
-            $("#messageList").append(`<li><strong>${sender.email}</strong> (private): ${message}</li>`);
-        });
-    </script>
-}
