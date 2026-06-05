@@ -12,7 +12,7 @@ namespace Lab2MVC.Models
         public DateTime SentAt { get; set; }
 
         
-        public int RoomId { get; set; } = 0;
+        public int? RoomId { get; set; }
         public Room? Room { get; set; }
 
         public string SenderId { get; set; }

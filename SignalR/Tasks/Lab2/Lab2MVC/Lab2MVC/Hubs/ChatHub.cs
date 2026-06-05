@@ -1,4 +1,5 @@
 ﻿using Lab2MVC.Data;
+using Lab2MVC.Models;
 using Microsoft.AspNetCore.SignalR;
 using System.Runtime.InteropServices;
 
@@ -53,6 +54,63 @@ namespace Lab2MVC.Hubs
             var email = Context.User?.Identity?.Name ?? "Unknown";
             Clients.All.SendAsync("deleteroom", email, room);
         }
+
+        public void AddUserToRoom(int roomId)
+        {
+            var room = dbContext.Rooms.Find(roomId);
+            var email = Context.User?.Identity?.Name ?? "Unknown";
+            var user = dbContext.Users.FirstOrDefault(u => u.Email == email);
+
+            if (room != null && user != null)
+            {
+                var alreadyExists = dbContext.UserRooms.Any(ur => ur.RoomId == roomId && ur.UserId == user.Id);
+                if (!alreadyExists)
+                {
+                    Groups.AddToGroupAsync(Context.ConnectionId, room.Name);
+                    Clients.OthersInGroup(room.Name).SendAsync("userjoined", user, room);
+                    dbContext.UserRooms.Add(new UserRoom { RoomId = roomId, UserId = user.Id });
+                    dbContext.SaveChanges();
+                }
+            }
+        }
+
+        public void SendPublicMessage(int roomId, string message)
+        {
+            var room = dbContext.Rooms.Find(roomId);
+            var email = Context.User?.Identity?.Name ?? "Unknown";
+            var user = dbContext.Users.FirstOrDefault(u => u.Email == email);
+
+            Clients.Group(room.Name).SendAsync("publicmessage", user.Email, room.Name, message);
+            dbContext.ChatMessages.Add(new ChatMessage
+            {
+                Text = message,
+                SentAt = DateTime.UtcNow,
+                RoomId = roomId,
+                SenderId = user.Id
+            });
+            dbContext.SaveChanges();
+        }
+
+        public void SendPrivateMessage(string receiverId, string message)
+        {
+            var email = Context.User?.Identity?.Name ?? "Unknown";
+            var sender = dbContext.Users.FirstOrDefault(u => u.Email == email);
+            var receiver = dbContext.Users.Find(receiverId);
+            if (sender != null && receiver != null)
+            {
+                Clients.User(receiver.Id).SendAsync("privatemessage", sender, message);
+                dbContext.ChatMessages.Add(new ChatMessage
+                {
+                    Text = message,
+                    SentAt = DateTime.UtcNow,
+                    SenderId = sender.Id,
+                    ReceiverId = receiver.Id
+                });
+                dbContext.SaveChanges();
+            }
+        }
+
+
 
     }
 }

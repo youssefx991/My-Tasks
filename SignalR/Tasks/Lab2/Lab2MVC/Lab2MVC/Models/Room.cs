@@ -9,5 +9,6 @@ namespace Lab2MVC.Models
         public string Name { get; set; }
 
         public List<ChatMessage>? Messages { get; set; } = new List<ChatMessage>();
+        public List<UserRoom>? UserRooms { get; set; } = new List<UserRoom>();
     }
 }

@@ -8,5 +8,6 @@ namespace Lab2MVC.Data
     {
         public DbSet<Room> Rooms { get; set; }
         public DbSet<ChatMessage> ChatMessages { get; set; }
+        public DbSet<UserRoom> UserRooms { get; set; }
     }
 }
