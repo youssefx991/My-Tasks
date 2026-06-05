@@ -1,0 +1,33 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div>
+    total visits : <span id="count"></span>
+    <br />
+    online connection : <span id="online"></span>
+</div>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@section Scripts {
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        //define connection
+        var con=new signalR.HubConnectionBuilder().withUrl("/visit").configureLogging(signalR.LogLevel.Trace).build();
+
+        
+        //define callback method
+        con.on("updatevisitcount",(value)=>{document.getElementById("count").innerText=value;});
+        con.on("updateonlineconnection",(value)=>{document.getElementById("online").innerText=value});
+        //calling server method
+
+        function callingserviceincreasecount(){
+            con.send("increasecount");
+        }
+        //start connection
+        con.start().then(callingserviceincreasecount);
+
+    </script>
+}

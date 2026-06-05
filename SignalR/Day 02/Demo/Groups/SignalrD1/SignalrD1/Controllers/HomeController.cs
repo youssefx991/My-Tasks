@@ -1,15 +1,16 @@
-using Lab2MVC.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SignalrD1.Models;
 using System.Diagnostics;
 
-namespace Lab2MVC.Controllers
+namespace SignalrD1.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
+       // static int count = 0;
         public IActionResult Index()
         {
+           // count++;
+            //return View(count);
             return View();
         }
 

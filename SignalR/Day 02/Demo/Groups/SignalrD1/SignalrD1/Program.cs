@@ -1,9 +1,8 @@
-using Lab2MVC.Data;
-using Lab2MVC.Hubs;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SignalrD1.Hubs;
+using SignalrD1.Models;
 
-namespace Lab2MVC
+namespace SignalrD1
 {
     public class Program
     {
@@ -12,24 +11,14 @@ namespace Lab2MVC
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
             builder.Services.AddSignalR();
+            builder.Services.AddDbContext<chatContext>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("iticon")));
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseMigrationsEndPoint();
-            }
-            else
+            if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -39,18 +28,16 @@ namespace Lab2MVC
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();
+            app.MapHub<VisitCountHub>("/visit");
+            app.MapHub<ChatHub>("/mychat");
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
-            app.MapRazorPages()
-               .WithStaticAssets();
 
-            app.MapHub<ChatHub>("/chathub");
             app.Run();
         }
     }

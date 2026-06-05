@@ -96,11 +96,29 @@
         <h5 class="card-title text-secondary mb-3 fw-semibold fs-6">Message List:</h5>
 
         <div class="p-3 bg-light rounded border border-light-subtle" style="max-height: 250px; overflow-y: auto;">
-            <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-dark" style="font-size: 0.95rem;">
-
-                
+            <ul id="messageList" class="list-unstyled mb-0 d-flex flex-column gap-2 text-dark" style="font-size: 0.95rem;">
 
             </ul>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        // define connection
+        var conn = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+        // start connection
+        conn.start();
+
+        conn.on("connected", (msg)=>{
+            $("#messageList").append(`<li class="text-success">${msg}</li>`);
+        });
+        
+        conn.on("disconnected", (msg)=>{
+            $("#messageList").append(`<li class="text-danger">${msg}</li>`);
+        });
+
+        
+    </script>
+}
