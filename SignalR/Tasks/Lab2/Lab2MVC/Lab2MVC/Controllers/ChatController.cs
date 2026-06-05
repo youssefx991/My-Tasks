@@ -18,7 +18,7 @@ namespace Lab2MVC.Controllers
             {
                 Rooms = dbContext.Rooms.ToList(),
                 Messages = dbContext.ChatMessages.OrderByDescending(m => m.SentAt).ToList(),
-                Users = dbContext.Users.Select(u => u.Email).ToList()
+                Users = dbContext.Users.ToList()
             };
 
             return View(viewModel);

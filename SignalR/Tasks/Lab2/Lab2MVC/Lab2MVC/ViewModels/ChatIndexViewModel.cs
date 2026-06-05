@@ -1,4 +1,5 @@
 ﻿using Lab2MVC.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Lab2MVC.ViewModels
 {
@@ -6,7 +7,7 @@ namespace Lab2MVC.ViewModels
     {
         public List<Room> Rooms { get; set; } = new List<Room>();
         public List<ChatMessage> Messages { get; set; } = new List<ChatMessage>();
-        public List<string> Users { get; set; } = new List<string>();
+        public List<IdentityUser> Users { get; set; } = new List<IdentityUser>();
 
 
     }
