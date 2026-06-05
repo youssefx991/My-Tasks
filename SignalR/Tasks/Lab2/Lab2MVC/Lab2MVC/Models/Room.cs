@@ -1,8 +1,13 @@
-﻿namespace Lab2MVC.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Lab2MVC.Models
 {
     public class Room
     {
-        string Name { get; set; }
-        string CreatedByUserEmail { get; set; }
+        [Key]
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public List<ChatMessage>? Messages { get; set; } = new List<ChatMessage>();
     }
 }

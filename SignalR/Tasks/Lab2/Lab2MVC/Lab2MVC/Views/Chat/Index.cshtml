@@ -1,4 +1,6 @@
-﻿<div class="container" style="max-width: 900px;">
+﻿@model ChatIndexViewModel;
+
+<div class="container" style="max-width: 900px;">
 
     <div class="card shadow-sm border-light-subtle mb-4 p-4">
         <div class="row align-items-center mb-3 g-3">
@@ -9,7 +11,7 @@
                 <input type="text" id="createRoomInput" class="form-control" placeholder="Enter room name...">
             </div>
             <div class="col-md-3">
-                <button class="btn btn-primary w-100">Create Room</button>
+                <button class="btn btn-primary w-100" onclick="CreateRoom()">Create Room</button>
             </div>
         </div>
 
@@ -19,10 +21,14 @@
             </div>
             <div class="col-md-6">
                 <select id="deleteRoomSelect" class="form-select">
+                    @foreach (var room in Model.Rooms)
+                    {
+                        <option value="@room.Id">@room.Name</option>
+                    }
                 </select>
             </div>
             <div class="col-md-3">
-                <button class="btn btn-danger w-100">Delete Room</button>
+                <button class="btn btn-danger w-100" onclick="DeleteRoom()">Delete Room</button>
             </div>
         </div>
 
@@ -47,6 +53,10 @@
             </div>
             <div class="col-md-6">
                 <select id="selectRoomPublic" class="form-select">
+                    @foreach (var room in Model.Rooms)
+                    {
+                        <option value="@room.Id">@room.Name</option>
+                    }
                 </select>
             </div>
             <div class="col-md-3">
@@ -111,14 +121,45 @@
         // start connection
         conn.start();
 
-        conn.on("connected", (msg)=>{
-            $("#messageList").append(`<li class="text-success">${msg}</li>`);
+        conn.on("connected", (email)=>{
+        console.log("Connected to chat hub as " + email);
+            $("#messageList").append(`<li class="text-success">${email} has joined the chat.</li>`);
         });
         
-        conn.on("disconnected", (msg)=>{
-            $("#messageList").append(`<li class="text-danger">${msg}</li>`);
+        conn.on("disconnected", (email)=>{
+        console.log("Disconnected from chat hub as " + email);
+            $("#messageList").append(`<li class="text-danger">${email} has left the chat.</li>`);
+        });
+        
+        function CreateRoom(){
+            var roomName = $("#createRoomInput").val();
+            if(roomName){
+                conn.invoke("CreateRoom", roomName);
+                $("#createRoomInput").val("");
+            }
+        }
+
+        conn.on("createroom", (email, room)=>{
+            $("#messageList").append(`<li class="text-success">${email} created room ${room.name}</li>`);
+            $("#deleteRoomSelect").append(`<option value="${room.id}">${room.name}</option>`);
+            $("#selectRoomPublic").append(`<option value="${room.id}">${room.name}</option>`);
         });
 
-        
+        function DeleteRoom(){
+        console.log("DeleteRoom called");
+            var roomId = $("#deleteRoomSelect").val();
+        console.log("Selected room ID to delete: " + roomId);
+            if(roomId){
+        console.log("Invoking DeleteRoom with room ID: " + roomId);
+            conn.invoke("DeleteRoom", parseInt(roomId));
+            }
+        }
+
+        conn.on("deleteroom", (email, room)=>{
+        console.log("deleteroom event received for room " + room.name);
+            $("#messageList").append(`<li class="text-info">${email} deleted room ${room.name}</li>`);
+            $(`#deleteRoomSelect option[value="${room.id}"]`).remove();
+            $(`#selectRoomPublic option[value="${room.id}"]`).remove();
+        });
     </script>
 }
