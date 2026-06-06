@@ -114,11 +114,13 @@ namespace Lab2MVC.Hubs
             await Clients.Group(room.Name).SendAsync("publicmessage", senderEmail, room.Name, message);
         }
 
-        public async Task SendPrivateMessage(string receiverId, string message)
+        public async Task SendPrivateMessage(string receiverEmail, string message)
         {
             var principal = Context.User;
             var sender = principal == null ? null : await UserManager.GetUserAsync(principal);
-            var receiver = dbContext.Users.Find(receiverId);
+            var receiver = string.IsNullOrWhiteSpace(receiverEmail)
+                ? null
+                : await UserManager.FindByEmailAsync(receiverEmail);
 
             if (receiver != null)
             {

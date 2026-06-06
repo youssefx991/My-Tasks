@@ -42,12 +42,12 @@
             cb_deleteroomname = new ComboBox();
             cb_addusertoroomname = new ComboBox();
             cb_publicmsgroomname = new ComboBox();
-            cb_privatemsgusername = new ComboBox();
             btn_createroom = new Button();
             btn_deleteroom = new Button();
             btn_addusertroom = new Button();
             btn_sendpublicmessage = new Button();
             btn_sendprivatemessage = new Button();
+            tb_privatemessageuseremail = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -100,9 +100,9 @@
             label6.AutoSize = true;
             label6.Location = new Point(64, 374);
             label6.Name = "label6";
-            label6.Size = new Size(98, 25);
+            label6.Size = new Size(123, 25);
             label6.TabIndex = 5;
-            label6.Text = "Select User";
+            label6.Text = "Receiver Email";
             // 
             // label7
             // 
@@ -166,14 +166,6 @@
             cb_publicmsgroomname.Size = new Size(182, 33);
             cb_publicmsgroomname.TabIndex = 13;
             // 
-            // cb_privatemsgusername
-            // 
-            cb_privatemsgusername.FormattingEnabled = true;
-            cb_privatemsgusername.Location = new Point(279, 366);
-            cb_privatemsgusername.Name = "cb_privatemsgusername";
-            cb_privatemsgusername.Size = new Size(182, 33);
-            cb_privatemsgusername.TabIndex = 14;
-            // 
             // btn_createroom
             // 
             btn_createroom.Location = new Point(483, 37);
@@ -224,17 +216,24 @@
             btn_sendprivatemessage.UseVisualStyleBackColor = true;
             btn_sendprivatemessage.Click += btn_sendprivatemessage_Click;
             // 
+            // tb_privatemessageuseremail
+            // 
+            tb_privatemessageuseremail.Location = new Point(279, 368);
+            tb_privatemessageuseremail.Name = "tb_privatemessageuseremail";
+            tb_privatemessageuseremail.Size = new Size(150, 31);
+            tb_privatemessageuseremail.TabIndex = 22;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1071, 742);
+            Controls.Add(tb_privatemessageuseremail);
             Controls.Add(btn_sendprivatemessage);
             Controls.Add(btn_sendpublicmessage);
             Controls.Add(btn_addusertroom);
             Controls.Add(btn_deleteroom);
             Controls.Add(btn_createroom);
-            Controls.Add(cb_privatemsgusername);
             Controls.Add(cb_publicmsgroomname);
             Controls.Add(cb_addusertoroomname);
             Controls.Add(cb_deleteroomname);
@@ -271,11 +270,11 @@
         private ComboBox cb_deleteroomname;
         private ComboBox cb_addusertoroomname;
         private ComboBox cb_publicmsgroomname;
-        private ComboBox cb_privatemsgusername;
         private Button btn_createroom;
         private Button btn_deleteroom;
         private Button btn_addusertroom;
         private Button btn_sendpublicmessage;
         private Button btn_sendprivatemessage;
+        private TextBox tb_privatemessageuseremail;
     }
 }

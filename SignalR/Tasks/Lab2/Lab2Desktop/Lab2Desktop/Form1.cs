@@ -40,7 +40,6 @@ namespace Lab2Desktop
                 });
             });
 
-            // publicmessage handled below with full (email, roomName, message) signature
 
             conn.On<string, int, string>("createroom", (email, roomId, roomName) =>
             {
@@ -258,17 +257,17 @@ namespace Lab2Desktop
 
         private async void btn_sendprivatemessage_Click(object sender, EventArgs e)
         {
-            var receiverId = cb_privatemsgusername.SelectedValue as string ?? cb_privatemsgusername.Text?.Trim();
-            if (string.IsNullOrWhiteSpace(receiverId))
+            var receiverEmail = tb_privatemessageuseremail.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(receiverEmail))
             {
-                listBox1.Items.Add("SendPrivateMessage failed: select a valid user first.");
+                listBox1.Items.Add("SendPrivateMessage failed: enter a valid receiver email first.");
                 return;
             }
 
             try
             {
                 await connectionReady;
-                await conn.InvokeAsync("SendPrivateMessage", receiverId, tb_privatemsg.Text);
+                await conn.InvokeAsync("SendPrivateMessage", receiverEmail, tb_privatemsg.Text);
                 tb_privatemsg.Clear();
             }
             catch (Exception ex)

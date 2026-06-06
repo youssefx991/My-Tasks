@@ -91,7 +91,7 @@
                         <select id="selectUserPrivate" class="form-select">
                             @foreach (var user in Model.Users)
                             {
-                                <option value="@user.Id">@user.Email</option>
+                                <option value="@user.Email">@user.Email</option>
                             }
                         </select>
                     </div>
@@ -272,12 +272,12 @@
 
                 async function SendPrivateMessage() {
                 console.log("SendPrivateMessage called");
-                var receiverId = $("#selectUserPrivate").val();
+                var receiverEmail = $("#selectUserPrivate").val();
                 var message = $("#privateMessageInput").val();
-                if (receiverId && message) {
+                if (receiverEmail && message) {
                 try {
                 await connectionReady;
-                await conn.invoke("SendPrivateMessage", receiverId, message);
+                await conn.invoke("SendPrivateMessage", receiverEmail, message);
                 } catch (err) {
                 console.error("SendPrivateMessage failed:", err);
                 }
