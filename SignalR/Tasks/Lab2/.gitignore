@@ -1,0 +1,17 @@
+# Lab2Desktop
+Lab2Desktop/Lab2Desktop/bin/
+Lab2Desktop/Lab2Desktop/obj/
+Lab2Desktop/Lab2Desktop/.vs/
+Lab2Desktop/Lab2Desktop/*.user
+Lab2Desktop/Lab2Desktop/*.suo
+Lab2Desktop/Lab2Desktop/*.userosscache
+Lab2Desktop/Lab2Desktop/*.sln.docstates
+
+# Lab2MVC
+Lab2MVC/Lab2MVC/bin/
+Lab2MVC/Lab2MVC/obj/
+Lab2MVC/Lab2MVC/.vs/
+Lab2MVC/Lab2MVC/*.user
+Lab2MVC/Lab2MVC/*.suo
+Lab2MVC/Lab2MVC/*.userosscache
+Lab2MVC/Lab2MVC/*.sln.docstates
