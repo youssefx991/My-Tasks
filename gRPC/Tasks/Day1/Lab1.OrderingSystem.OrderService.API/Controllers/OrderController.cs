@@ -1,6 +1,10 @@
-﻿using Lab1.OrderingSystem.OrderService.API.DTOs;
+﻿using Grpc.Net.Client;
+using Lab1.OrderingSystem.InventoryService.gRPC.Protos;
+using Lab1.OrderingSystem.OrderService.API.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Lab1.OrderingSystem.InventoryService.gRPC.Protos.InventoryServiceProto;
+using static Lab1.OrderingSystem.PaymentService.gRPC.Protos.PaymentServiceProto;
 
 namespace Lab1.OrderingSystem.OrderService.API.Controllers
 {
@@ -18,6 +22,12 @@ namespace Lab1.OrderingSystem.OrderService.API.Controllers
         [HttpPost("create")]
         public IActionResult CreateOrder(OrderDTO order)
         {
+            var InventoryChannel = GrpcChannel.ForAddress("https://localhost:7016");
+            var inventoryClient = new InventoryServiceProtoClient(InventoryChannel);
+
+            var PaymentChannel = GrpcChannel.ForAddress("https://localhost:7264");
+            var paymentClient = new PaymentServiceProtoClient(PaymentChannel);
+
             if (order == null)
             {
                 _logger.LogWarning("Received null order in CreateOrder.");

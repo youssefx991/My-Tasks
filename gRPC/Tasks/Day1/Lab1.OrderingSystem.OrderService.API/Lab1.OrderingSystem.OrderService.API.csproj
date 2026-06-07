@@ -7,7 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.80.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lab1.OrderingSystem.InventoryService.gRPC\Lab1.OrderingSystem.InventoryService.gRPC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\Lab1.OrderingSystem.InventoryService.gRPC\Protos\InventoryProto.proto" GrpcServices="Client">
+      <Link>Protos\InventoryProto.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\Lab1.OrderingSystem.PaymentService.gRPC\Protos\PaymentProto.proto" GrpcServices="Client">
+      <Link>Protos\PaymentProto.proto</Link>
+    </Protobuf>
   </ItemGroup>
 
 </Project>
