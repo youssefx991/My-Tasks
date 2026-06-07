@@ -1,0 +1,14 @@
+{
+    "id": 1008,
+    "userId": 1,
+    "userName": "Alice",
+    "items": [
+        null,
+        {
+            "id": 1,
+            "name": "Pasta",
+            "quantity": 1,
+            "price": 10
+        }
+    ]
+}
