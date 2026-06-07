@@ -33,7 +33,7 @@ namespace Lab2MVC.Hubs
 
         public async Task CreateRoom(string roomName)
         {
-            var room = new Models.Room { Name = roomName };
+            var room = new Room { Name = roomName };
             dbContext.Rooms.Add(room);
             await dbContext.SaveChangesAsync();
 

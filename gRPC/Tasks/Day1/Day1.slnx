@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Lab1.OrderingSystem.InventoryService.gRPC/Lab1.OrderingSystem.InventoryService.gRPC.csproj" />
+  <Project Path="Lab1.OrderingSystem.OrderService.API/Lab1.OrderingSystem.OrderService.API.csproj" />
+  <Project Path="Lab1.OrderingSystem.PaymentService.gRPC/Lab1.OrderingSystem.PaymentService.gRPC.csproj" />
+</Solution>

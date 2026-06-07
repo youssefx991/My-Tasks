@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "Lab1.OrderingSystem.InventoryService.gRPC.Protos";
+
+service InventoryServiceProto {
+  rpc DeductQuantity(DeductQuantityRequest) returns (DeductQuantityResponse);
+}
+
+message DeductQuantityRequest {
+  repeated Item items = 1;
+}
+
+message Item {
+  int32 id = 1;
+  string name = 2;
+  int32 quantity = 3;
+}
+
+message DeductQuantityResponse {
+  bool success = 1;
+  string message = 2;
+}

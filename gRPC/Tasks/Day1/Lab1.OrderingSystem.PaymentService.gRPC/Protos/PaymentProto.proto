@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "Lab1.OrderingSystem.PaymentService.gRPC.Protos";
+
+service PaymentServiceProto {
+  rpc DeductBalance(DeductBalanceRequest) returns (DeductBalanceResponse);
+}
+
+message DeductBalanceRequest {
+  int32 id = 1;
+  string name = 2;
+  int32 requiredAmount = 3;
+}
+
+message DeductBalanceResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+
