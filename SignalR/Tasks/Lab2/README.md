@@ -1,13 +1,13 @@
 # SignalRChat: Real-Time Synchronous Communication Suite
 
-A professional real-time chat and collaboration platform showcasing the integration of **ASP.NET Core SignalR** across web clients and native desktop applications. This project is built as a production-grade system with database persistence, user authentication, and multi-client messaging synchronization.
+A real-time chat and collaboration platform demonstrating the integration of ASP.NET Core SignalR across web clients and native desktop applications. This project features database persistence, user authentication, and multi-client messaging synchronization.
 
 **Developer:** Youssef Wagih  
 **Tech Stack:** C#, .NET 10, ASP.NET Core MVC, SignalR, Entity Framework Core, SQL Server, ASP.NET Core Identity, WinForms (C#)
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
 ### 1. Real-Time Hub Architecture
 * **Bi-directional Communication**: Utilizes WebSockets (with fallback to Server-Sent Events or Long Polling) via ASP.NET Core SignalR for sub-second, low-latency message delivery.
@@ -35,7 +35,7 @@ A professional real-time chat and collaboration platform showcasing the integrat
 
 ---
 
-## 🏗️ Architecture & Flow
+## Architecture & Flow
 
 ```
                       ┌──────────────────────┐
@@ -58,7 +58,7 @@ A professional real-time chat and collaboration platform showcasing the integrat
 
 ---
 
-## 🛠️ Tech Stack & Libraries
+## Tech Stack & Libraries
 
 * **Backend / Server**: 
   * C# 13, .NET 10.0
@@ -78,7 +78,7 @@ A professional real-time chat and collaboration platform showcasing the integrat
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 * **.NET 10 SDK** (or later) installed.
@@ -124,7 +124,7 @@ A professional real-time chat and collaboration platform showcasing the integrat
 
 ---
 
-## 📊 Verification & Testing
+## Verification & Testing
 
 * **Room Synchronization**: Run both applications simultaneously. Create a room in the web UI; you will see it populate instantly in the desktop app's dropdown.
 * **Cross-client Announcement**: Type a message in the "Send Desktop Message" input on either UI, and watch it register in real-time across both screens.
