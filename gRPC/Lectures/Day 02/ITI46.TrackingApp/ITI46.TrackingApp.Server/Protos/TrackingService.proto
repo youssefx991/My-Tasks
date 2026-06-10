@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "ITI46.TrackingApp.Server.Protos";
+
+import "google/protobuf/empty.proto";
+import "models.proto";
+
+service TrackingService {
+	rpc SendMessage(TrackingMessage) returns (TrackingResponse);
+	rpc KeepAlive(stream PulseMessage) returns(google.protobuf.Empty);
+	rpc SubscribeNotifications (SubscriptionRequest) returns (stream NotificationMessage);
+}
+

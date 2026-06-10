@@ -1,9 +1,0 @@
-<div class="tab-pane fade show active bg-danger p-4">
-  @if (data) {
-    @for (p of data; track p.id) {
-      <app-card [prod]="p" />
-    }
-  } @else {
-    <p>no products</p>
-  }
-</div>

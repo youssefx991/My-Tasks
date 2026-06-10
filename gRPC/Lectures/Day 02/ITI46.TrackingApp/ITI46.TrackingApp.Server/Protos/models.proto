@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option csharp_namespace = "ITI46.TrackingApp.Server.Protos";
+
+import "google/protobuf/timestamp.proto";
+
+message TrackingMessage {
+	int32 DeviceId = 1;
+	Location Location = 2;
+	int32 Speed = 3;
+	google.protobuf.Timestamp Timestamp = 4;
+	repeated Sensor Sensors = 5;
+	//reserved 3;
+	//reserved 1 to 5;
+	//reserved "Speed";
+}
+
+message Location {
+	double Lat = 1;
+	double Long = 2;
+}
+
+message Sensor {
+	string Name = 1;
+	double Value = 2;
+}
+
+message TrackingResponse {
+	bool Success = 1;
+}
+
+message PulseMessage {
+	
+	message DetailsMessage {
+		string Text = 1;
+	}
+
+	int32 DeviceId = 1;
+	google.protobuf.Timestamp Timestamp = 2;
+	DetailsMessage Details = 3;
+}
+
+message SubscriptionRequest {
+	int32 DeviceId = 1;
+}
+
+message NotificationMessage {
+	string Message = 1;
+	google.protobuf.Timestamp Timestamp = 2;
+}

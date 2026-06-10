@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ITI46.TrackingApp.Client/ITI46.TrackingApp.Client.csproj" />
+  <Project Path="ITI46.TrackingApp.Server/ITI46.TrackingApp.Server.csproj" />
+</Solution>
