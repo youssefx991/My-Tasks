@@ -1,5 +1,7 @@
 <Solution>
+  <Project Path="ClassLibrary/ClassLibrary.csproj" Id="153d9c76-92ff-4f54-a5a4-4deb76f50ad4" />
   <Project Path="Lab1.OrderingSystem.InventoryService.gRPC/Lab1.OrderingSystem.InventoryService.gRPC.csproj" />
+  <Project Path="Lab1.OrderingSystem.OrderService.API.Server/Lab1.OrderingSystem.OrderService.API.Server.csproj" Id="f3660f9b-5285-4226-8ada-84f16dfbe3e0" />
   <Project Path="Lab1.OrderingSystem.OrderService.API/Lab1.OrderingSystem.OrderService.API.csproj" />
   <Project Path="Lab1.OrderingSystem.PaymentService.gRPC/Lab1.OrderingSystem.PaymentService.gRPC.csproj" />
 </Solution>
