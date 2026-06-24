@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Dapper,API/Dapper.API.csproj" />
+  <Project Path="Dapper.Core/Dapper.Core.csproj" />
+  <Project Path="Dapper.Infrastructure/Dapper.Infrastructure.csproj" />
+</Solution>

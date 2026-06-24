@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>AOPAPI</RootNamespace>
+
+	  <!-- PostSharp's compiler-dependency restore runs from C:\ProgramData\PostSharp\...,
+         so by default it ignores this repo's NuGet.Config and falls back to the
+         user/machine config, which carries a private Azure DevOps feed that 401s.
+         Enabling this makes PostSharp merge the repo NuGet.Config hierarchy (which
+         <clear/>s the bad feed and leaves only nuget.org) during dependency restore. -->
+	  <PostSharpDependencyRestoreNuGetConfigEnabled>True</PostSharpDependencyRestoreNuGetConfigEnabled>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="5.2.1" />
+    <PackageReference Include="log4net" Version="3.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.2" />
+    <PackageReference Include="PostSharp" Version="2026.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

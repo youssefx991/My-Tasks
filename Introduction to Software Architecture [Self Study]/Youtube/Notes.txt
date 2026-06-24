@@ -1,0 +1,13 @@
+1 - know context:
+  - functional requirements (fr)
+  - non functional requirements (nfr)
+
+2 - prioritize fr & nfr
+ - YAGNI 
+
+
+- Layered Architecture is typical but not silver bullet
+- Take care when choosing architecture as it will  evolve when 
+  - Requirements will change 
+  - Some changes will be expensive 
+  - Balance to void over/under engineering

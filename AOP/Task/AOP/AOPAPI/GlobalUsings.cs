@@ -1,0 +1,1 @@
+global using ILogger = AOPAPI.Aspects.Logging.Utilities.ILogger;
